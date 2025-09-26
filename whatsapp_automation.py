@@ -51,8 +51,8 @@ class WhatsAppAutomation:
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--window-size=1920,1080")
-        service = Service("/usr/bin/chromedriver")
-        return webdriver.Chrome(service=service, options=chrome_options)
+        #service = Service("/usr/bin/chromedriver")
+        return webdriver.Chrome(options=chrome_options)
     
     async def start(self):
         """Start the WhatsApp automation."""
@@ -211,11 +211,24 @@ class WhatsAppAutomation:
                 except Exception as e:
                     res = f"ERR:{e}"
 
-                if res is True:
-                    # Select-all then paste to replace any draft text
-                    ActionChains(self.driver).key_down(Keys.CONTROL, target_elem).send_keys('a').key_up(Keys.CONTROL).perform()
+                # if res is True:
+                #     # Select-all then paste to replace any draft text
+                #     ActionChains(self.driver).key_down(Keys.CONTROL, target_elem).send_keys('a').key_up(Keys.CONTROL).perform()
+                #     ActionChains(self.driver).send_keys(Keys.DELETE).perform()
+                #     ActionChains(self.driver).key_down(Keys.CONTROL, target_elem).send_keys('v').key_up(Keys.CONTROL).perform()
+                #     try:
+                #         WebDriverWait(self.driver, 0.6).until(
+                #             lambda d: (target_elem.get_attribute('innerText') or '').strip() != ''
+                #         )
+                #         inserted = True
+                #     except Exception:
+                #         inserted = False
+                if True:
+                    ActionChains(self.driver).key_down(Keys.COMMAND, target_elem).send_keys('a').key_up(Keys.COMMAND).perform()
                     ActionChains(self.driver).send_keys(Keys.DELETE).perform()
-                    ActionChains(self.driver).key_down(Keys.CONTROL, target_elem).send_keys('v').key_up(Keys.CONTROL).perform()
+                    ActionChains(self.driver).key_down(Keys.COMMAND, target_elem).send_keys('v').key_up(Keys.COMMAND).perform()
+                    ActionChains(self.driver).send_keys("hello")
+                    print("dwadawd")
                     try:
                         WebDriverWait(self.driver, 0.6).until(
                             lambda d: (target_elem.get_attribute('innerText') or '').strip() != ''
