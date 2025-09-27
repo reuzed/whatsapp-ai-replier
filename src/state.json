@@ -8,5 +8,15 @@
             "is_outgoing": false,
             "chat_name": "Reuben"
         }
+    },
+    "Bob": {
+        "text": "No significant information about Bob to track from this brief greeting exchange.",
+        "last_message": {
+            "sender": "Bob",
+            "content": "I'm good, thanks! How about you?",
+            "timestamp": "2025-09-27T16:14:44.958989",
+            "is_outgoing": false,
+            "chat_name": "Bob"
+        }
     }
 }

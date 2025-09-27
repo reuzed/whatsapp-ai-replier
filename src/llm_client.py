@@ -49,6 +49,7 @@ class AnthropicClient(LLMClient):
                 system=system_prompt or "You are a helpful assistant.",
                 messages=anthropic_messages,
             )
+            print(response)
             return response.content[0].text.strip()
             
         except Exception as e:
