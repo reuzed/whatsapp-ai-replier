@@ -1,3 +1,7 @@
+# Conversations
+conversations/*
+
+
 # Python
 __pycache__/
 *.py[cod]
