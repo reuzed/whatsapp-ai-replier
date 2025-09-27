@@ -4,9 +4,9 @@
 
 from datetime import datetime, timedelta
 import json
-from src.schemas import WhatsAppMessage, ChatState
-from src.llm_client import LLMManager
-from src.prompts import create_state_updater_prompts, create_replier_system_prompt
+from schemas import WhatsAppMessage, ChatState, ChatAction
+from llm_client import LLMManager
+from prompts import create_state_updater_prompts, create_replier_system_prompt
 import random
 from pathlib import Path
 
@@ -54,7 +54,7 @@ class Chat:
 
     def _generate_reply_timestamp(self, fast=True) -> str:
         # random between 30 and 90 seconds
-        delay_seconds = random.randint(10, 30) if fast else random.randint(30, 100)
+        delay_seconds = random.randint(3, 10) if fast else random.randint(30, 100)
         future_time = datetime.now() + timedelta(seconds=delay_seconds)
         return future_time.isoformat()
 

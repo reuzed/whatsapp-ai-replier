@@ -6,12 +6,12 @@ class TrivialChatter:
     def __init__(self):
         pass
 
-    def on_receive_message(self, messages: list[WhatsAppMessage]) -> ChatAction:
+    def on_receive_messages(self, messages: list[WhatsAppMessage]) -> ChatAction:
         return ChatAction(message=messages[0], timestamp=datetime.now())
     
 class DelayedTrivialChatter:
     def __init__(self):
         pass
 
-    def on_receive_message(self, messages: list[WhatsAppMessage]) -> ChatAction:
+    def on_receive_messages(self, messages: list[WhatsAppMessage]) -> ChatAction:
         return ChatAction(message=messages[0], timestamp=datetime.now() + timedelta(seconds=10))
