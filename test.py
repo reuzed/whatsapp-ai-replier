@@ -62,9 +62,15 @@ if __name__ == "__main__":
     asyncio.run(automation.start())
         
     while True:
-        k = input("Press Enter to continue")
-        if k == "s":
-            print(automation.scroll_chat())
+        k = input("Press Enter to continue, sc to scroll chat list, s to scroll chat")
+        if k == "sc":
+            print(automation.scroll_chat_list("up"))
+        elif k == "s":
+            print(automation.scroll_chat("up"))
+        elif k == "scp":
+            print(automation.scroll_chat_list("down"))
+        elif k == "sp":
+            print(automation.scroll_chat("down"))
         else:
             msgs = automation.get_visible_messages_simple(50)
             for msg in msgs:
