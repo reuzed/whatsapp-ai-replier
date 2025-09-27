@@ -9,7 +9,7 @@ def create_state_updater_prompts(user_name:str, friend_name:str, prev_state_text
     system_prompt = f"The current date is {current_date}. " + STATE_UPDATER_SYSTEM_PROMPT_TEMPLATE.format(user_name=user_name, friend_name=friend_name) + "\n"
     system_prompt += f"<current_state>{prev_state_text}</current_state>\n"
     system_prompt += f"<new_messages>{_map_messages_to_str(new_messages)}</new_messages>"
-    user = f"Now return a concise updated state, or the same state if nothing has changed. Only return the updated state text, without any additional commentary."
+    user = f"Now return a concise updated state, or if nothing has changed use the skip response tool. Only return the updated state text, without any additional commentary."
     return system_prompt, user
 
 def _map_messages_to_str(messages: list[WhatsAppMessage]) -> str:

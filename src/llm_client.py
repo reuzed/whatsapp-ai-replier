@@ -10,10 +10,17 @@ from config import settings
 class LLMClient(ABC):
     """Abstract base class for LLM clients."""
     
+    @property
+    @abstractmethod
+    def skip_tool(self) -> dict:
+        """Tool definition for skipping responses."""
+        # make sure included in tool call api
+        pass
+
     @abstractmethod
     async def generate_response(
         self, 
-        messages: List[Dict[str, str]], 
+        messages: List[Dict[str, str]],
         system_prompt: Optional[str] = None
     ) -> str:
         """Generate a response from the LLM."""
@@ -22,12 +29,24 @@ class LLMClient(ABC):
 class AnthropicClient(LLMClient):
     """Anthropic API client."""
 
+    @property
+    def skip_tool(self) -> dict:
+        """Tool definition for skipping responses."""
+        return {
+            "name": "skip",
+            "description": "Use this tool to skip response.",
+            "input_schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
+            }
+        }
+
     def __init__(self):
         self.client = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
-    
     async def generate_response(
         self, 
-        messages: List[Dict[str, str]], 
+        messages: List[Dict[str, str]],
         system_prompt: Optional[str] = None
     ) -> str:
         """Generate a response using Anthropic's API."""
@@ -48,9 +67,25 @@ class AnthropicClient(LLMClient):
                 temperature=settings.temperature,
                 system=system_prompt or "You are a helpful assistant.",
                 messages=anthropic_messages,
+                tools=[self.skip_tool],
             )
-            print(response)
-            return response.content[0].text.strip()
+
+            # Check if response has content
+            if not response.content or len(response.content) == 0:
+                logger.error("Anthropic API returned empty content")
+                return ""
+            
+            # Handle different content types
+            for content_block in response.content:
+                if content_block.type == "text":
+                    return content_block.text.strip()
+                elif content_block.type == "tool_use" and content_block.name == "skip":
+                    logger.info("LLM chose to skip response")
+                    return ""  # Return empty string to indicate no response
+            
+            # If we get here, no text or skip tool was found
+            logger.warning("No valid content found in response")
+            return ""
             
         except Exception as e:
             logger.error(f"Anthropic API error: {e}")

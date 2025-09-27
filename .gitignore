@@ -1,6 +1,8 @@
 # Conversations
 conversations/*
 
+# state
+state.json
 
 # Python
 __pycache__/

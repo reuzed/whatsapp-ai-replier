@@ -61,9 +61,8 @@ class Chat:
     def _load_state(self) -> ChatState:
         with open(STATE_FILE, "r") as f:
             data = json.load(f)
-            if self.chat_name in data:
+            if (state_data:=data.get(self.chat_name)) and (last_message_data:=state_data.get("last_message")):
                 state_data = data[self.chat_name]
-                last_message_data = state_data["last_message"]
                 last_message = WhatsAppMessage(
                     sender=last_message_data["sender"],
                     content=last_message_data["content"],
@@ -80,17 +79,21 @@ class Chat:
 
     async def _update_state(self) -> str:
         # llm call with system prompt returns new state
+        old_state = self.state.text
         current_date = datetime.now().isoformat()
         if self.state.last_message in self.chat_history:
             index = self.chat_history.index(self.state.last_message)
             new_messages = self.chat_history[index+1:]
         else:
             new_messages = self.chat_history
-        system_prompt, user_prompt = create_state_updater_prompts(self.user_name, self.chat_name, self.state.text, current_date, new_messages)
+        system_prompt, user_prompt = create_state_updater_prompts(self.user_name, self.chat_name, old_state, current_date, new_messages)
         new_state = await self.llm_manager.generate_response(
             messages=[{"role": "user", "content": user_prompt}],
             system_prompt=system_prompt
         )
+        if new_state == "":
+            # LLM chose to skip generation (or outputted nothing)
+            self._save_state(ChatState(text=old_state, last_message=new_messages[-1]))
         self._save_state(ChatState(text=new_state, last_message=new_messages[-1]))
         return new_state
 
