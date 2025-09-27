@@ -2,7 +2,11 @@ from schemas import Chatter, ChatAction, WhatsAppMessage
 import asyncio
 from datetime import datetime
 from whatsapp_automation import WhatsAppAutomation
-from chatters.trivial_chatter import TrivialChatter
+
+# Import chatters
+from chatters.trivial_chatter import TrivialChatter, DelayedTrivialChatter
+from chatters.simple_ai_chatter import SimpleAIChatter
+
 import time
 from rich import print
 
@@ -55,5 +59,6 @@ def event_loop(chat_name: str, chatter: Chatter):
             chat_actions.remove(action)
 
 if __name__ == "__main__":
-    chatter = TrivialChatter()
-    event_loop("Matthew", chatter)
+    chatter = SimpleAIChatter()
+    chat_name = "Ben Blaker"
+    event_loop(chat_name, chatter)

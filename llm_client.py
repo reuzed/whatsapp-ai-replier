@@ -4,7 +4,7 @@ from typing import Optional, List, Dict
 from abc import ABC, abstractmethod
 import anthropic
 from loguru import logger
-
+from schemas import WhatsAppMessage
 from config import settings
 
 class LLMClient(ABC):
@@ -95,4 +95,24 @@ class LLMManager:
             "content": f"From {sender_name}: {incoming_message}"
         })
         
+        return await self.client.generate_response(messages, system_prompt)
+    
+    async def generate_whatsapp_response(
+        self, 
+        messages: list[WhatsAppMessage],
+    ) -> str:
+        """Generate a response using the LLM client."""
+        system_prompt = f"""You are {settings.signup_my_name}, replying on WhatsApp.
+        - Use the conversation history for context.
+        - Each line includes the speaker for information, but only output the message.
+        - Reply to the MOST RECENT user's message specifically.
+        - Be very brief, no more than 20 words, and informal.
+        - Avoid multi-paragraph messages.
+        - Do not include meta text (like "friendly reply"). Only output the message you would send."""
+        messages = []
+        for message in messages:
+            messages.append({
+                "role": "user" if not message.is_outgoing else "assistant",
+                "content": f"{message.sender}: {message.content}"
+            })
         return await self.client.generate_response(messages, system_prompt)
