@@ -806,29 +806,3 @@ async def live_reply(
         logger.info("Live-reply stopped by user")
     finally:
         await automation.stop() 
-
-# ------------------------------------------------------------
-# List recent chats coroutine
-# ------------------------------------------------------------
-
-async def list_recent_chats(max_chats: int = 30, search_term: Optional[str] = None) -> List[str]:
-    """Start a session, list recent chats (optionally filtered), then cleanly shut down."""
-    automation = WhatsAppAutomation()
-    try:
-        await automation.start()
-        chats = automation.list_chat_names(max_rows=max_chats, search_term=search_term)
-        logger.info("Discovered %d chats", len(chats))
-        return chats
-    finally:
-        await automation.stop()
-
-async def list_recent_chat_entries(max_rows: int = 30, search_term: Optional[str] = None) -> List[ChatListEntry]:
-    """Start a session, list structured recent chat entries (optionally filtered), then cleanly shut down."""
-    automation = WhatsAppAutomation()
-    try:
-        await automation.start()
-        entries = automation.list_recent_chat_entries(max_rows=max_rows, search_term=search_term)
-        logger.info("Discovered %d chat entries", len(entries))
-        return entries
-    finally:
-        await automation.stop()

@@ -13,6 +13,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 from whatsapp_automation import WhatsAppAutomation, WhatsAppMessage
 
+from rich import print
+
+banned_chats = ["T-Climbing", "TC  Climbing Chat", "T-Climbing Chat"]
 
 def ensure_conversations_dir() -> str:
     base_dir = os.path.abspath("conversations")
@@ -88,36 +91,57 @@ def serialize_message(m: WhatsAppMessage) -> Dict:
     }
 
 
-async def scrape_all_chats(limit_per_chat: int = 1000) -> None:
+async def scrape_all_chats(limit_per_chat: int = None) -> None:
+    # Allow quick testing override via environment variable
+    if limit_per_chat is None:
+        try:
+            limit_per_chat = int(os.environ.get("SCRAPE_LIMIT", "200"))
+        except Exception:
+            limit_per_chat = 200
     conversations_dir = ensure_conversations_dir()
     automation = WhatsAppAutomation()
+    await automation.start()
+    
     try:
-        await automation.start()
-
         chat_names = automation.list_chat_names(max_rows=500)
         if not chat_names:
+            print("No chats found")
             return
-
+        
+        print(f"Found {len(chat_names)} chats", chat_names)
+        input("Press Enter to continue")
+        print("Scraping chats...")
+        
         for idx, chat in enumerate(chat_names, start=1):
+            if "climb" in chat.lower():
+                continue
+            
+            if chat in banned_chats:
+                continue
+            
             # Open chat
             if not automation.select_chat(chat):
                 continue
 
             # Grow message window until we have enough or we stop making progress
             collected: Dict[Tuple[bool, str, str], WhatsAppMessage] = {}
-            no_growth_rounds = 0
-            while len(collected) < limit_per_chat and no_growth_rounds < 10:
-                scroll_older_messages(automation, max_passes=12)
+            stable_rounds = 0
+            prev_total = 0
+            while len(collected) < limit_per_chat and stable_rounds < 3:
+                scroll_older_messages(automation, max_passes=8)
                 msgs = automation.get_recent_messages(limit=limit_per_chat)
+                if not msgs:
+                    break
                 before = len(collected)
                 for m in msgs:
                     key = (m.is_outgoing, m.sender, m.content)
                     collected[key] = m
                 after = len(collected)
-                if after == before:
-                    no_growth_rounds += 1
+                if after == before or after == prev_total:
+                    stable_rounds += 1
                 else:
-                    no_growth_rounds = 0
+                    stable_rounds = 0
+                prev_total = after
 
             # Persist to disk
             file_name = sanitize_filename(chat) + ".json"
@@ -127,7 +151,16 @@ async def scrape_all_chats(limit_per_chat: int = 1000) -> None:
                 "chat_name": chat,
                 "exported_at": datetime.utcnow().isoformat() + "Z",
                 "message_count": len(ordered),
-                "messages": [serialize_message(m) for m in ordered[-limit_per_chat:]],
+                # Override chat_name with the selected chat to avoid header glitches
+                # Preserve original header-resolved name for debugging
+                "messages": [
+                    {
+                        **serialize_message(m),
+                        "chat_name": chat,
+                        "source_chat_name": m.chat_name,
+                    }
+                    for m in ordered[-limit_per_chat:]
+                ],
             }
             with open(out_path, "w", encoding="utf-8") as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
@@ -137,4 +170,4 @@ async def scrape_all_chats(limit_per_chat: int = 1000) -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(scrape_all_chats(limit_per_chat=1000))
+    asyncio.run(scrape_all_chats())
