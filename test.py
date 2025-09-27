@@ -23,30 +23,42 @@ def manual_message() -> None:
     
     if automation.send_message(response):
         print("Replied to message at %s", msg.timestamp.strftime("%H:%M:%S"))
+
+def run_manual_loop() -> None:
+    """Run a manual loop to send messages to a chat"""
+    automation = WhatsAppAutomation()
+    asyncio.run(automation.start())
     
+    print("Type q to quit, l to list chats, c to select a chat")
+    # when in a chat q should quit back to choose chat, l should have optional search term after space
+    # c should ask on the next line for chat name
+    mode = "menu"
+    while True:
+        prompt = "Type q to quit, l to list chats, c to select a chat" if mode == "menu" else ">"
+        response = input(prompt)
+        if mode == "menu":
+            if response == "q":
+                break
+            elif response[0] == "l":
+                print(automation.list_chat_names(search_term=response[2:]))
+            elif response == "c":
+                print(automation.select_chat(input("Chat name: ")))
+                mode = "chat"
+        elif mode == "chat":
+            if response == "q":
+                mode = "menu"
+            else:
+                success = automation.send_message(response)
+                if success:
+                    print("Replied to message successfully")
+                else:
+                    print("Failed to reply to message")
+
 if __name__ == "__main__":
     #manual_message()
     """Manually message somebody using the api"""
-    automation = WhatsAppAutomation()
+    # automation = WhatsAppAutomation()
 
-    asyncio.run(automation.start())
+    # asyncio.run(automation.start())
     
-    print(automation.list_chat_names())
-    
-    print(f"Trying to select chat 'Matthew")    
-    
-    print(automation.select_chat("Matthew"))
-    
-    print(automation.select_chat("Ben Blaker"))
-    
-    print(automation.list_chat_names())
-    
-    msgs = automation.get_recent_messages(5)
-    for msg in msgs:
-        print(f"{msg.sender}: {msg.content}")
-        
-    response = input(">")
-    
-    if automation.send_message(response):
-        print("Replied to message at %s", msg.timestamp.strftime("%H:%M:%S"))
-    
+    run_manual_loop()

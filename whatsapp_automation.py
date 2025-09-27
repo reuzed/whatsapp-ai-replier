@@ -437,6 +437,66 @@ class WhatsAppAutomation:
         logger.error("Could not locate chat list container")
         return None
 
+    def _ensure_search_box(self):
+        """Ensure the sidebar search box is visible and return it."""
+        # Try to locate; if not interactable, click search icon
+        try:
+            search_box = self.driver.find_element(By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="3"]')
+            if search_box.is_displayed() and search_box.is_enabled():
+                return search_box
+        except Exception:
+            pass
+
+        # Activate search UI
+        try:
+            search_icon = self.driver.find_element(By.CSS_SELECTOR, 'button[data-testid="chat-list-search"]')
+            self.driver.execute_script("arguments[0].click();", search_icon)
+            time.sleep(0.3)
+        except Exception:
+            try:
+                icon_generic = self.driver.find_element(By.CSS_SELECTOR, 'span[data-icon="search"]')
+                self.driver.execute_script("arguments[0].click();", icon_generic)
+                time.sleep(0.3)
+            except Exception:
+                pass
+
+        # Return (or raise) after activation
+        return self.driver.find_element(By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="3"]')
+
+    def _clear_and_apply_search(self, text: Optional[str]) -> bool:
+        """Clear the sidebar search, optionally apply a new search term."""
+        try:
+            sb = self._ensure_search_box()
+            try:
+                sb.click()
+            except Exception:
+                pass
+            try:
+                ActionChains(self.driver).key_down(CONTROL_KEY, sb).send_keys('a').key_up(CONTROL_KEY).perform()
+                ActionChains(self.driver).send_keys(Keys.DELETE).perform()
+            except Exception:
+                try:
+                    sb.clear()
+                except Exception:
+                    pass
+            if text:
+                sb.send_keys(text)
+                time.sleep(0.6)
+            else:
+                time.sleep(0.2)
+
+            # Scroll chat list to top after search change
+            container = self._find_chat_list_container()
+            if container:
+                try:
+                    self.driver.execute_script("arguments[0].scrollTop = 0;", container)
+                except Exception:
+                    pass
+            return True
+        except Exception as e:
+            logger.debug(f"Search clear/apply failed: {e}")
+            return False
+
     def _scroll_chat_list_once(self, container) -> bool:
         """Scroll the chat list container by one viewport. Returns True if scrolled."""
         try:
@@ -470,7 +530,7 @@ class WhatsAppAutomation:
                 return False
         return False
 
-    def list_recent_chat_entries(self, max_rows: int = 30, max_scrolls: int = 40) -> List[ChatListEntry]:
+    def list_recent_chat_entries(self, max_rows: int = 30, max_scrolls: int = 40, search_term: Optional[str] = None) -> List[ChatListEntry]:
         """Return structured recent chat entries with name, preview, and time.
 
         - Name selector: within the chat grid cell col 2, `span[title]`.
@@ -484,6 +544,9 @@ class WhatsAppAutomation:
         except Exception:
             logger.error("Chat list did not appear in time")
             return []
+
+        # Clear or apply the sidebar search before we collect
+        self._clear_and_apply_search(search_term)
 
         container = self._find_chat_list_container()
         if not container:
@@ -587,8 +650,8 @@ class WhatsAppAutomation:
 
         return entries[:max_rows]
 
-    def list_chat_names(self, max_rows: int = 30, max_scrolls: int = 40):
-        chat_entries = self.list_recent_chat_entries(max_rows, max_scrolls)
+    def list_chat_names(self, max_rows: int = 30, max_scrolls: int = 40, search_term: Optional[str] = None):
+        chat_entries = self.list_recent_chat_entries(max_rows, max_scrolls, search_term)
         chat_names = list([entry.name for entry in chat_entries])
         return chat_names
     
@@ -748,23 +811,23 @@ async def live_reply(
 # List recent chats coroutine
 # ------------------------------------------------------------
 
-async def list_recent_chats(max_chats: int = 30) -> List[str]:
-    """Start a session, list recent chats, then cleanly shut down."""
+async def list_recent_chats(max_chats: int = 30, search_term: Optional[str] = None) -> List[str]:
+    """Start a session, list recent chats (optionally filtered), then cleanly shut down."""
     automation = WhatsAppAutomation()
     try:
         await automation.start()
-        chats = automation.list_recent_chats(max_chats=max_chats)
+        chats = automation.list_chat_names(max_rows=max_chats, search_term=search_term)
         logger.info("Discovered %d chats", len(chats))
         return chats
     finally:
         await automation.stop()
 
-async def list_recent_chat_entries(max_rows: int = 30) -> List[ChatListEntry]:
-    """Start a session, list structured recent chat entries, then cleanly shut down."""
+async def list_recent_chat_entries(max_rows: int = 30, search_term: Optional[str] = None) -> List[ChatListEntry]:
+    """Start a session, list structured recent chat entries (optionally filtered), then cleanly shut down."""
     automation = WhatsAppAutomation()
     try:
         await automation.start()
-        entries = automation.list_recent_chat_entries(max_rows=max_rows)
+        entries = automation.list_recent_chat_entries(max_rows=max_rows, search_term=search_term)
         logger.info("Discovered %d chat entries", len(entries))
         return entries
     finally:
