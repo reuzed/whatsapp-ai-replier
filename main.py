@@ -15,5 +15,6 @@ if __name__ == "__main__":
     whatsapp_automation.select_chat(chat_name)
     time.sleep(1)
     
-    whatsapp_automation.react_to_latest_incoming("clown")
+    # whatsapp_automation.react_to_latest_incoming("clown")
+    whatsapp_automation.react_to_message_containing("Truben", "laugh")
     input("Press Enter to quit")
