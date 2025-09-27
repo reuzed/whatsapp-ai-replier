@@ -40,6 +40,14 @@ class WhatsAppMessage:
     chat_name: str
 
 
+@dataclass
+class ChatListEntry:
+    """Represents a chat row in the sidebar list."""
+    name: str
+    preview: Optional[str]
+    time_text: Optional[str]
+
+
 class WhatsAppAutomation:
     """Simplified WhatsApp Web automation."""
     
@@ -412,6 +420,178 @@ class WhatsAppAutomation:
         except:
             return "Unknown Chat"
     
+    def _find_chat_list_container(self):
+        """Find the sidebar chat list container using resilient selectors."""
+        candidates = [
+            'div[aria-label*="Chat list"]',
+            'div[data-testid="chat-list"]',
+            'div[role="grid"]',
+        ]
+        for sel in candidates:
+            try:
+                elem = self.driver.find_element(By.CSS_SELECTOR, sel)
+                if elem and elem.is_displayed():
+                    return elem
+            except Exception:
+                continue
+        logger.error("Could not locate chat list container")
+        return None
+
+    def _scroll_chat_list_once(self, container) -> bool:
+        """Scroll the chat list container by one viewport. Returns True if scrolled."""
+        try:
+            scroll_elem = container
+            try:
+                # Prefer inner grid if present
+                inner = container.find_element(By.CSS_SELECTOR, 'div[role="grid"]')
+                if inner and inner.is_displayed():
+                    scroll_elem = inner
+            except Exception:
+                pass
+
+            height = self.driver.execute_script("return arguments[0].clientHeight;", scroll_elem)
+            before = self.driver.execute_script("return arguments[0].scrollTop;", scroll_elem)
+            max_scroll = self.driver.execute_script("return arguments[0].scrollHeight;", scroll_elem)
+            self.driver.execute_script(
+                "arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].clientHeight;",
+                scroll_elem,
+            )
+            time.sleep(0.25)
+            after = self.driver.execute_script("return arguments[0].scrollTop;", scroll_elem)
+            if after > before or (before + height) < max_scroll:
+                return True
+        except Exception:
+            try:
+                # Fallback: page down
+                ActionChains(self.driver).send_keys(Keys.PAGE_DOWN).perform()
+                time.sleep(0.2)
+                return True
+            except Exception:
+                return False
+        return False
+
+    def list_recent_chat_entries(self, max_rows: int = 30, max_scrolls: int = 40) -> List[ChatListEntry]:
+        """Return structured recent chat entries with name, preview, and time.
+
+        - Name selector: within the chat grid cell col 2, `span[title]`.
+        - Preview selector: within the same row, `span[dir="ltr"]:not([title])`.
+        - Time selector: sibling `div._ak8i` (as seen in provided HTML), fallback to any time-like cell.
+        """
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, 'div[aria-label*="Chat list"], div[data-testid="chat-list"], div[role="grid"]'))
+            )
+        except Exception:
+            logger.error("Chat list did not appear in time")
+            return []
+
+        container = self._find_chat_list_container()
+        if not container:
+            return []
+
+        # Rows: commonly role=row; sometimes container children are row wrappers
+        row_selectors = [
+            'div[role="row"]',
+            'div[aria-rowindex]',
+            'div._ak8o'  # observed class on gridcell wrapper
+        ]
+
+        def get_rows():
+            for rs in row_selectors:
+                try:
+                    rows = container.find_elements(By.CSS_SELECTOR, rs)
+                    if rows:
+                        return rows
+                except Exception:
+                    continue
+            return []
+
+        def parse_row(row) -> Optional[ChatListEntry]:
+            try:
+                # Prefer gridcell col 2 area to scope search
+                scope = None
+                try:
+                    scope = row.find_element(By.CSS_SELECTOR, 'div[role="gridcell"][aria-colindex="2"], div._ak8o')
+                except Exception:
+                    scope = row
+
+                name = None
+                try:
+                    name_el = scope.find_element(By.CSS_SELECTOR, 'span[dir="auto"][title], span[title]')
+                    name = (name_el.get_attribute('title') or name_el.text or '').strip()
+                except Exception:
+                    pass
+
+                if not name:
+                    return None
+
+                # Preview: span with dir ltr and without title attribute
+                preview = None
+                try:
+                    preview_el = row.find_element(By.CSS_SELECTOR, 'span[dir="ltr"]:not([title])')
+                    preview = (preview_el.text or '').strip()
+                except Exception:
+                    preview = None
+
+                # Time: div with class _ak8i, or any element in time column
+                time_text = None
+                try:
+                    time_el = row.find_element(By.CSS_SELECTOR, 'div._ak8i')
+                    time_text = (time_el.text or '').strip()
+                except Exception:
+                    try:
+                        time_el = row.find_element(By.CSS_SELECTOR, 'div[role="gridcell"][aria-colindex="3"]')
+                        time_text = (time_el.text or '').strip()
+                    except Exception:
+                        time_text = None
+
+                return ChatListEntry(name=name, preview=preview, time_text=time_text)
+            except Exception:
+                return None
+
+        entries: List[ChatListEntry] = []
+        seen_names: set[str] = set()
+        no_growth_rounds = 0
+
+        def collect():
+            nonlocal entries
+            new_added = 0
+            for row in get_rows():
+                ent = parse_row(row)
+                if not ent:
+                    continue
+                if ent.name in seen_names:
+                    continue
+                seen_names.add(ent.name)
+                entries.append(ent)
+                new_added += 1
+                if len(entries) >= max_rows:
+                    break
+            return new_added
+
+        collect()
+        if len(entries) >= max_rows:
+            return entries[:max_rows]
+
+        for _ in range(max_scrolls):
+            progressed = self._scroll_chat_list_once(container)
+            added = collect()
+            if len(entries) >= max_rows:
+                break
+            if added == 0:
+                no_growth_rounds += 1
+            else:
+                no_growth_rounds = 0
+            if not progressed or no_growth_rounds >= 3:
+                break
+
+        return entries[:max_rows]
+
+    def list_chat_names(self, max_rows: int = 30, max_scrolls: int = 40):
+        chat_entries = self.list_recent_chat_entries(max_rows, max_scrolls)
+        chat_names = list([entry.name for entry in chat_entries])
+        return chat_names
+    
     async def stop(self):
         """Stop automation and cleanup."""
         logger.info("Stopping automation...")
@@ -563,3 +743,29 @@ async def live_reply(
         logger.info("Live-reply stopped by user")
     finally:
         await automation.stop() 
+
+# ------------------------------------------------------------
+# List recent chats coroutine
+# ------------------------------------------------------------
+
+async def list_recent_chats(max_chats: int = 30) -> List[str]:
+    """Start a session, list recent chats, then cleanly shut down."""
+    automation = WhatsAppAutomation()
+    try:
+        await automation.start()
+        chats = automation.list_recent_chats(max_chats=max_chats)
+        logger.info("Discovered %d chats", len(chats))
+        return chats
+    finally:
+        await automation.stop()
+
+async def list_recent_chat_entries(max_rows: int = 30) -> List[ChatListEntry]:
+    """Start a session, list structured recent chat entries, then cleanly shut down."""
+    automation = WhatsAppAutomation()
+    try:
+        await automation.start()
+        entries = automation.list_recent_chat_entries(max_rows=max_rows)
+        logger.info("Discovered %d chat entries", len(entries))
+        return entries
+    finally:
+        await automation.stop()
