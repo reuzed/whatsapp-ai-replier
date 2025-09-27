@@ -3,7 +3,6 @@ import time
 import os
 import asyncio
 from typing import List, Optional
-from dataclasses import dataclass
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -30,24 +29,6 @@ CONTROL_KEY = {
     "MAC": Keys.COMMAND,
     "LINUX": Keys.CONTROL,
 }[os_name]
-
-@dataclass
-class WhatsAppMessage:
-    """Represents a WhatsApp message."""
-    sender: str
-    content: str
-    timestamp: datetime
-    is_outgoing: bool
-    chat_name: str
-
-
-@dataclass
-class ChatListEntry:
-    """Represents a chat row in the sidebar list."""
-    name: str
-    preview: Optional[str]
-    time_text: Optional[str]
-
 
 class WhatsAppAutomation:
     """Simplified WhatsApp Web automation."""

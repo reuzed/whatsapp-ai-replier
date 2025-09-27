@@ -65,6 +65,14 @@ class LLMManager:
         """Create the Anthropic LLM client."""
         return AnthropicClient()
     
+    async def generate_response(
+        self, 
+        messages: List[Dict[str, str]], 
+        system_prompt: Optional[str] = None
+    ) -> str:
+        """Generate a response using the LLM client."""
+        return await self.client.generate_response(messages, system_prompt)
+    
     async def generate_whatsapp_response(
         self, 
         incoming_message: str,
