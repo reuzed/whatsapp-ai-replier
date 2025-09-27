@@ -17,8 +17,9 @@ import html
 import subprocess
 from selenium.webdriver.common.action_chains import ActionChains
 
+from schemas import WhatsAppMessage, ChatListEntry
+
 from config import settings
-from llm_client import LLMManager
 from utils import parse_pre_plain_text, extract_message_text_from_elem
 
 from dotenv import load_dotenv
@@ -35,7 +36,6 @@ class WhatsAppAutomation:
     
     def __init__(self):
         self.driver: Optional[webdriver.Chrome] = None
-        self.llm_manager = LLMManager()
         self.processed_messages: set = set()
         
     def setup_driver(self) -> webdriver.Chrome:
@@ -55,18 +55,7 @@ class WhatsAppAutomation:
         if operating_system == "LINUX":
             return webdriver.Chrome(service=Service("/usr/bin/chromedriver"), options=chrome_options)
         return webdriver.Chrome(options=chrome_options)
-    
-    async def start(self):
-        """Start the WhatsApp automation."""
-        logger.info("Starting WhatsApp automation...")
-        try:
-            self.driver = self.setup_driver()
-            await self.connect_to_whatsapp()
-        except Exception as e:
-            logger.error(f"Failed to start: {e}")
-            await self.stop()
-            raise
-    
+       
     async def connect_to_whatsapp(self):
         """Connect to WhatsApp Web."""
         logger.info("Connecting to WhatsApp Web...")
@@ -84,6 +73,17 @@ class WhatsAppAutomation:
             )
             logger.info("Successfully logged in")
     
+    async def start(self):
+        """Start the WhatsApp automation."""
+        logger.info("Starting WhatsApp automation...")
+        try:
+            self.driver = self.setup_driver()
+            await self.connect_to_whatsapp()
+        except Exception as e:
+            logger.error(f"Failed to start: {e}")
+            await self.stop()
+            raise
+        
     def select_chat(self, contact_name: str) -> bool:
         """Select a chat by contact name."""
         
@@ -498,7 +498,7 @@ class WhatsAppAutomation:
             before = self.driver.execute_script("return arguments[0].scrollTop;", scroll_elem)
             max_scroll = self.driver.execute_script("return arguments[0].scrollHeight;", scroll_elem)
             self.driver.execute_script(
-                "arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].clientHeight;",
+                "window.scrollBy(0, -1000);",
                 scroll_elem,
             )
             time.sleep(0.25)

@@ -14,3 +14,9 @@ class WhatsAppMessage:
 class ChatState:
     text: str
     last_message: WhatsAppMessage
+    
+@dataclass
+class ChatListEntry:
+    name: str
+    preview: str
+    time_text: str
