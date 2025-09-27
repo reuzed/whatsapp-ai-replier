@@ -57,16 +57,15 @@ def run_manual_loop() -> None:
 if __name__ == "__main__":
     #manual_message()
     """Manually message somebody using the api"""
-    # automation = WhatsAppAutomation()
-
-    # asyncio.run(automation.start())
-    
     
     automation = WhatsAppAutomation()
     asyncio.run(automation.start())
         
     while True:
-        input("Press Enter to continue")
-        msgs = automation.get_visible_messages_simple(50)
-        for msg in msgs:
-            print(f"{msg.sender}: {msg.content} - {msg.timestamp.strftime('%H:%M:%S')}")
+        k = input("Press Enter to continue")
+        if k == "s":
+            print(automation.scroll_chat())
+        else:
+            msgs = automation.get_visible_messages_simple(50)
+            for msg in msgs:
+                print(f"{msg.sender}: {msg.content} - {msg.timestamp.strftime('%H:%M:%S')}")

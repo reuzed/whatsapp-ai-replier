@@ -512,6 +512,13 @@ class WhatsAppAutomation:
                 return False
         return False
 
+    def scroll_chat(self) -> bool:
+        """Scroll the chat list container by one viewport. Returns True if scrolled."""
+        container = self._find_chat_list_container()
+        if not container:
+            return False
+        return self._scroll_chat_list_once(container)
+
     def get_visible_messages_simple(self, limit: int = 200) -> List[WhatsAppMessage]:
         """Simpler, robust collection of on-screen messages using message-in/out containers.
 
@@ -532,8 +539,12 @@ class WhatsAppAutomation:
                 # Determine direction from class
                 is_outgoing = 'message-out' in (c.get_attribute('class') or '').lower()
 
-                # Parse meta
-                pre_elem = c.find_element(By.CSS_SELECTOR, '[data-pre-plain-text]')
+                try:
+                    # Parse meta
+                    pre_elem = c.find_element(By.CSS_SELECTOR, '[data-pre-plain-text]')
+                except Exception:
+                    print(f"No pre-plain-text found for {c}")
+                    continue
 
                 ts, sender = parse_pre_plain_text(pre_elem.get_attribute('data-pre-plain-text') or '')
                 
