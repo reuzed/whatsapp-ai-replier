@@ -32,6 +32,6 @@ class Chatter:
     def __init__(self, *args, **kwargs):
         pass
     
-    def on_receive_message(self, messages: list[WhatsAppMessage]) -> ChatAction:
+    def on_receive_messages(self, messages: list[WhatsAppMessage]) -> ChatAction:
         pass
     

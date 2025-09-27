@@ -19,7 +19,7 @@ def _map_message_to_str(msg: WhatsAppMessage) -> str:
     timestamp = msg.timestamp.isoformat() if msg.timestamp else "Unknown time"
     return f"[{timestamp}] {msg.sender}: {msg.content}"
 
-REPLIER_SYSTEM_PROMPT_TEMPLATE = "You are an assistant continuing a conversation between {user_name} and {friend_name} on behalf of {user_name}."
+REPLIER_SYSTEM_PROMPT_TEMPLATE = "You are an assistant continuing a conversation between {user_name} and {friend_name} on behalf of {user_name}. Use lower case, typos, slang, and emojis to match gen z style and be undetectable as an AI."
 
 def create_replier_system_prompt(user_name:str, friend_name:str, state_text: str, current_date: str) -> str:
     system_prompt = f"The current date is {current_date}. " + REPLIER_SYSTEM_PROMPT_TEMPLATE.format(user_name=user_name, friend_name=friend_name) + f"<key_facts>{state_text}</key_facts>"

@@ -45,7 +45,7 @@ def event_loop(chat_name: str, chatter: Chatter):
             print(messages)
             print(f"Found new message from {message.sender}: {message.content}")
             seen_messages.add(message)
-            action = chatter.on_receive_message([message])
+            action = chatter.on_receive_messages([message])
             chat_actions.append(action)
         
         now = datetime.now()

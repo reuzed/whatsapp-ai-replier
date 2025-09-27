@@ -5,7 +5,7 @@ from datetime import datetime
 sample_messages = [
     WhatsAppMessage(
         sender="Alice",
-        content="Hey, how's it going?",
+        content="hey how's it going",
         timestamp=datetime.now(),
         is_outgoing=True,
         chat_name="Alice"
@@ -23,5 +23,5 @@ if __name__ == "__main__":
     import asyncio
     chat = Chat("Alice", "Bob")
     chat._reset_state()  # Reset state before testing
-    response, send_after = asyncio.run(chat.on_messages_received(sample_messages))
-    print(f"Response: {response}, Send after: {send_after}")
+    action = asyncio.run(chat.on_receive_messages(sample_messages))
+    print(f"Response: {action.message}, Send after: {action.timestamp}")

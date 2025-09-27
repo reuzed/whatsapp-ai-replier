@@ -4,7 +4,7 @@
 
 from datetime import datetime, timedelta
 import json
-from schemas import WhatsAppMessage, ChatState
+from schemas import WhatsAppMessage, ChatState, ChatAction
 from llm_client import LLMManager
 from prompts import create_state_updater_prompts, create_replier_system_prompt
 import random
@@ -22,7 +22,7 @@ class Chat:
         self.messages_since_state_update: int = 1000 # force initial state update
         self.llm_manager = LLMManager()
 
-    async def on_messages_received(self, new_chat_history: list[WhatsAppMessage]) -> tuple[WhatsAppMessage, str]:
+    async def on_receive_messages(self, new_chat_history: list[WhatsAppMessage]) -> ChatAction:
         """Main API. Returns (reply, timestamp to send reply after)"""
         # update chat history.
         self.chat_history = new_chat_history
@@ -36,7 +36,7 @@ class Chat:
         # generate reply time
         reply_timestamp = self._generate_reply_timestamp(self)
 
-        return reply, reply_timestamp
+        return ChatAction(message=reply, timestamp=reply_timestamp)
 
     
     async def _reply(self) -> str:
