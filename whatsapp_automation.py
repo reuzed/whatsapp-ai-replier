@@ -21,6 +21,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 from config import settings
 from llm_client import LLMManager
 
+from dotenv import load_dotenv
+load_dotenv()
+os_name = os.environ.get("OPERATING_SYSTEM", "LINUX")
+
+CONTROL_KEY = {
+    "MAC": Keys.COMMAND,
+    "LINUX": Keys.CONTROL,
+}[os_name]
+
 @dataclass
 class WhatsAppMessage:
     """Represents a WhatsApp message."""
@@ -82,37 +91,43 @@ class WhatsAppAutomation:
             )
             logger.info("Successfully logged in")
     
-    def select_chat(self, contact_name: str, chat_type: str = "individual") -> bool:
+    def select_chat(self, contact_name: str) -> bool:
         """Select a chat by contact name."""
-        try:
-            # 1. Ensure the search input is visible & interactable
-            def _activate_search():
-                """Try clicking the sidebar search icon to reveal search box."""
-                try:
-                    search_icon = self.driver.find_element(By.CSS_SELECTOR, 'button[data-testid="chat-list-search"]')
-                    self.driver.execute_script("arguments[0].click();", search_icon)
-                    time.sleep(0.5)
-                except Exception:
-                    # fallback: try generic search svg/icon
-                    try:
-                        icon_generic = self.driver.find_element(By.CSS_SELECTOR, 'span[data-icon="search"]')
-                        self.driver.execute_script("arguments[0].click();", icon_generic)
-                        time.sleep(0.5)
-                    except Exception:
-                        pass
-
+        
+        # 1. Ensure the search input is visible & interactable
+        def _activate_search():
+            """Try clicking the sidebar search icon to reveal search box."""
             try:
-                search_box = self.driver.find_element(By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="3"]')
-                if not (search_box.is_displayed() and search_box.is_enabled()):
-                    raise ElementNotInteractableException()
-            except (NoSuchElementException, ElementNotInteractableException):
-                _activate_search()
-                search_box = self.driver.find_element(By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="3"]')
+                search_icon = self.driver.find_element(By.CSS_SELECTOR, 'button[data-testid="chat-list-search"]')
+                self.driver.execute_script("arguments[0].click();", search_icon)
+                time.sleep(0.5)
+                return 
+            except Exception:
+                pass
+            # fallback: try generic search svg/icon
+            try:
+                icon_generic = self.driver.find_element(By.CSS_SELECTOR, 'span[data-icon="search"]')
+                self.driver.execute_script("arguments[0].click();", icon_generic)
+                time.sleep(0.5)
+                return 
+            except Exception:
+                pass
+            
+            raise Exception("Failed to activate search.")
+    
+        try:
+            search_box = self.driver.find_element(By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="3"]')
+            if not (search_box.is_displayed() and search_box.is_enabled()):
+                raise ElementNotInteractableException()
+        except (NoSuchElementException, ElementNotInteractableException):
+            _activate_search()
+            search_box = self.driver.find_element(By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="3"]')
 
+        try:
             # Interact with search box
             search_box.click()
             search_box.clear()
-            search_box.send_keys(Keys.CONTROL + "a", Keys.DELETE)
+            search_box.send_keys(CONTROL_KEY + "a", Keys.DELETE)
             search_box.send_keys(contact_name)
             time.sleep(1)
             
@@ -122,13 +137,13 @@ class WhatsAppAutomation:
 
             # Verify again
             if self._verify_chat_opened():
-                logger.info(f"Successfully opened {chat_type} chat via keyboard: {contact_name}")
+                logger.info(f"Successfully opened chat via keyboard: {contact_name}")
                 return True
             
             return False
 
         except Exception as e:
-            logger.error(f"Failed to select {chat_type} chat for '{contact_name}': {e}")
+            logger.error(f"Failed to select chat for '{contact_name}': {e}")
             return False
     
     def _verify_chat_opened(self) -> bool:
@@ -211,24 +226,10 @@ class WhatsAppAutomation:
                 except Exception as e:
                     res = f"ERR:{e}"
 
-                # if res is True:
-                #     # Select-all then paste to replace any draft text
-                #     ActionChains(self.driver).key_down(Keys.CONTROL, target_elem).send_keys('a').key_up(Keys.CONTROL).perform()
-                #     ActionChains(self.driver).send_keys(Keys.DELETE).perform()
-                #     ActionChains(self.driver).key_down(Keys.CONTROL, target_elem).send_keys('v').key_up(Keys.CONTROL).perform()
-                #     try:
-                #         WebDriverWait(self.driver, 0.6).until(
-                #             lambda d: (target_elem.get_attribute('innerText') or '').strip() != ''
-                #         )
-                #         inserted = True
-                #     except Exception:
-                #         inserted = False
-                if True:
-                    ActionChains(self.driver).key_down(Keys.COMMAND, target_elem).send_keys('a').key_up(Keys.COMMAND).perform()
+                if res is True:
+                    ActionChains(self.driver).key_down(CONTROL_KEY, target_elem).send_keys('a').key_up(CONTROL_KEY).perform()
                     ActionChains(self.driver).send_keys(Keys.DELETE).perform()
-                    ActionChains(self.driver).key_down(Keys.COMMAND, target_elem).send_keys('v').key_up(Keys.COMMAND).perform()
-                    ActionChains(self.driver).send_keys("hello")
-                    print("dwadawd")
+                    ActionChains(self.driver).key_down(CONTROL_KEY, target_elem).send_keys('v').key_up(CONTROL_KEY).perform()
                     try:
                         WebDriverWait(self.driver, 0.6).until(
                             lambda d: (target_elem.get_attribute('innerText') or '').strip() != ''
