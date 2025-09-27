@@ -1,4 +1,4 @@
-from whatsapp_automation import WhatsAppAutomation
+from src.whatsapp_automation import WhatsAppAutomation
 from loguru import logger
 import asyncio
 

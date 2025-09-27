@@ -1,11 +1,11 @@
-from schemas import Chatter, ChatAction, WhatsAppMessage
+from src.schemas import Chatter, ChatAction, WhatsAppMessage
 import asyncio
 from datetime import datetime
-from whatsapp_automation import WhatsAppAutomation
+from src.whatsapp_automation import WhatsAppAutomation
 
 # Import chatters
-from chatters.trivial_chatter import TrivialChatter, DelayedTrivialChatter
-from chatters.simple_ai_chatter import SimpleAIChatter
+from src.chatters.trivial_chatter import TrivialChatter, DelayedTrivialChatter
+from src.chatters.simple_ai_chatter import SimpleAIChatter
 
 import time
 from rich import print

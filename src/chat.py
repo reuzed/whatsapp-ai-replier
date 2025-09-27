@@ -4,9 +4,9 @@
 
 from datetime import datetime, timedelta
 import json
-from schemas import WhatsAppMessage, ChatState, ChatAction
-from llm_client import LLMManager
-from prompts import create_state_updater_prompts, create_replier_system_prompt
+from src.schemas import WhatsAppMessage, ChatState
+from src.llm_client import LLMManager
+from src.prompts import create_state_updater_prompts, create_replier_system_prompt
 import random
 from pathlib import Path
 

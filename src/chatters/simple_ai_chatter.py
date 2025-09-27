@@ -1,5 +1,5 @@
-from schemas import WhatsAppMessage, ChatAction
-from llm_client import LLMManager
+from src.schemas import WhatsAppMessage, ChatAction
+from src.llm_client import LLMManager
 from datetime import datetime
 
 class SimpleAIChatter:

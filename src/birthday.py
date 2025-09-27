@@ -1,8 +1,8 @@
 """Send somebody a birthday message"""
 
-from whatsapp_automation import WhatsAppAutomation
+from src.whatsapp_automation import WhatsAppAutomation
 import asyncio
-from llm_client import LLMManager
+from src.llm_client import LLMManager
 
 def send_birthday_message(chat_name: str):
     automation = WhatsAppAutomation()

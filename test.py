@@ -1,5 +1,5 @@
 import asyncio
-from whatsapp_automation import WhatsAppAutomation
+from src.whatsapp_automation import WhatsAppAutomation
 from logging import getLogger
 logger = getLogger("")
 

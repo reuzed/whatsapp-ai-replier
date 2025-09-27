@@ -4,8 +4,8 @@ from typing import Optional, List, Dict
 from abc import ABC, abstractmethod
 import anthropic
 from loguru import logger
-from schemas import WhatsAppMessage
-from config import settings
+from src.schemas import WhatsAppMessage
+from src.config import settings
 
 class LLMClient(ABC):
     """Abstract base class for LLM clients."""

@@ -1,4 +1,4 @@
-from schemas import WhatsAppMessage
+from src.schemas import WhatsAppMessage
 
 STATE_UPDATER_SYSTEM_PROMPT_TEMPLATE = """You are an assistant representing {user_name} tasked with keeping track of key facts about a {friend_name}.
 Based on the new messages, only update long term state tracking if there has been new important information about the person.

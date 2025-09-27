@@ -1,7 +1,7 @@
 import os
 from rich.console import Console
 from loguru import logger
-from config import settings
+from src.config import settings
 import re
 from datetime import datetime
 from typing import Optional, Tuple

@@ -17,10 +17,10 @@ import html
 import subprocess
 from selenium.webdriver.common.action_chains import ActionChains
 
-from schemas import WhatsAppMessage, ChatListEntry
+from src.schemas import WhatsAppMessage, ChatListEntry
 
-from config import settings
-from utils import parse_pre_plain_text, extract_message_text_from_elem
+from src.config import settings
+from src.utils import parse_pre_plain_text, extract_message_text_from_elem
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -573,6 +573,303 @@ class WhatsAppAutomation:
                 print(f"Error parsing message: {e}")
                 continue
         return msgs
+
+    def _locate_message_bubble(self, index_from_end: int = 1, incoming: Optional[bool] = None, text_contains: Optional[str] = None):
+        """Locate a message bubble element by criteria.
+
+        - index_from_end: 1 means latest, 2 means second latest, after filtering.
+        - incoming: True for received, False for sent, None for either.
+        - text_contains: case-insensitive substring to match inside the message text.
+        """
+        try:
+            selectors = [
+                'div.message-in, div.message-out',
+                '[data-testid="msg-container"]',
+            ]
+
+            candidates = []
+            for sel in selectors:
+                try:
+                    elems = self.driver.find_elements(By.CSS_SELECTOR, sel)
+                    if elems:
+                        candidates = elems
+                        break
+                except Exception:
+                    continue
+
+            if not candidates:
+                return None
+
+            def is_incoming(elem) -> Optional[bool]:
+                try:
+                    cls = (elem.get_attribute('class') or '').lower()
+                    if 'message-in' in cls:
+                        return True
+                    if 'message-out' in cls:
+                        return False
+                except Exception:
+                    pass
+                return None
+
+            # Filter by incoming/outgoing if requested
+            filtered = []
+            for c in candidates:
+                if incoming is not None:
+                    dirn = is_incoming(c)
+                    if dirn is None or dirn != incoming:
+                        continue
+                if text_contains:
+                    try:
+                        content = extract_message_text_from_elem(c) or ''
+                    except Exception:
+                        content = (c.text or '')
+                    if text_contains.lower() not in (content or '').lower():
+                        continue
+                filtered.append(c)
+
+            if not filtered:
+                filtered = candidates
+
+            idx = -abs(index_from_end)
+            if len(filtered) < abs(idx):
+                return None
+            return filtered[idx]
+        except Exception:
+            return None
+
+    def react_to_message(self, emoji_query: str, index_from_end: int = 1, incoming: Optional[bool] = None, text_contains: Optional[str] = None, timeout: float = 6.0) -> bool:
+        """Hover a message, open reactions, expand picker, search and select an emoji.
+
+        emoji_query: e.g. "thumbs up", "heart", ":party:" or similar.
+        """
+        try:
+            bubble = self._locate_message_bubble(index_from_end=index_from_end, incoming=incoming, text_contains=text_contains)
+            if not bubble:
+                logger.error("Could not find target message bubble for reaction")
+                return False
+
+            # Hover to reveal reaction button
+            try:
+                ActionChains(self.driver).move_to_element(bubble).perform()
+                time.sleep(0.25)
+            except Exception:
+                pass
+
+            # Abort if there is already a reaction on this message
+            try:
+                existing_remove_btns = bubble.find_elements(By.XPATH, 
+                    ".//button[normalize-space()='Click to remove' or contains(normalize-space(.), 'Click to remove')]"
+                )
+                if existing_remove_btns and any(btn.is_displayed() for btn in existing_remove_btns):
+                    logger.info("Reaction already present on message; aborting react flow")
+                    return True
+            except Exception:
+                pass
+
+            wait = WebDriverWait(self.driver, timeout)
+
+            def _find_first_displayed(scope, css_list):
+                for css in css_list:
+                    try:
+                        elems = scope.find_elements(By.CSS_SELECTOR, css)
+                        for e in elems:
+                            if e and e.is_displayed():
+                                return e
+                    except Exception:
+                        continue
+                return None
+
+            # Click reaction button (on hover toolbar)
+            react_btn_selectors = [
+                'button[aria-label*="React" i]',
+                'div[role="button"][aria-label*="React" i]',
+                '[data-testid*="react" i]',
+                '[data-testid*="reactions" i]'
+            ]
+
+            react_btn = _find_first_displayed(bubble, react_btn_selectors) or _find_first_displayed(self.driver, react_btn_selectors)
+            if not react_btn:
+                # Try moving slightly inside bubble to trigger toolbar
+                try:
+                    ActionChains(self.driver).move_to_element_with_offset(bubble, 10, 10).perform()
+                    time.sleep(0.25)
+                    react_btn = _find_first_displayed(bubble, react_btn_selectors) or _find_first_displayed(self.driver, react_btn_selectors)
+                except Exception:
+                    pass
+
+            if not react_btn:
+                logger.error("Reaction button not found")
+                return False
+
+            try:
+                self.driver.execute_script("arguments[0].click();", react_btn)
+            except Exception:
+                react_btn.click()
+            time.sleep(0.2)
+
+            # Click "+" to open full emoji picker
+            more_btn_selectors = [
+                'button[aria-label*="More" i]',
+                'div[role="button"][aria-label*="More" i]',
+                'button[data-testid*="more" i]',
+            ]
+
+            def _wait_for_any(css_list, scope=None):
+                scope_elem = scope or self.driver
+                end = time.time() + timeout
+                while time.time() < end:
+                    el = _find_first_displayed(scope_elem, css_list)
+                    if el:
+                        return el
+                    time.sleep(0.1)
+                return None
+
+            more_btn = _wait_for_any(more_btn_selectors)
+            if not more_btn:
+                # Some builds show the full picker immediately; continue
+                logger.debug("More reactions button not found; proceeding to search picker directly")
+            else:
+                try:
+                    self.driver.execute_script("arguments[0].click();", more_btn)
+                except Exception:
+                    more_btn.click()
+                time.sleep(0.5)
+            time.sleep(0.5)
+            # Emoji picker panel
+            picker_selectors = [
+                'div[data-testid="emoji-picker"]',
+                'div[data-testid="emoji-panel"]',
+                'div[role="dialog"][aria-label*="Emoji" i]'
+            ]
+            picker = _wait_for_any(picker_selectors)
+            if not picker:
+                logger.debug("Emoji picker container not detected; proceeding to search globally")
+
+            # Search field inside picker (explicit WhatsApp variant: aria-label="Search reaction")
+            search_selectors = [
+                'input[aria-label="Search reaction"]',
+                'input[aria-label*="Search reaction" i]',
+                'div[contenteditable="true"][aria-label*="Search reaction" i]',
+                'input[aria-label*="Search" i]',
+                'input[placeholder*="Search" i]',
+                'div[contenteditable="true"]'
+            ]
+            search = _wait_for_any(search_selectors, scope=picker) if picker else _wait_for_any(search_selectors)
+            if search:
+                try:
+                    search.click()
+                except Exception:
+                    pass
+                try:
+                    search.clear()
+                except Exception:
+                    pass
+                try:
+                    search.send_keys(emoji_query)
+                except Exception:
+                    # Try contenteditable path
+                    ActionChains(self.driver).send_keys(emoji_query).perform()
+                # User requested: type -> wait 0.2s -> press Enter
+                time.sleep(0.2)
+                try:
+                    ActionChains(self.driver).send_keys(Keys.RETURN).perform()
+                    time.sleep(0.2)
+                    return True
+                except Exception:
+                    pass
+            else:
+                # Focus may already be inside the picker; try active element, then global typing
+                try:
+                    active = self.driver.switch_to.active_element
+                    try:
+                        active.send_keys(emoji_query)
+                    except Exception:
+                        ActionChains(self.driver).send_keys(emoji_query).perform()
+                    # User requested: type -> wait 0.2s -> press Enter
+                    time.sleep(0.2)
+                    try:
+                        ActionChains(self.driver).send_keys(Keys.RETURN).perform()
+                        time.sleep(0.2)
+                        return True
+                    except Exception:
+                        pass
+                except Exception:
+                    pass
+
+            # Select first result; some UIs render results as span[role="button"][data-emoji]
+            result_selectors = [
+                'div[role="grid"] [role="gridcell"] button',
+                'div[role="grid"] button[role="option"]',
+                'button[aria-label]',
+                'span[role="button"][data-emoji]'
+            ]
+            result = (_wait_for_any(result_selectors, scope=picker) if picker else _wait_for_any(result_selectors)) or _wait_for_any(['span[role="button"][data-emoji]'])
+            if not result:
+                # As fallback, press Enter to pick first suggestion
+                try:
+                    ActionChains(self.driver).send_keys(Keys.RETURN).perform()
+                    time.sleep(0.3)
+                    return True
+                except Exception:
+                    logger.error("No emoji result selectable")
+                    return False
+
+            # Try robust clicking strategies
+            try:
+                self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", result)
+            except Exception:
+                pass
+            try:
+                ActionChains(self.driver).move_to_element(result).pause(0.05).perform()
+            except Exception:
+                pass
+            clicked = False
+            for _ in range(3):
+                try:
+                    self.driver.execute_script("arguments[0].click();", result)
+                    clicked = True
+                    break
+                except Exception:
+                    try:
+                        result.click()
+                        clicked = True
+                        break
+                    except Exception:
+                        try:
+                            # Try clicking a closest clickable ancestor
+                            ancestor = self.driver.execute_script("return arguments[0].closest && arguments[0].closest('button,[role=button]');", result)
+                            if ancestor:
+                                self.driver.execute_script("arguments[0].click();", ancestor)
+                                clicked = True
+                                break
+                        except Exception:
+                            time.sleep(0.05)
+                            continue
+            if not clicked:
+                try:
+                    # Final fallback: press Enter which often selects the first suggestion
+                    ActionChains(self.driver).send_keys(Keys.RETURN).perform()
+                    time.sleep(0.2)
+                    clicked = True
+                except Exception:
+                    pass
+            if not clicked:
+                logger.error("Failed to click emoji result")
+                return False
+            time.sleep(0.3)
+            return True
+        except Exception as e:
+            logger.error(f"Failed to react to message: {e}")
+            return False
+
+    def react_to_latest_incoming(self, emoji_query: str) -> bool:
+        return self.react_to_message(emoji_query=emoji_query, incoming=True)
+
+    def react_to_latest_outgoing(self, emoji_query: str) -> bool:
+        return self.react_to_message(emoji_query=emoji_query, incoming=False)
+
+    def react_to_message_containing(self, text_contains: str, emoji_query: str, incoming: Optional[bool] = None) -> bool:
+        return self.react_to_message(emoji_query=emoji_query, text_contains=text_contains, incoming=incoming)
 
     def list_recent_chat_entries(self, max_rows: int = 30, max_scrolls: int = 40, search_term: Optional[str] = None) -> List[ChatListEntry]:
         """Return structured recent chat entries with name, preview, and time.

@@ -1,4 +1,4 @@
-from schemas import WhatsAppMessage, ChatAction
+from src.schemas import WhatsAppMessage, ChatAction
 
 from datetime import datetime, timedelta
 
