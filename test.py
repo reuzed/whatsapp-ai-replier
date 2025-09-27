@@ -61,4 +61,12 @@ if __name__ == "__main__":
 
     # asyncio.run(automation.start())
     
-    run_manual_loop()
+    
+    automation = WhatsAppAutomation()
+    asyncio.run(automation.start())
+        
+    while True:
+        input("Press Enter to continue")
+        msgs = automation.get_visible_messages_simple(50)
+        for msg in msgs:
+            print(f"{msg.sender}: {msg.content} - {msg.timestamp.strftime('%H:%M:%S')}")
