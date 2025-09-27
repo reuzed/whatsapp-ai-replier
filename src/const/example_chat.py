@@ -1,6 +1,6 @@
-from ..schemas import WhatsAppMessage
-from ..chat import Chat
-import datetime
+from schemas import WhatsAppMessage
+from chat import Chat
+from datetime import datetime
 
 sample_messages = [
     WhatsAppMessage(

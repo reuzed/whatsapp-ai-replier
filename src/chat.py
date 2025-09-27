@@ -11,9 +11,9 @@ import random
 STATE_FILE = "state.json"
 
 class Chat:
-    def __init__(self, receiver_name: str):
-        self.receiver_name = receiver_name
-        self.state: ChatState = self.load_state() # read json file with key receiver_name
+    def __init__(self, chat_name: str):
+        self.chat_name = chat_name
+        self.state: ChatState = self._load_state() # read json file with key chat_name
         self.chat_history: list[WhatsAppMessage] = []
         self.messages_since_state_update: int = 1000 # force initial state update
         self.llm_manager = LLMManager()
@@ -25,7 +25,7 @@ class Chat:
         # update state
         self.messages_since_state_update += 1
         if self.messages_since_state_update >= 10:
-            await self.update_state()
+            await self._update_state()
             self.messages_since_state_update = 0
         # generate reply
         reply = await self._reply()
@@ -82,7 +82,7 @@ class Chat:
             messages=[{"role": "user", "content": user_prompt}],
             system_prompt=system_prompt
         )
-        self.save_state(ChatState(text=new_state, last_message=new_messages[-1]))
+        self._save_state(ChatState(text=new_state, last_message=new_messages[-1]))
         return new_state
 
     def _save_state(self, new_state: ChatState):
@@ -112,5 +112,5 @@ if __name__ == "__main__":
         chat_name="Reuben"
     )
     import asyncio
-    new_state = asyncio.run(chat.update_state([new_msg]))
+    new_state = asyncio.run(chat._update_state([new_msg]))
     print(new_state)
