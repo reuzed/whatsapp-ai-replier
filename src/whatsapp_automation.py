@@ -85,7 +85,7 @@ class WhatsAppAutomation:
             raise
         
     def select_chat(self, contact_name: str) -> bool:
-        '''Select a chat by contact name.'''
+        """Select a chat by contact name."""
         
         # 1. Ensure the search input is visible & interactable
         def _activate_search():
@@ -482,113 +482,46 @@ class WhatsAppAutomation:
             logger.debug(f"Search clear/apply failed: {e}")
             return False
 
-    def _scroll_element_js(self, element, delta: int = 400) -> bool:
-        """Scroll a provided element vertically using JS. Returns True if scrollTop changed."""
+    def _scroll_chat_list_once(self, container) -> bool:
+        """Scroll the chat list container by one viewport. Returns True if scrolled."""
         try:
-            before = self.driver.execute_script("return arguments[0].scrollTop;", element)
-            self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollTop + arguments[1];", element, int(delta))
-            time.sleep(0.1)
-            after = self.driver.execute_script("return arguments[0].scrollTop;", element)
-            return after != before
-        except Exception:
-            return False
-
-    def _get_scroll_target(self, element):
-        """Return the closest scrollable element (self or ancestor)."""
-        try:
-            return self.driver.execute_script(
-                """
-                const el = arguments[0];
-                function isScrollable(n){
-                  if(!n) return false;
-                  const cs = getComputedStyle(n);
-                  const oy = cs.overflowY;
-                  if(!(oy === 'auto' || oy === 'scroll' || oy === 'overlay')) return false;
-                  return n.scrollHeight > n.clientHeight + 1;
-                }
-                let cur = el;
-                for(let i=0;i<6 && cur;i++){
-                  if(isScrollable(cur)) return cur;
-                  cur = cur.parentElement;
-                }
-                return el;
-                """,
-                element,
-            )
-        except Exception:
-            return element
-
-    def _find_message_list_container(self):
-        """Find the message list (conversation) scroll container."""
-        candidates = [
-            'div[aria-label*="Message list"]',
-            'div[data-testid="conversation-panel-body"]',
-            'div[data-testid="conversation-panel-wrapper"]',
-        ]
-        for sel in candidates:
+            scroll_elem = container
             try:
-                elem = self.driver.find_element(By.CSS_SELECTOR, sel)
-                if elem and elem.is_displayed():
-                    return elem
+                # Prefer inner grid if present
+                inner = container.find_element(By.CSS_SELECTOR, 'div[role="grid"]')
+                if inner and inner.is_displayed():
+                    scroll_elem = inner
             except Exception:
-                continue
-        # Fallback: try to use a parent of any message bubble as the scroll container
-        try:
-            any_msg = self.driver.find_element(By.CSS_SELECTOR, 'div.message-in, div.message-out')
-            parent = any_msg
-            for _ in range(5):
-                parent = parent.find_element(By.XPATH, './..')
-                if parent and parent.is_displayed():
-                    try:
-                        scroll_height = self.driver.execute_script("return arguments[0].scrollHeight;", parent)
-                        client_height = self.driver.execute_script("return arguments[0].clientHeight;", parent)
-                        if scroll_height and client_height and scroll_height > client_height:
-                            return parent
-                    except Exception:
-                        pass
+                pass
+
+            height = self.driver.execute_script("return arguments[0].clientHeight;", scroll_elem)
+            before = self.driver.execute_script("return arguments[0].scrollTop;", scroll_elem)
+            max_scroll = self.driver.execute_script("return arguments[0].scrollHeight;", scroll_elem)
+            self.driver.execute_script(
+                "window.scrollBy(0, -1000);",
+                scroll_elem,
+            )
+            time.sleep(0.25)
+            after = self.driver.execute_script("return arguments[0].scrollTop;", scroll_elem)
+            if after > before or (before + height) < max_scroll:
+                return True
         except Exception:
-            pass
-        return None
-
-    def scroll_chat_list(self, direction: str = 'down', amount: int = 800) -> bool:
-        """JS scroll for the chat list."""
-        element = self._find_chat_list_container()
-        if not element:
-            print(f"No chat list container found")
-            return False
-        sign = -1 if str(direction).lower().startswith('u') else 1
-        target = self._get_scroll_target(element)
-
-        if self._scroll_element_js(target, sign * amount):
-            print(f"JS scroll worked")
-            return True
-        return False
-    
-
-    def scroll_chat(self, direction: str = 'up') -> bool:
-        """Focus message box then press Function Up or Down to scroll chat"""
-        # find message box and focus
-        message_box = self._find_message_list_container()
-        if message_box is None:
-            message_box = self.driver.find_element(By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="10"]')
-            if message_box is None:
-                print(f"No message box found")
+            try:
+                # Fallback: page down
+                ActionChains(self.driver).send_keys(Keys.PAGE_DOWN).perform()
+                time.sleep(0.2)
+                return True
+            except Exception:
                 return False
-        message_box.click()
-        time.sleep(0.1)
-        # lookup scroll position 
-        scroll_position = self.driver.execute_script("return arguments[0].scrollTop;", message_box)
-        # press function up/down
-        ActionChains(self.driver).send_keys(Keys.PAGE_UP if direction == 'up' else Keys.PAGE_).perform()
-        time.sleep(0.1)
-        # lookup scroll position
-        new_scroll_position = self.driver.execute_script("return arguments[0].scrollTop;", message_box)
-        scroll_amount = new_scroll_position - scroll_position
-        if scroll_amount == 0:
-            print(f"Chat did not scroll")
+        return False
+
+    def scroll_chat(self) -> bool:
+        """Scroll the chat list container by one viewport. Returns True if scrolled."""
+        container = self._find_chat_list_container()
+        if not container:
             return False
-        print(f"Chat scrolled {scroll_amount} pixels")
-        return True
+        
+        return self._scroll_chat_list_once(container)
 
     def get_visible_messages_simple(self, limit: int = 200) -> List[WhatsAppMessage]:
         """Simpler, robust collection of on-screen messages using message-in/out containers.
@@ -748,7 +681,7 @@ class WhatsAppAutomation:
             return entries[:max_rows]
 
         for _ in range(max_scrolls):
-            progressed = self.scroll_chat_list()
+            progressed = self._scroll_chat_list_once(container)
             added = collect()
             if len(entries) >= max_rows:
                 break

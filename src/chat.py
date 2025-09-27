@@ -11,13 +11,11 @@ import random
 STATE_FILE = "state.json"
 
 class Chat:
-    def __init__(self, chat_name: str):
-        self.chat_name = chat_name
-        self.state: ChatState = self.load_state() # read json file with key chat_name
-        # get_messages_since_state_update() -> use all since state update (or all) to update state put last 20 in chat_history.
-        # update state if new messages
+    def __init__(self, receiver_name: str):
+        self.receiver_name = receiver_name
+        self.state: ChatState = self.load_state() # read json file with key receiver_name
         self.chat_history: list[WhatsAppMessage] = []
-        self.messages_since_state_update: int = 0
+        self.messages_since_state_update: int = 1000 # force initial state update
         self.llm_manager = LLMManager()
 
     async def on_messages_received(self, new_chat_history: list[WhatsAppMessage]) -> tuple[WhatsAppMessage, str]:
