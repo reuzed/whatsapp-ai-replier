@@ -51,6 +51,9 @@ class WhatsAppAutomation:
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--window-size=1920,1080")
         #service = Service("/usr/bin/chromedriver")
+        operating_system = os.environ.get("OPERATING_SYSTEM", "LINUX")
+        if operating_system == "LINUX":
+            return webdriver.Chrome(service=Service("/usr/bin/chromedriver"), options=chrome_options)
         return webdriver.Chrome(options=chrome_options)
     
     async def start(self):
