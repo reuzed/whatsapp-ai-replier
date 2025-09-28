@@ -9,6 +9,7 @@ from llm_client import LLMManager
 from prompts import create_state_updater_prompts, create_replier_system_prompt
 import random
 from pathlib import Path
+import asyncio
 
 MODULE_DIR = Path(__file__).parent
 STATE_FILE = MODULE_DIR / "state.json"
@@ -22,23 +23,32 @@ class Chat:
         self.messages_since_state_update: int = 1000 # force initial state update
         self.llm_manager = LLMManager()
 
-    async def on_receive_messages(self, new_chat_history: list[WhatsAppMessage]) -> ChatAction:
+    def on_receive_messages(self, new_chat_history: list[WhatsAppMessage]) -> list[ChatAction]:
         """Main API. Returns (reply, timestamp to send reply after)"""
+        # check if chat has changed
+        if new_chat_history == self.chat_history:
+            return []
         # update chat history.
         self.chat_history = new_chat_history
         # update state
         self.messages_since_state_update += 1
         if self.messages_since_state_update >= 10:
-            await self._update_state()
+            asyncio.run(self._update_state())
             self.messages_since_state_update = 0
         # generate reply
-        reply = await self._reply()
+        reply = asyncio.run(self._reply())
+        whatsapp_reply = WhatsAppMessage(
+                    sender=self.user_name,
+                    content=reply,
+                    timestamp=datetime.now(),
+                    is_outgoing=True,
+                    chat_name=self.chat_name,
+                )
         # generate reply time
         reply_timestamp = self._generate_reply_timestamp(self)
 
-        return ChatAction(message=reply, timestamp=reply_timestamp)
+        return [ChatAction(message=whatsapp_reply, timestamp=reply_timestamp)]
 
-    
     async def _reply(self) -> str:
         # llm call with chat history and state
         # make below import timestamp
@@ -52,11 +62,11 @@ class Chat:
         response = await self.llm_manager.generate_response(messages, system_prompt=system_prompt)
         return response
 
-    def _generate_reply_timestamp(self, fast=True) -> str:
+    def _generate_reply_timestamp(self, fast=True) -> datetime:
         # random between 30 and 90 seconds
         delay_seconds = random.randint(3, 10) if fast else random.randint(30, 100)
         future_time = datetime.now() + timedelta(seconds=delay_seconds)
-        return future_time.isoformat()
+        return future_time
 
     def _load_state(self) -> ChatState:
         with open(STATE_FILE, "r") as f:

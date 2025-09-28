@@ -1,3 +1,4 @@
+from src.chat import Chat
 from src.schemas import Chatter, ChatAction, WhatsAppMessage
 import asyncio
 from datetime import datetime
@@ -44,9 +45,10 @@ def event_loop(chat_name: str, chatter: Chatter):
             
             print(messages)
             print(f"Found new message from {message.sender}: {message.content}")
+            
             seen_messages.add(message)
-            action = chatter.on_receive_messages([message])
-            chat_actions.append(action)
+            actions = chatter.on_receive_messages([message])
+            chat_actions.extend(actions)
         
         now = datetime.now()
         to_remove = []
@@ -59,6 +61,10 @@ def event_loop(chat_name: str, chatter: Chatter):
             chat_actions.remove(action)
 
 if __name__ == "__main__":
-    chatter = SimpleAIChatter()
-    chat_name = "Ben Blaker"
-    event_loop(chat_name, chatter)
+    from dotenv import load_dotenv
+    import os
+    load_dotenv()
+    friend_name = os.getenv("FRIEND_NAME", "Reuben")
+    user_name = os.getenv("USER_NAME", "Ben")
+    chatter = Chat(user_name, friend_name)
+    event_loop(friend_name, chatter)
