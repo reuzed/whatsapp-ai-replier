@@ -1,0 +1,1617 @@
+{
+  "chat_name": "Ben Blaker",
+  "exported_at": "2025-09-29T11:12:30.101552",
+  "message_count": 230,
+  "messages": [
+    {
+      "sender": "Reu",
+      "content": "I had a dream about WeChat",
+      "timestamp": "2025-08-20T08:50:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Invalidate then reissue",
+      "timestamp": "2025-08-20T09:26:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "As in refresh",
+      "timestamp": "2025-08-20T09:26:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Haha what was the dream",
+      "timestamp": "2025-08-20T09:27:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "If you have just you and me is that majority of shares and directors?",
+      "timestamp": "2025-08-20T10:00:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "For decisions",
+      "timestamp": "2025-08-20T10:01:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "I guess so idk how it is for specifics",
+      "timestamp": "2025-08-20T10:01:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Wym",
+      "timestamp": "2025-08-20T10:01:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "I have majority myself still perhaps",
+      "timestamp": "2025-08-20T10:02:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "What you have 50.01%",
+      "timestamp": "2025-08-20T10:03:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I suddenly had all these new students to schedule",
+      "timestamp": "2025-08-20T10:04:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Oh majority in that sense",
+      "timestamp": "2025-08-20T10:04:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "What’s the minimal number of weighings to detect a heavy coin if you have a balance and a set of digital scales",
+      "timestamp": "2025-08-20T12:08:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Hahaha",
+      "timestamp": "2025-08-20T12:57:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Not this crazy guy",
+      "timestamp": "2025-08-20T12:57:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "This is my question maybe it has been posed before",
+      "timestamp": "2025-08-20T14:37:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I put these in receipts folder in finances but I will fill out the form one day when I figure out how to",
+      "timestamp": "2025-08-20T16:41:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "A weighing is either using balance or scales?",
+      "timestamp": "2025-08-20T18:00:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Not in my fucked solution",
+      "timestamp": "2025-08-20T18:45:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "You need to use moments",
+      "timestamp": "2025-08-20T18:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "btw got this on 19",
+      "timestamp": "2025-08-25T08:21:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "?? what is this commit",
+      "timestamp": "2025-08-25T08:24:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I did some commute for adding features I wanted",
+      "timestamp": "2025-08-25T13:24:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "*commits",
+      "timestamp": "2025-08-25T13:24:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "this looks like just a auto formatting thing",
+      "timestamp": "2025-08-25T13:24:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "How’s your weekend been?",
+      "timestamp": "2025-08-25T13:24:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Is the new laptop set up for coding now",
+      "timestamp": "2025-08-25T13:25:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Hopefully maybe 70pc",
+      "timestamp": "2025-08-26T10:24:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "I don't see",
+      "timestamp": "2025-08-26T10:24:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Can I see",
+      "timestamp": "2025-08-26T10:24:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "hello",
+      "timestamp": "2025-08-27T17:05:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Hey",
+      "timestamp": "2025-08-27T17:17:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "I may try to also code with matthew at some point in sept for a short time",
+      "timestamp": "2025-08-27T18:10:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "but purely for the function to see if we can work well together, but i would like to keep that isolated to its short trial period (if it happens) and code all together otherwise when possible",
+      "timestamp": "2025-08-27T18:11:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Cool",
+      "timestamp": "2025-08-27T18:26:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "xD",
+      "timestamp": "2025-08-27T18:26:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Hire me when you succeed",
+      "timestamp": "2025-08-27T18:26:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "do you have a tutor CV",
+      "timestamp": "2025-08-27T18:37:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "need something to send to student asap",
+      "timestamp": "2025-08-27T18:38:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "What do you need",
+      "timestamp": "2025-08-27T19:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Ah I did not read the asap",
+      "timestamp": "2025-08-27T19:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I also do not have a tutor cv",
+      "timestamp": "2025-08-27T19:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "So perhaps don’t send if gabe’s has been sent too",
+      "timestamp": "2025-08-27T20:11:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I hastily adapted gabe’s",
+      "timestamp": "2025-08-27T20:11:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Tyty",
+      "timestamp": "2025-08-27T20:43:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Any plans for a completion tracker",
+      "timestamp": "2025-08-28T17:22:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Wow great stuff!",
+      "timestamp": "2025-08-28T17:22:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Free membership through Paddington",
+      "timestamp": "2025-08-28T17:23:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Auth",
+      "timestamp": "2025-08-28T17:23:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Only for paying members of stepdb",
+      "timestamp": "2025-08-28T17:23:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Yep that’s on the todo :)",
+      "timestamp": "2025-08-28T17:23:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "https://forms.gle/RecNWf7nra4Ng2Eu6",
+      "timestamp": "2025-09-01T13:47:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "where exactly did you say you uploaded the receipts?",
+      "timestamp": "2025-09-01T13:47:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Yes",
+      "timestamp": "2025-09-01T13:48:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "this is in Finances folder",
+      "timestamp": "2025-09-01T13:48:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "its not long and it saves me trying to figure out what you bought and why from just a receipt image.",
+      "timestamp": "2025-09-01T13:48:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I put them in finances I think",
+      "timestamp": "2025-09-01T13:48:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I will do my expenses soon",
+      "timestamp": "2025-09-01T13:48:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "with this form you dont need to upload them separately",
+      "timestamp": "2025-09-01T13:49:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Yes nice",
+      "timestamp": "2025-09-01T13:49:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "And tmua",
+      "timestamp": "2025-09-01T13:49:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "uploading receipts auto puts it in folder",
+      "timestamp": "2025-09-01T13:49:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Do you want to be on the step db GitHub for something",
+      "timestamp": "2025-09-01T20:31:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "4wot",
+      "timestamp": "2025-09-01T20:31:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Matthew was asking about it?l",
+      "timestamp": "2025-09-01T20:40:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "if theres parts you want me to check he was talking about latex not capturing correct content",
+      "timestamp": "2025-09-01T20:41:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I thought you would have spoken about it",
+      "timestamp": "2025-09-01T20:41:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "how is it stored",
+      "timestamp": "2025-09-01T20:41:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "+ make sure your padd spreadsheets updated for qidi I want to keep payroll updated",
+      "timestamp": "2025-09-02T00:35:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "It will get done this week is the most realistic guarantee I can give",
+      "timestamp": "2025-09-02T00:35:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "OK. At some point we both need to register as sole traders to get paid this way via invoice instead of payroll",
+      "timestamp": "2025-09-02T00:38:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Thank you for sorting out the dividend, that’s helpful",
+      "timestamp": "2025-09-02T00:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I anticipated spending much less of my day today travelling but it has been busy, the rest of the week in pagham I hope to get stuff done",
+      "timestamp": "2025-09-02T00:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "No worries",
+      "timestamp": "2025-09-02T00:49:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "I would like you to take a lead on developing and finishing our tmua stack + adjacent resources. + I can try best with dev to funnel students into it",
+      "timestamp": "2025-09-02T00:50:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Yes can work on it",
+      "timestamp": "2025-09-02T00:51:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Are there still changes not pushed yet to paddington reports",
+      "timestamp": "2025-09-06T04:17:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Unless my git is fucked",
+      "timestamp": "2025-09-07T10:28:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I think not",
+      "timestamp": "2025-09-07T10:28:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Or you’ll be in Korea still so less so working",
+      "timestamp": "2025-09-09T16:10:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I’m excited to see you when back, maybe for some vibecoding with neel and Matthew even",
+      "timestamp": "2025-09-09T16:10:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Lock in together for a bit this evening or tomorrow?",
+      "timestamp": "2025-09-09T16:10:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "What things are you up to now? Still mathsdb?",
+      "timestamp": "2025-09-10T00:15:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Cool ui",
+      "timestamp": "2025-09-10T13:00:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "If you want to learn German you can hop on it",
+      "timestamp": "2025-09-10T13:06:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "No voice to voice, it’s coming one day",
+      "timestamp": "2025-09-10T13:07:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Is there voice to voice :o",
+      "timestamp": "2025-09-10T13:07:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "I will learn Korean first",
+      "timestamp": "2025-09-10T13:07:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "But I can try add it if you would use",
+      "timestamp": "2025-09-10T13:08:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Korean etc are hard because non Roman",
+      "timestamp": "2025-09-10T13:08:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Lol can't promise given I've still not logged into my Year subscription of talktomeinkorean",
+      "timestamp": "2025-09-10T13:12:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "What would need to change?",
+      "timestamp": "2025-09-10T13:12:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Emma is doing her first git pull —rebase",
+      "timestamp": "2025-09-10T22:19:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I chatted to oren about you replacing him as m1 cox",
+      "timestamp": "2025-09-16T19:51:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "He said he never replaced you because “you never coxed m1”",
+      "timestamp": "2025-09-16T19:51:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Orin*",
+      "timestamp": "2025-09-17T07:11:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "We battled for the seat in michaelmas camp of our 2nd year",
+      "timestamp": "2025-09-17T07:11:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Idk what replacing refers to",
+      "timestamp": "2025-09-17T07:12:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "If he didn't join ebc then there would have been no battle",
+      "timestamp": "2025-09-17T07:12:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I may need help on redeploying the paddington website at some point, the repository is owned by you so I think I need to set up a different kind of permission",
+      "timestamp": "2025-09-17T23:17:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Call tonight? I'm free 10pm on",
+      "timestamp": "2025-09-18T16:21:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Ok",
+      "timestamp": "2025-09-18T16:21:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "I miss chatting:^)",
+      "timestamp": "2025-09-18T16:45:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Yes please that would be lovely",
+      "timestamp": "2025-09-18T17:05:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I had just been thinking how I have missed chatting to you, I’ve been doing all this vibecoding shipping fast stuff you always talked about",
+      "timestamp": "2025-09-18T17:05:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "I saw your question maker tool",
+      "timestamp": "2025-09-18T17:06:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Hahaha nice :) I've been shipping comparatively very slow..",
+      "timestamp": "2025-09-18T17:06:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "And this is a good question starter for example",
+      "timestamp": "2025-09-18T17:06:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Ah nice I’m glad it popped something reasonable out for you",
+      "timestamp": "2025-09-18T17:08:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Having made a bunch of these ai things I want to finally get into actually benchmarking the outputs to make them good",
+      "timestamp": "2025-09-18T17:08:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Did gabe send u PS maker too?",
+      "timestamp": "2025-09-18T17:09:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "It feels like even with good models and basic attempts at techniques like few shot I still get awful responses quite often",
+      "timestamp": "2025-09-18T17:09:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "I've not seen PS maker only the outputs",
+      "timestamp": "2025-09-18T17:13:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Even if its not reasonable it takes most of the work out as can iterate toward something reasonable",
+      "timestamp": "2025-09-18T17:15:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "I am free from now til 11pm",
+      "timestamp": "2025-09-18T21:08:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I am free in five minutes",
+      "timestamp": "2025-09-18T21:10:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Ok",
+      "timestamp": "2025-09-18T21:10:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Don’t know if he’s about to turn up or not",
+      "timestamp": "2025-09-20T13:01:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Did David pay the lesson yesterday",
+      "timestamp": "2025-09-20T13:01:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Doing a little shipping with Matthew rn",
+      "timestamp": "2025-09-22T22:02:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Can I get a globepay qr for £150",
+      "timestamp": "2025-09-22T22:02:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Sheesh",
+      "timestamp": "2025-09-22T22:24:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Yes I heard you are going to cook a latex thing",
+      "timestamp": "2025-09-22T22:25:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "More maths db?",
+      "timestamp": "2025-09-22T22:25:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Don't empty his ship juice",
+      "timestamp": "2025-09-22T22:25:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I can be your first user who loves you",
+      "timestamp": "2025-09-22T22:25:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Will be very useful for mathsdb if it’s good",
+      "timestamp": "2025-09-22T22:25:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Indeed, I realised I had hardcoded localhost for accounts so all our users had been fucked",
+      "timestamp": "2025-09-22T22:26:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Yeah well we will see..",
+      "timestamp": "2025-09-23T00:31:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "If knowledge gaps can be crossed",
+      "timestamp": "2025-09-23T00:31:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Did you want to build with Matthew saturday*",
+      "timestamp": "2025-09-25T14:17:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "yep let’s do it",
+      "timestamp": "2025-09-25T15:25:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I can check",
+      "timestamp": "2025-09-25T15:42:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Is Annie at home on saturday",
+      "timestamp": "2025-09-25T15:42:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "British library",
+      "timestamp": "2025-09-25T15:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "OK if so we should find somewhere to properly cook if we are going to code",
+      "timestamp": "2025-09-25T15:46:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "she is in so not mine",
+      "timestamp": "2025-09-25T15:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "yep",
+      "timestamp": "2025-09-25T15:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "And to not disturb",
+      "timestamp": "2025-09-25T15:46:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "shall we try get Matthew an invite to Laura’s?",
+      "timestamp": "2025-09-25T15:47:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Yes but maybe he may also go tonoxford",
+      "timestamp": "2025-09-25T15:47:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Let's see",
+      "timestamp": "2025-09-25T15:47:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Can I come to your flat and have a little tour or will housemates be all around",
+      "timestamp": "2025-09-25T16:41:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "when were you thinking",
+      "timestamp": "2025-09-25T17:41:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "/ if they can be paid multiple times",
+      "timestamp": "2025-09-25T21:55:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Do you know how long globepay qrs last",
+      "timestamp": "2025-09-25T21:55:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "anytime Saturday I can be free",
+      "timestamp": "2025-09-25T21:55:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Just booked in 10 hours for next week with old students, and I have 2 new CS students to start with",
+      "timestamp": "2025-09-25T22:04:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Yes",
+      "timestamp": "2025-09-25T22:37:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "No",
+      "timestamp": "2025-09-25T22:37:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "perfect",
+      "timestamp": "2025-09-25T23:50:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "We should make ai parish cloud",
+      "timestamp": "2025-09-26T12:09:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "My great aunt is the sole hub cloud manager for her church",
+      "timestamp": "2025-09-26T12:09:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Had to write 20 church and 24 non church risk assessments and assign every role to people in church",
+      "timestamp": "2025-09-26T12:09:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Call soon?",
+      "timestamp": "2025-09-26T12:20:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "What are you shipping?",
+      "timestamp": "2025-09-26T12:31:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "At Bromsgrove with aunts and uncles and grandparents etc",
+      "timestamp": "2025-09-26T12:31:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Lol ok",
+      "timestamp": "2025-09-26T12:31:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "ABS",
+      "timestamp": "2025-09-26T12:31:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Family hackathon is a cool idea nice one",
+      "timestamp": "2025-09-26T12:32:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "ABS",
+      "timestamp": "2025-09-26T12:32:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "getting inspo",
+      "timestamp": "2025-09-26T12:33:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "2 things I have worked on",
+      "timestamp": "2025-09-26T12:33:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Nice",
+      "timestamp": "2025-09-26T12:33:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Wot r they",
+      "timestamp": "2025-09-26T12:33:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "not enough shipping though",
+      "timestamp": "2025-09-26T12:35:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I have been inspired that I want to do more hard coding so I actually learn stuff",
+      "timestamp": "2025-09-26T12:35:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Nethack and TMUA",
+      "timestamp": "2025-09-26T12:35:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Explain :o",
+      "timestamp": "2025-09-26T12:36:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Also learnt react native a little",
+      "timestamp": "2025-09-26T12:36:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "tmua I want it to make reasonable questions so was going to try a more serious age tic workflow",
+      "timestamp": "2025-09-26T12:43:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Really?",
+      "timestamp": "2025-09-26T12:43:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Man I love nethack",
+      "timestamp": "2025-09-26T12:43:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Haha",
+      "timestamp": "2025-09-26T12:43:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "I mean it's not a game I'd play but it's a game I'll very happily watch",
+      "timestamp": "2025-09-26T12:43:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "n",
+      "timestamp": "2025-09-26T12:44:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Have you made nethack bot?",
+      "timestamp": "2025-09-26T12:44:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "That would be cool",
+      "timestamp": "2025-09-26T12:45:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Instead of llm based text interactions you could make a dynamically generated tileset with nanobanana or something simpler",
+      "timestamp": "2025-09-26T12:45:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Its googles newest image model",
+      "timestamp": "2025-09-26T12:46:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Making some buzz for its performance",
+      "timestamp": "2025-09-26T12:46:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "What’s nanobanana?",
+      "timestamp": "2025-09-26T12:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I can see lots of potential for an image model generated tileset for my game",
+      "timestamp": "2025-09-26T14:09:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Is this your own nethack",
+      "timestamp": "2025-09-26T14:11:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "But also have tilesets change based on game context??",
+      "timestamp": "2025-09-26T14:11:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Sheeeeeesh",
+      "timestamp": "2025-09-26T14:11:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "this is just testing googles llm",
+      "timestamp": "2025-09-26T14:12:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "why wouldn’t you just precompute",
+      "timestamp": "2025-09-26T14:12:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "do u mean like when u put on armour u call llm to dress urself",
+      "timestamp": "2025-09-26T14:12:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I don’t see the value",
+      "timestamp": "2025-09-26T14:12:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "As in if you fought a snake",
+      "timestamp": "2025-09-26T14:14:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Some snake piece appears on your armour",
+      "timestamp": "2025-09-26T14:14:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "okay maybe that’s cool",
+      "timestamp": "2025-09-26T14:15:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I need to get deep into C to actually run Nethack on a server and save the game properly",
+      "timestamp": "2025-09-26T14:16:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "hahahhahaha no way",
+      "timestamp": "2025-09-26T20:45:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "who is this ?",
+      "timestamp": "2025-09-26T20:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "I did not read the messages, first I tried to suss the sender and thought it was clog",
+      "timestamp": "2025-09-26T20:46:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Chris lol",
+      "timestamp": "2025-09-26T22:36:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Omw",
+      "timestamp": "2025-09-26T23:08:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly! fake it till you make it vibes",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly! their format is clean, just need to make it actually work",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly! and actually make it work properly this time",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "perfect!",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "no worries! have a good one",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "That would be so sick! AI tilesets could save you tons of time and give you crazy variety",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "hi ben",
+      "timestamp": "2025-09-27T02:03:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "Hi Truben masoon",
+      "timestamp": "2025-09-27T03:34:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "oo oo aa aa",
+      "timestamp": "2025-09-27T15:19:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "oo oo aa aa",
+      "timestamp": "2025-09-27T15:19:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Hi Truben masoon",
+      "timestamp": "2025-09-27T15:19:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "That's wonderful! Happy birthday to Jess!  Turning 24 is exciting. Are you planning anything special to celebrate with her? I'd be happy to help you brainstorm gift ideas, party planning, or ways to make her day memorable if you'd like!",
+      "timestamp": "2025-09-27T15:58:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Happy 24th bday Jess!!  hope your day is absolutely iconic and filled with all the good vibes! you deserve the world bestie",
+      "timestamp": "2025-09-27T16:03:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "gi",
+      "timestamp": "2025-09-27T17:15:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "hi there",
+      "timestamp": "2025-09-27T17:27:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "lmaooo what are you even saying rn  are you having a stroke or something bro?? \nlike are you trying to be a monkey or just keyboard smashing at me rn",
+      "timestamp": "2025-09-27T18:00:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "hey! i think you might have the wrong person - i'm ben, not jess  sounds like jess is lucky to have such a sweet friend tho! hope she has an amazing bday",
+      "timestamp": "2025-09-27T18:01:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "hey! what's up?",
+      "timestamp": "2025-09-27T18:01:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "yo the sky is pretty wild rn ngl  like sometimes i just look up and think about how massive it is and we're just tiny specs under this huge dome of... everything? \nwhat's got you thinking about the sky? is it looking particularly fire today or are you having one of those existential moments lmao",
+      "timestamp": "2025-09-27T18:02:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "yo what about the sky?  like is it looking pretty today or are you having some deep thoughts about it lol",
+      "timestamp": "2025-09-27T18:02:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "the sky",
+      "timestamp": "2025-09-27T18:02:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "hey what's up!",
+      "timestamp": "2025-09-27T18:02:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "please refrain from messaging me",
+      "timestamp": "2025-09-27T18:02:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "hey",
+      "timestamp": "2025-09-27T18:02:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "hey what's up!",
+      "timestamp": "2025-09-27T18:03:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "lmaooo bruh you really came for me like that  \nnah man i've been too busy grinding on that project to even think about basic human maintenance lol. probably do look like i could supply a whole italian restaurant rn \nthanks for the reality check tho, gonna go fix this grease situation before someone mistakes me for a walking salad dressing dispenser",
+      "timestamp": "2025-09-27T18:11:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "lmaooo reuben  my hair's not THAT greasy... okay maybe i skipped shampoo for like 3 days but who's counting \nwas running late this morning and just threw on a beanie thinking nobody would notice but apparently you got eagle eyes or smth \nguess i'm hitting the shower when i get home unless you want me to actually start selling \"ben's premium hair grease\"",
+      "timestamp": "2025-09-27T18:11:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "Yo Ben, did you forget to wash your hair or are you trying to start your own olive oil business?",
+      "timestamp": "2025-09-27T18:11:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Reu",
+      "content": "olive oil hair business",
+      "timestamp": "2025-09-28T04:16:00",
+      "is_outgoing": true,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "yooo wait actually tho... \"ben's artisanal hair oil - straight from the source\" \ncould market it as like \"all natural, no chemicals added, aged to perfection over 3 days of gaming sessions\" \nreuben you might be onto something here... forget washing it, ima lean into this and become a hair oil entrepreneur lmfaoo\n\"harvested fresh daily from sleep-deprived college students\" - premium stuff right there \nnah but fr tho this is nasty even for me, definitely hitting the shower after this convo ends",
+      "timestamp": "2025-09-28T04:17:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    },
+    {
+      "sender": "Ben Blaker (Treasurer Emma)",
+      "content": "yooo wait actually that's not a terrible idea tho \n\"ben's organic hair oil - straight from the source\" \ncould market it as like all natural, artisanal, small batch lmaooo\n\"harvested fresh daily from one sleep-deprived college student\" \nbet i could charge like $30 a bottle to those wellness influencers on tiktok \n\"this premium blend took years to perfect through strategic neglect of personal hygiene\"\ndude you might've just solved my broke college student problems... forget the shower i'm bout to become an entrepreneur \nbut fr tho my hair is actually disgusting rn, probably gonna go wash it before it starts attracting flies or smth",
+      "timestamp": "2025-09-28T04:17:00",
+      "is_outgoing": false,
+      "chat_name": "Unknown Chat"
+    }
+  ]
+}
