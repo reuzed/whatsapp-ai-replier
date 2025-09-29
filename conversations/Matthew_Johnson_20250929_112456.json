@@ -1,0 +1,3871 @@
+{
+  "chat_name": "Matthew Johnson",
+  "exported_at": "2025-09-29T11:24:56.031269",
+  "message_count": 552,
+  "messages": [
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "MOVE THE NEEDLE!",
+      "timestamp": "2025-09-10T15:54:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "We genuinely have a user who cares!!!!!!!!!! (Unless it's you lol, but I really doubt it is :))",
+      "timestamp": "2025-09-10T15:54:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Let's make progress!",
+      "timestamp": "2025-09-10T15:54:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Get the needle out of here! No needles allowed!",
+      "timestamp": "2025-09-10T15:54:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I'll answer this in a few minutes maybe",
+      "timestamp": "2025-09-10T15:54:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Thanks :)",
+      "timestamp": "2025-09-10T16:21:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Let me know if you can’t do the cooking - I should be able to do it (maybe questionably) if you can’t",
+      "timestamp": "2025-09-10T16:22:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "And diagrams",
+      "timestamp": "2025-09-10T16:22:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "And I’ll try to do some verification also",
+      "timestamp": "2025-09-10T16:22:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Okay cool",
+      "timestamp": "2025-09-10T16:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I’ll try cook today",
+      "timestamp": "2025-09-10T16:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Just to check if I should work on this, have you done cooking on this?",
+      "timestamp": "2025-09-10T21:09:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I cooked a bit so far yes",
+      "timestamp": "2025-09-10T21:39:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Maybe even pushed to GitHub",
+      "timestamp": "2025-09-10T21:39:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I cooked this yesterday but didn’t test - seems to work though",
+      "timestamp": "2025-09-11T15:37:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I’m catching up :)",
+      "timestamp": "2025-09-11T16:37:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "We have a user who has made an account!",
+      "timestamp": "2025-09-11T17:41:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Ah, that's cool! Would you like to call now?",
+      "timestamp": "2025-09-11T17:47:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "(is it you lol)",
+      "timestamp": "2025-09-11T17:48:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "(Ah, looking again at the picture, it's clear that it is you lol - I was just blind to what was being shown and didn't understand it wasn't just that you were showing new functionality)",
+      "timestamp": "2025-09-11T18:02:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Okay I may need to go",
+      "timestamp": "2025-09-11T18:05:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "now",
+      "timestamp": "2025-09-11T18:07:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "can call very briefly",
+      "timestamp": "2025-09-11T18:07:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "one day we will eliminate our tech debt",
+      "timestamp": "2025-09-11T18:07:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "ACTION POINTS (To get needle movement):\nI look into the rate limiting\n⁠I fix minor presentation issues\n⁠I verify more\nI look into the rate limiting\n⁠I fix minor presentation issues\n⁠I verify more",
+      "timestamp": "2025-09-11T18:26:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "We'd have to eat at Bucks for free because we wouldn't be able to afford it otherwise",
+      "timestamp": "2025-09-11T22:20:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I haven't had more cooking time today, but I'm enjoying the open-source pmf dream:\nThe money will fly out of our accounts faster than we can put servers online",
+      "timestamp": "2025-09-11T22:20:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Rate limit should be daily so maybe fixed today",
+      "timestamp": "2025-09-12T12:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I looked more into indexing and hopefully this has cooked a bit",
+      "timestamp": "2025-09-12T12:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "YES MOVE MOVE MOVE",
+      "timestamp": "2025-09-12T12:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Hahahahhahaha this is good",
+      "timestamp": "2025-09-12T12:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "HAVE YOU MOVED TODAY",
+      "timestamp": "2025-09-12T12:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "And thanks!",
+      "timestamp": "2025-09-12T23:34:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I haven’t moved anything today, but I’ll be back to some movement tomorrow - I was out the entire day in mountains, but back now",
+      "timestamp": "2025-09-12T23:34:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "No pressure to cook when away",
+      "timestamp": "2025-09-12T23:41:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "That sounds lovely !",
+      "timestamp": "2025-09-12T23:41:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Thanks, yes :)",
+      "timestamp": "2025-09-12T23:46:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Ah :(",
+      "timestamp": "2025-09-14T22:10:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I remember that graph theory proof, it’s quite nice",
+      "timestamp": "2025-09-16T15:00:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Very cool",
+      "timestamp": "2025-09-16T15:00:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Matthew",
+      "timestamp": "2025-09-18T17:03:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I just checked the email provider out of curiosity",
+      "timestamp": "2025-09-18T17:03:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "That’s good!",
+      "timestamp": "2025-09-18T18:24:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I need to cook pretty soon! But for now I’m still almost totally unavailable doing random stuff in a Polish village",
+      "timestamp": "2025-09-18T18:25:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "It could be good to have a vague in the calendar plan to cook maybe",
+      "timestamp": "2025-09-18T19:12:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Don’t worry about being busy, I am too with paddington, I am just happy to have users",
+      "timestamp": "2025-09-18T19:12:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "23rd maybe has some cooking, 28th -30th maybe also",
+      "timestamp": "2025-09-18T23:47:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "That’s great",
+      "timestamp": "2025-09-21T18:31:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I suppose you won’t be in London by default",
+      "timestamp": "2025-09-21T18:31:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I fixed a critically bad bug on the website where people just could not log in",
+      "timestamp": "2025-09-21T18:32:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Thank you! I’m also happy to have brief residency periods in London :)",
+      "timestamp": "2025-09-21T23:04:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "And great! I’m aware that there are a few immediate wins to get in this regard, so hope to do so soon!",
+      "timestamp": "2025-09-21T23:05:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I realised I can procrastinate the work of reviewing by building tools to review with",
+      "timestamp": "2025-09-21T23:29:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "That looks genuinely helpful though lol",
+      "timestamp": "2025-09-22T08:08:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "And like I’m more likely to actually do it if it’s less painful for me",
+      "timestamp": "2025-09-22T08:09:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Expected volume of the convex hull of 4 uniform points in a unit cube",
+      "timestamp": "2025-09-22T14:52:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I have a cool (and potentially hard) result to prove",
+      "timestamp": "2025-09-22T14:52:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I have a paper that states the answer but haven’t thought too much about the proof",
+      "timestamp": "2025-09-22T14:52:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Nah this problem is probably not nice",
+      "timestamp": "2025-09-22T15:07:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Ah, no, I’m wrong",
+      "timestamp": "2025-09-22T15:07:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "3b1b?",
+      "timestamp": "2025-09-22T15:07:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "(But having issues in Amsterdam at the moment)",
+      "timestamp": "2025-09-22T15:07:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Getting train home?",
+      "timestamp": "2025-09-22T15:08:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "You are in Amsterdam?",
+      "timestamp": "2025-09-22T15:08:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I’m bad at travelling to and from Amsterdam",
+      "timestamp": "2025-09-22T15:10:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I’m bad at travelling to and from Amsterdam",
+      "timestamp": "2025-09-22T15:10:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yes, having missed the Eurostar :(",
+      "timestamp": "2025-09-22T15:10:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yes, having missed the Eurostar :(",
+      "timestamp": "2025-09-22T15:10:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Do you happen to have easy residence in your flat? I could stay this evening and cook",
+      "timestamp": "2025-09-22T16:00:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Do you happen to have easy residence in your flat? I could stay this evening and cook",
+      "timestamp": "2025-09-22T16:00:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "But don’t need to",
+      "timestamp": "2025-09-22T16:00:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "But don’t need to",
+      "timestamp": "2025-09-22T16:00:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "You would need to be up early since she will be off to work",
+      "timestamp": "2025-09-22T17:43:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "You would need to be up early since she will be off to work",
+      "timestamp": "2025-09-22T17:43:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "I asked my sister",
+      "timestamp": "2025-09-22T17:43:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I asked my sister",
+      "timestamp": "2025-09-22T17:43:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "I finish tutoring at 6:30",
+      "timestamp": "2025-09-22T17:43:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I finish tutoring at 6:30",
+      "timestamp": "2025-09-22T17:43:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "What’s your eta",
+      "timestamp": "2025-09-22T17:43:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "What’s your eta",
+      "timestamp": "2025-09-22T17:43:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "You could come and cook and stay yes",
+      "timestamp": "2025-09-22T17:43:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "You could come and cook and stay yes",
+      "timestamp": "2025-09-22T17:43:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "How early is ‘early’?",
+      "timestamp": "2025-09-22T18:01:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "How early is ‘early’?",
+      "timestamp": "2025-09-22T18:01:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Reach Stansted at 7pm, reach yours 8.30pm probably?",
+      "timestamp": "2025-09-22T18:01:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Reach Stansted at 7pm, reach yours 8.30pm probably?",
+      "timestamp": "2025-09-22T18:01:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "You can let me know if this makes sense",
+      "timestamp": "2025-09-22T18:02:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "About to set off now, so can confirm in around 1.15 hours",
+      "timestamp": "2025-09-22T18:02:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "You can let me know if this makes sense",
+      "timestamp": "2025-09-22T18:02:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "About to set off now, so can confirm in around 1.15 hours",
+      "timestamp": "2025-09-22T18:02:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "Annie goes to work at like 7:30 or 8 so must enter the living room which is also where you would sleep hence wake up then",
+      "timestamp": "2025-09-22T19:09:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Annie goes to work at like 7:30 or 8 so must enter the living room which is also where you would sleep hence wake up then",
+      "timestamp": "2025-09-22T19:09:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "If you are happy to be slightly sleep deprived then it’s all good",
+      "timestamp": "2025-09-22T19:10:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "If you are happy to be slightly sleep deprived then it’s all good",
+      "timestamp": "2025-09-22T19:10:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Ok, this doesn’t seem too bad",
+      "timestamp": "2025-09-22T19:10:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Ok, this doesn’t seem too bad",
+      "timestamp": "2025-09-22T19:10:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I’m offset mentally by 1 hour, so should be capable of sleep around 11",
+      "timestamp": "2025-09-22T19:11:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I’m offset mentally by 1 hour, so should be capable of sleep around 11",
+      "timestamp": "2025-09-22T19:11:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Do you have an airbed?",
+      "timestamp": "2025-09-22T19:11:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Do you have an airbed?",
+      "timestamp": "2025-09-22T19:11:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "Double sofa bed + sheets etc",
+      "timestamp": "2025-09-22T19:13:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Double sofa bed + sheets etc",
+      "timestamp": "2025-09-22T19:13:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "What about sleep at 3 am so we can COOOK",
+      "timestamp": "2025-09-22T19:14:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "What about sleep at 3 am so we can COOOK",
+      "timestamp": "2025-09-22T19:14:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Great! Thanks, that’s better than expected",
+      "timestamp": "2025-09-22T19:15:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Great! Thanks, that’s better than expected",
+      "timestamp": "2025-09-22T19:15:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I’ll come",
+      "timestamp": "2025-09-22T19:15:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I’ll come",
+      "timestamp": "2025-09-22T19:15:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Presumably you’ve hosted Yael with facilities as good as that lol",
+      "timestamp": "2025-09-22T19:15:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Presumably you’ve hosted Yael with facilities as good as that lol",
+      "timestamp": "2025-09-22T19:15:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "VITE_SUPABASE_URL=https://nyneyflndeazenuyyupd.supabase.co\nVITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55bmV5ZmxuZGVhemVudXl5dXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcwMTA5MDYsImV4cCI6MjA3MjU4NjkwNn0.EXpvxp8f_EvlaMxCja1yWSMvulEwI0iDHyTC4Xb0_KY\nVITE_PUBLIC_SITE_URL=https://www.mathsdb.com",
+      "timestamp": "2025-09-22T22:00:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "VITE_SUPABASE_URL=https://nyneyflndeazenuyyupd.supabase.co\nVITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55bmV5ZmxuZGVhemVudXl5dXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcwMTA5MDYsImV4cCI6MjA3MjU4NjkwNn0.EXpvxp8f_EvlaMxCja1yWSMvulEwI0iDHyTC4Xb0_KY\nVITE_PUBLIC_SITE_URL=https://www.mathsdb.com",
+      "timestamp": "2025-09-22T22:00:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "ETA 8.25",
+      "timestamp": "2025-09-22T22:21:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "ETA 8.25",
+      "timestamp": "2025-09-22T22:21:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Next things for me:\nfix about page\nadd MAT applicant guidance\nwrite another reddit post\nfix about page\nadd MAT applicant guidance\nwrite another reddit post",
+      "timestamp": "2025-09-23T13:23:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Next things for me:\nfix about page\nadd MAT applicant guidance\nwrite another reddit post\nfix about page\nadd MAT applicant guidance\nwrite another reddit post",
+      "timestamp": "2025-09-23T13:23:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Next for you:\nmake the feedback plain text box on the home page\nmake the feedback plain text box on the home page",
+      "timestamp": "2025-09-23T13:23:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Next for you:\nmake the feedback plain text box on the home page\nmake the feedback plain text box on the home page",
+      "timestamp": "2025-09-23T13:23:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "Mathsdb login please",
+      "timestamp": "2025-09-23T16:01:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Mathsdb login please",
+      "timestamp": "2025-09-23T16:01:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "What do you mean?",
+      "timestamp": "2025-09-23T16:18:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "What do you mean?",
+      "timestamp": "2025-09-23T16:18:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "Instagram was omitted from that message",
+      "timestamp": "2025-09-23T16:19:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Instagram was omitted from that message",
+      "timestamp": "2025-09-23T16:19:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Nf78yOpsR1xRcMRcZZjE",
+      "timestamp": "2025-09-23T17:17:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Nf78yOpsR1xRcMRcZZjE",
+      "timestamp": "2025-09-23T17:17:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "And name is",
+      "timestamp": "2025-09-23T17:18:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "mathsdb_official",
+      "timestamp": "2025-09-23T17:18:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "mathsdb_official",
+      "timestamp": "2025-09-23T17:18:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "And name is",
+      "timestamp": "2025-09-23T17:18:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I've checked that these details work, and they do",
+      "timestamp": "2025-09-23T17:19:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I've checked that these details work, and they do",
+      "timestamp": "2025-09-23T17:19:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Another bug - the 'focus mode' button on the standard page view (at least for MAT) no longer maps to the question clicked on (should be easy fix, but maybe too late for me today)",
+      "timestamp": "2025-09-24T01:14:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Another bug - the 'focus mode' button on the standard page view (at least for MAT) no longer maps to the question clicked on (should be easy fix, but maybe too late for me today)",
+      "timestamp": "2025-09-24T01:14:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I fixed that one, but haven't fixed an issue with the 'try focus mode' button where it occasionally doesn't load the page after clicking it",
+      "timestamp": "2025-09-24T11:06:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I fixed that one, but haven't fixed an issue with the 'try focus mode' button where it occasionally doesn't load the page after clicking it",
+      "timestamp": "2025-09-24T11:06:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I've made another reddit post after some minor fixes",
+      "timestamp": "2025-09-24T11:30:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "I've made another reddit post after some minor fixes",
+      "timestamp": "2025-09-24T11:30:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "If you have any comments on this reddit post let me know",
+      "timestamp": "2025-09-24T11:31:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "If you have any comments on this reddit post let me know",
+      "timestamp": "2025-09-24T11:31:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "That looks good and useful !",
+      "timestamp": "2025-09-24T12:51:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "That looks good and useful !",
+      "timestamp": "2025-09-24T12:51:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "I reckon the only +ev after this would be getting it on more subreddits",
+      "timestamp": "2025-09-24T12:51:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I reckon the only +ev after this would be getting it on more subreddits",
+      "timestamp": "2025-09-24T12:51:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Nice, thanks",
+      "timestamp": "2025-09-24T12:52:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Nice, thanks",
+      "timestamp": "2025-09-24T12:52:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "I am in",
+      "timestamp": "2025-09-24T12:53:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "I am in",
+      "timestamp": "2025-09-24T12:53:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Ok, that looks fairly good",
+      "timestamp": "2025-09-24T13:03:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Ok, that looks fairly good",
+      "timestamp": "2025-09-24T13:03:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Ah :(",
+      "timestamp": "2025-09-24T17:37:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Reddit moderators are also annoyingly slow :(",
+      "timestamp": "2025-09-24T17:37:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Reddit moderators are also annoyingly slow :(",
+      "timestamp": "2025-09-24T17:37:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "No idunchang yet",
+      "timestamp": "2025-09-24T17:37:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "No idunchang yet",
+      "timestamp": "2025-09-24T17:37:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "So it's not posted yet",
+      "timestamp": "2025-09-24T17:37:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "So it's not posted yet",
+      "timestamp": "2025-09-24T17:37:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Ah :(",
+      "timestamp": "2025-09-24T17:37:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Maybe more subreddits to parallelise the waiting",
+      "timestamp": "2025-09-24T17:38:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Maybe more subreddits to parallelise the waiting",
+      "timestamp": "2025-09-24T17:38:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "I can try cook I just need to get a few more interview questions in",
+      "timestamp": "2025-09-24T17:38:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I can try cook I just need to get a few more interview questions in",
+      "timestamp": "2025-09-24T17:38:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "https://www.icetutors.com/\nI was just searching reddit and noticed this is basically exactly the same thing as we have",
+      "timestamp": "2025-09-24T17:46:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "https://www.icetutors.com/\nI was just searching reddit and noticed this is basically exactly the same thing as we have",
+      "timestamp": "2025-09-24T17:46:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "But perhaps with less bugs",
+      "timestamp": "2025-09-24T17:46:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "But perhaps with less bugs",
+      "timestamp": "2025-09-24T17:46:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "Any have completion tracking and are developing to make it better",
+      "timestamp": "2025-09-24T18:26:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Any have completion tracking and are developing to make it better",
+      "timestamp": "2025-09-24T18:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "We are free",
+      "timestamp": "2025-09-24T18:26:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "We are free",
+      "timestamp": "2025-09-24T18:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "They are a paid tutoring service",
+      "timestamp": "2025-09-24T18:26:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "They are a paid tutoring service",
+      "timestamp": "2025-09-24T18:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "But we can at least steal their good ideas",
+      "timestamp": "2025-09-24T18:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "But we can at least steal their good ideas",
+      "timestamp": "2025-09-24T18:27:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "There website looks more vibecoded than ours",
+      "timestamp": "2025-09-24T18:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "There website looks more vibecoded than ours",
+      "timestamp": "2025-09-24T18:27:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "I made a WhatsApp group for posting maths problems and discussing others",
+      "timestamp": "2025-09-25T16:00:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "I made a WhatsApp group for posting maths problems and discussing others",
+      "timestamp": "2025-09-25T16:00:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "You should post your poset question and its variants",
+      "timestamp": "2025-09-25T16:04:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "You should post your poset question and its variants",
+      "timestamp": "2025-09-25T16:04:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Thanks, that's a nice idea :)",
+      "timestamp": "2025-09-25T17:39:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Thanks, that's a nice idea :)",
+      "timestamp": "2025-09-25T17:39:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Store me + cook this evening?",
+      "timestamp": "2025-09-26T11:39:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Store me + cook this evening?",
+      "timestamp": "2025-09-26T11:39:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "(I'm asking in few words whether it would work well for me to stay with you this evening and cook mathsdb or whatsapp fine-tuning)",
+      "timestamp": "2025-09-26T11:40:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "(I'm asking in few words whether it would work well for me to stay with you this evening and cook mathsdb or whatsapp fine-tuning)",
+      "timestamp": "2025-09-26T11:40:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "let me ask on a group",
+      "timestamp": "2025-09-26T11:55:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "let me ask on a group",
+      "timestamp": "2025-09-26T11:55:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah but the interview questions are free and decent quality",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "yeah good idea, spread the load. how's the cooking prep going?",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "yeah good idea, spread the load. how's the cooking prep going?",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah but the interview questions are free and decent quality",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "723",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Good idea, spread the load across more subs",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "723",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Good idea, spread the load across more subs",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Fair point! Yeah being free is definitely your advantage over them",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Fair point! Yeah being free is definitely your advantage over them",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Fair point, different market then",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Fair point, different market then",
+      "timestamp": "2025-09-26T22:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "fair point, guess we're the scrappy underdogs then",
+      "timestamp": "2025-09-26T22:33:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "fair point, guess we're the scrappy underdogs then",
+      "timestamp": "2025-09-26T22:33:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Fair point, let's see what features we can \"borrow\"",
+      "timestamp": "2025-09-26T22:33:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Fair point, let's see what features we can \"borrow\"",
+      "timestamp": "2025-09-26T22:33:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "sounds good",
+      "timestamp": "2025-09-26T22:33:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "sounds good",
+      "timestamp": "2025-09-26T22:33:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "good idea, will do that now",
+      "timestamp": "2025-09-26T22:33:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "good idea, will do that now",
+      "timestamp": "2025-09-26T22:33:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah good idea, spread it across more subs to speed things up",
+      "timestamp": "2025-09-26T22:34:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah good idea, spread it across more subs to speed things up",
+      "timestamp": "2025-09-26T22:34:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah definitely, spread it across more subs. Good luck with the cooking and interviews!",
+      "timestamp": "2025-09-26T22:34:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah definitely, spread it across more subs. Good luck with the cooking and interviews!",
+      "timestamp": "2025-09-26T22:34:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Fair point, let's see what features we can \"borrow\" for inspiration",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "fair point, we should add more polish to the UI",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "fair point, we should add more polish to the UI",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah I know, just saying we could build something similar but actually functional lol",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah I know, just saying we could build something similar but actually functional lol",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah fair point, just meant the question bank format",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah fair point, just meant the question bank format",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Fair point - maybe just the UI inspiration then",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Fair point - maybe just the UI inspiration then",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Good idea, will do that later today",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Good idea, will do that later today",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "sounds good, let me know what they say",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Fair point, let's see what features we can \"borrow\" for inspiration",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "sounds good, let me know what they say",
+      "timestamp": "2025-09-26T22:35:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Nice! Free is definitely better for most people",
+      "timestamp": "2025-09-26T23:16:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "That's awesome! Free is always better than paid",
+      "timestamp": "2025-09-26T23:16:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Nice! Free is definitely better for most people",
+      "timestamp": "2025-09-26T23:16:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "That's awesome! Free is always better than paid",
+      "timestamp": "2025-09-26T23:16:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "ah gotcha, makes sense they'd charge for that kind of help",
+      "timestamp": "2025-09-26T23:16:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "ah gotcha, makes sense they'd charge for that kind of help",
+      "timestamp": "2025-09-26T23:16:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "good idea, I'll post it now with some different versions",
+      "timestamp": "2025-09-26T23:17:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "good idea, I'll post it now with some different versions",
+      "timestamp": "2025-09-26T23:17:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol \"vibecoded\" - yeah let's definitely steal the good stuff from them",
+      "timestamp": "2025-09-26T23:17:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol \"vibecoded\" - fair point, we should probably work on that",
+      "timestamp": "2025-09-26T23:17:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol \"vibecoded\" - fair point, we should probably work on that",
+      "timestamp": "2025-09-26T23:17:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol \"vibecoded\" - yeah let's definitely steal the good stuff from them",
+      "timestamp": "2025-09-26T23:17:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "sounds good, lmk what they say",
+      "timestamp": "2025-09-26T23:17:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "sounds good, lmk what they say",
+      "timestamp": "2025-09-26T23:17:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Sure, let me know what they say!",
+      "timestamp": "2025-09-26T23:18:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Sure, let me know what they say!",
+      "timestamp": "2025-09-26T23:18:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "sounds good, let me know what they say",
+      "timestamp": "2025-09-26T23:18:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "sounds good, let me know what they say",
+      "timestamp": "2025-09-26T23:18:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, let's do it",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha love the scrappy underdog vibe! borrowing features sounds like a solid strategy",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha love the scrappy underdog vibe! borrowing features sounds like a solid strategy",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "fggfh",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "cool, will update you once I hear back",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "fggfh",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "cool, will update you once I hear back",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha yeah scrappy underdogs! let's see what we can \"borrow\" from the big players",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "yeah all sorted, thanks for checking!",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha yeah scrappy underdogs! let's see what we can \"borrow\" from the big players",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "yeah all sorted, thanks for checking!",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha scrappy underdogs sounds about right! borrowing features is the way to go",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "cool, I'll get started on it",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha scrappy underdogs sounds about right! borrowing features is the way to go",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, lmk what they say!",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "cool, I'll get started on it",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly, scrappy underdogs with free stuff - that's our vibe",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "true, different markets entirely. you sorted for tonight then?",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, lmk what they say!",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly, scrappy underdogs with free stuff - that's our vibe",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "true, different markets entirely. you sorted for tonight then?",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha yeah scrappy underdogs! let's see what we can \"borrow\" from the big players",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "yeah all sorted, thanks for checking!",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha scrappy underdogs sounds about right! borrowing features is the way to go",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, let's do it",
+      "timestamp": "2025-09-26T23:24:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Sounds good, will do!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah all set, thanks for checking!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol yeah, embrace the scrappy startup energy",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, hope they give some useful feedback!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, different versions should help get more responses",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Sounds good, will do!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol yeah, embrace the scrappy startup energy",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, different versions should help get more responses",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "yeah makes sense, format's solid even if execution isn't",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, let me know what feedback you get!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "got it",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Sounds good! Let me know how it goes",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol yeah, can't beat free when you're broke",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "Yeah exactly, just the format not the actual content",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "got it",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "Sounds good! Let me know how it goes",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "Yeah exactly, just the format not the actual content",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, let me know how it goes!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly, just steal their UI and make it actually work lol",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "yeah exactly, their UI is pretty clean. we could definitely use some of that polish",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly, just steal their UI and make it actually work lol",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "yeah exactly, their UI is pretty clean. we could definitely use some of that polish",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "haha yes! steal the UI, fix the bugs, profit",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "yeah makes sense, format's solid even if execution isn't",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "totally! free always wins, especially for students",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, let me know what feedback you get!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly! free always wins when the quality is there",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "yeah makes sense, format's solid even if execution isn't",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "totally! free always wins, especially for students",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, let me know what feedback you get!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah all set, thanks for checking!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Sounds good!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly! free always wins when the quality is there",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "Sounds good, will do!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Sounds good!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, hope they give some useful feedback!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, hope they give some useful feedback!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "got it",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "Sounds good! Let me know how it goes",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "Yeah exactly, just the format not the actual content",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, let me know how it goes!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol yeah, can't beat free when you're broke",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly, just steal their UI and make it actually work lol",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "yeah exactly, their UI is pretty clean. we could definitely use some of that polish",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol yeah, can't beat free when you're broke",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol yeah, embrace the scrappy startup energy",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, different versions should help get more responses",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "totally! free always wins, especially for students",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly! free always wins when the quality is there",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "haha yes! steal the UI, fix the bugs, profit",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Sounds good!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good, let me know how it goes!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "haha yes! steal the UI, fix the bugs, profit",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Yeah all set, thanks for checking!",
+      "timestamp": "2025-09-26T23:25:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly! broke life = free life",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "nice one! let me know if you need anything",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "nice one! enjoy",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly! broke life = free life",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "yeah good thinking, variety should help with the response rate",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "what? lol",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "haha yes! steal the UI, fix the bugs they're too lazy to handle",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "perfect",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do, hopefully they have some good insights!",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "got it, makes sense - format's fair game",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "got it, makes sense - format's fair game",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do! should be interesting to see how it turns out",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do, hopefully get some good insights",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do! should be interesting to see how it turns out",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "100%, students are always looking for free stuff",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "nice one! enjoy",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly! broke life = free life",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "100%, free + good quality is unbeatable",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "yeah good thinking, variety should help with the response rate",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do!",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "nice one! let me know if you need anything",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do!",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "nice one! let me know if you need anything",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "100%, students are always looking for free stuff",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do, hopefully they have some good insights!",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "what? lol",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "haha yes! steal the UI, fix the bugs they're too lazy to handle",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "perfect",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "got it, makes sense - format's fair game",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "Will do!",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "what? lol",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "haha yes! steal the UI, fix the bugs they're too lazy to handle",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "perfect",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do! should be interesting to see how it turns out",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do, hopefully get some good insights",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "Will do!",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "100%, free + good quality is unbeatable",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do!",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "Will do!",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 11:23"
+    },
+    {
+      "sender": "Reu",
+      "content": "nice one! enjoy",
+      "timestamp": "2025-09-26T23:26:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "thanks! should be fun",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "hey! yeah was just chatting about that roguelike idea",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "right? could make it way more immersive than static sprites",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "not exactly nethack but inspired by it! and yeah context-based tilesets would be sick",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly! they left money on the table, might as well pick it up",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "oh that's actually sick\ndynamic visual storytelling through gear",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "oh lol hey chris\nyeah the snake on armor thing is actually sick\nbut the compute cost would be insane for real time",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "perfect, thanks!",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "definitely! curious to see what you come up with",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "oh lmao hey chris\nyeah the armour thing could be sick actually",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol sorry wrong chat, was talking about cloning apps",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "nah not nethack, more like a traditional roguelike but with modern graphics",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "oh like dynamic sprites based on what happened? that's actually sick",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "oh that's actually sick\ndynamic visual storytelling through gear",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do, thanks!",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "thanks! should be fun",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "definitely! curious to see what you come up with",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "right? could make it way more immersive than static sprites",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "hey! yeah was just chatting about that roguelike idea",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol the student struggle is real",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "not exactly nethack but inspired by it! and yeah context-based tilesets would be sick",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly! they left money on the table, might as well pick it up",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "oh lmao hey chris\nyeah the armour thing could be sick actually",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "nah not nethack, more like a traditional roguelike but with modern graphics",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "oh lol hey chris\nyeah the snake on armor thing is actually sick\nbut the compute cost would be insane for real time",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "perfect, thanks!",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol the student struggle is real",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol sorry wrong chat, was talking about cloning apps",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "oh like dynamic sprites based on what happened? that's actually sick",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do, thanks!",
+      "timestamp": "2025-09-26T23:27:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "yeah fingers crossed! should be useful",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly! broke life = free life",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "hey! what's up",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "thanks!",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "thanks mate, will do",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "nice!",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": false,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "no worries! let me know how it goes",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good! curious to see what they say",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "yeah fingers crossed! should be useful",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "totally! best of both worlds",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "hey! yeah that context-based tileset thing could be really cool",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha no worries, happens to the best of us",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly! broke life = free life",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "hey! what's up?",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha yeah broke student life hits different",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "hey! yeah just bouncing around some game dev ideas, nothing too serious yet",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "nice!",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "no worries! let me know how it goes",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "right? could make the whole experience way more immersive",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good! curious to see what they say",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "online"
+    },
+    {
+      "sender": "Reu",
+      "content": "totally! best of both worlds",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "hey! yeah exactly, why waste free money right?",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "thanks! will keep you posted on how it goes",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "the broke life philosophy",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "hey! what's up",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "yeah definitely! let me know how it goes",
+      "timestamp": "2025-09-26T23:28:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "thanks! gonna start sketching some concepts this weekend",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "exactly! modern polish with that classic feel",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "hey! not much, just chilling. you?",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "hopefully! could really help with the project",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "haha yeah for sure, easy money when you can get it",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "lmao exactly, gotta embrace it",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "yeah should be cool to see how it turns out!",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do, thanks man!",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "lol yeah definitely one of those days",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "yeah definitely! always good to have a side project going",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do, cheers!",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "np! anytime",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "exactly! should be a fun project to mess around with",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good!",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good! excited to hear how it turns out",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly! might as well take advantage while we can",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "yeah that's the sweet spot right there!",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "haha yeah broke student perks! everything's free when you have no money anyway",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly! free money is the best money",
+      "timestamp": "2025-09-26T23:29:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "nice! fingers crossed it works out for you",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "haha for sure, no point fighting it",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "cheers!",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "totally! might as well take advantage when it's there",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good! excited to hear how it turns out",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "exactly! gotta embrace it while it lasts",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "not much! just chilling, you?",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "no worries mate! good luck with it",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly! gotta take advantage of every opportunity when you're broke lol",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "totally! might as well cash in while the idea's hot",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "appreciate it man!",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "totally! that's the sweet spot right there",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "definitely! hopefully can get something working soon",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "yeah totally! excited to see what you come up with",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "fingers crossed! sounds like it'll make a big difference",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "not much either, just working on some coding stuff. pretty chill day",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "yeah totally! thinking it could adapt based on player actions too",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "not much, just chilling! you?",
+      "timestamp": "2025-09-26T23:30:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly! just gotta roll with it and see what happens",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "no worries!",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "no problem! good luck with it",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "no worries! let me know how it goes",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "exactly! just gotta find that balance",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "totally! plus all the free software and resources these days make it way easier to start",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "for sure! catch you later\nhaha tell me about it, some days are just like that",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "thanks man! should be fun to finally dive into something creative again",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "definitely! could be a game changer if it works out",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "not much either, just working on some game stuff. pretty chill day",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "thanks dude, appreciate it!",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "same here, just working on some game stuff. pretty chill day",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "absolutely! make the most of it",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "for sure! gotta milk the student discounts while they last lol",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "for sure! keeps things interesting between classes",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "nice one! let me know how it goes",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "sounds good! catch you later",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "ugh tell me about it  what happened?",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha for real! making the most of it before real life kicks in",
+      "timestamp": "2025-09-26T23:31:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "cheers! catch you later man",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "catch you later man!",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "absolutely! fingers crossed it all comes together",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "cheers mate! will definitely keep you posted on how it goes",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "thanks mate! yeah hopefully something clicks soon",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "catch you later mate!",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "exactly! strike while the iron's hot and all that\nsounds like you've got a solid plan brewing",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "thanks man! fingers crossed it actually works this time lol",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "no worries! rooting for you",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "just one of those days where everything goes wrong lol, you know how it is",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "no worries! something will definitely click, just gotta keep at it",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "definitely! perfect way to stay motivated too",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "exactly! gotta strike while the iron's hot",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "catch you later!",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "exactly! gotta enjoy the freedom while it lasts haha",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha exactly! before we're stuck in the 9-5 grind",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "100%! timing is everything with these things",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "catch you later dude!",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "yeah totally, easier said than done though lol",
+      "timestamp": "2025-09-26T23:32:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "catch you later dude!",
+      "timestamp": "2025-09-26T23:33:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "cheers mate, catch you later!",
+      "timestamp": "2025-09-26T23:33:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "will do! hopefully have something to show soon",
+      "timestamp": "2025-09-26T23:33:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "nice! excited to see what you find out",
+      "timestamp": "2025-09-27T00:22:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "fingers crossed! let me know what they say",
+      "timestamp": "2025-09-27T00:22:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "haha so true, they'll take literally anything if it's free",
+      "timestamp": "2025-09-27T00:22:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "hi matthew",
+      "timestamp": "2025-09-27T01:58:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "BinBricks",
+      "timestamp": "2025-09-27T13:23:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "jldlfsjks",
+      "timestamp": "2025-09-27T13:23:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "You'll take anything if it's free, including a bin of bricks",
+      "timestamp": "2025-09-27T13:23:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "jldlfsjks",
+      "timestamp": "2025-09-27T13:25:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Literally anything!",
+      "timestamp": "2025-09-27T13:25:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "BinBricks",
+      "timestamp": "2025-09-27T13:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "fingers crossed! let me know what they say",
+      "timestamp": "2025-09-27T13:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "jldlfsjks",
+      "timestamp": "2025-09-27T13:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "Literally anything!",
+      "timestamp": "2025-09-27T13:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "You'll take anything if it's free, including a bin of bricks",
+      "timestamp": "2025-09-27T13:26:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "Matthew",
+      "timestamp": "2025-09-27T13:34:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "What about a bin of bricks?",
+      "timestamp": "2025-09-27T13:35:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "What about a bin of bricks?",
+      "timestamp": "2025-09-27T13:35:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "What about a bin of bricks?",
+      "timestamp": "2025-09-27T13:35:00",
+      "is_outgoing": true,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "What about a bin of bricks?",
+      "timestamp": "2025-09-27T13:35:00",
+      "is_outgoing": false,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Reu",
+      "content": "What about a bin of bricks?",
+      "timestamp": "2025-09-27T13:36:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "What about a bin of bricks?",
+      "timestamp": "2025-09-27T13:36:00",
+      "is_outgoing": false,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Reu",
+      "content": "What about a bin of bricks?",
+      "timestamp": "2025-09-27T13:36:00",
+      "is_outgoing": true,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "What about a bin of bricks?",
+      "timestamp": "2025-09-27T13:36:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "What about a bin of bricks?",
+      "timestamp": "2025-09-27T13:40:00",
+      "is_outgoing": true,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Reu",
+      "content": "No!",
+      "timestamp": "2025-09-27T13:40:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "What about a bin of bricks?",
+      "timestamp": "2025-09-27T13:40:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "No!",
+      "timestamp": "2025-09-27T13:40:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "No!",
+      "timestamp": "2025-09-27T13:40:00",
+      "is_outgoing": false,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Reu",
+      "content": "No!",
+      "timestamp": "2025-09-27T13:40:00",
+      "is_outgoing": true,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Reu",
+      "content": "I don't have access to information about your tennis schedule or when you'll be home. I'm an AI assistant and don't have access to your personal calendar or location information.\nIf you're trying to communicate with someone about when you'll be home from tennis, you might want to:\nSend a text message or call them directly\nCheck with whoever is expecting you\nLook at your own schedule or tennis booking\nIs there something else I can help you with instead?\nSend a text message or call them directly\nCheck with whoever is expecting you\nLook at your own schedule or tennis booking",
+      "timestamp": "2025-09-27T17:38:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "I don't have access to information about your tennis schedule or when you'll be home. I'm an AI assistant and don't have access to your personal calendar or location information.\nIf you're trying to communicate with someone about when you'll be home from tennis, you might want to:\nSend a text message or call them directly\nCheck with whoever is expecting you\nLook at your own schedule or tennis booking\nIs there something else I can help you with instead?\nSend a text message or call them directly\nCheck with whoever is expecting you\nLook at your own schedule or tennis booking",
+      "timestamp": "2025-09-27T17:38:00",
+      "is_outgoing": true,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Reu",
+      "content": "I don't actually play tennis or have a physical presence - I'm an AI assistant, so I'm always available to help you right here! \nIs there something specific you'd like assistance with? I'm ready to help whenever you need it.",
+      "timestamp": "2025-09-27T17:40:00",
+      "is_outgoing": true,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Reu",
+      "content": "I don't actually play tennis or have a physical presence - I'm an AI assistant, so I'm always available to help you right here! \nIs there something specific you'd like assistance with? I'm ready to help whenever you need it.",
+      "timestamp": "2025-09-27T17:40:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Curious to see how many views this will get!",
+      "timestamp": "2025-09-28T12:28:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Curious to see how many views this will get!",
+      "timestamp": "2025-09-28T12:28:00",
+      "is_outgoing": false,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "It's actually working to a reasonable extent",
+      "timestamp": "2025-09-28T21:19:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "It's actually working to a reasonable extent",
+      "timestamp": "2025-09-28T21:19:00",
+      "is_outgoing": false,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "So if I increase this we might be able to get it up a bit",
+      "timestamp": "2025-09-28T21:20:00",
+      "is_outgoing": false,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "So if I increase this we might be able to get it up a bit",
+      "timestamp": "2025-09-28T21:20:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "I got a google indexing update",
+      "timestamp": "2025-09-28T23:39:00",
+      "is_outgoing": true,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Reu",
+      "content": "This is good!",
+      "timestamp": "2025-09-28T23:39:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "I got a google indexing update",
+      "timestamp": "2025-09-28T23:39:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "This is good!",
+      "timestamp": "2025-09-28T23:39:00",
+      "is_outgoing": true,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Is it indexed?!?!?!?",
+      "timestamp": "2025-09-28T23:46:00",
+      "is_outgoing": false,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Is it indexed?!?!?!?",
+      "timestamp": "2025-09-28T23:46:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "Apparently it is now indexed",
+      "timestamp": "2025-09-28T23:48:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "I cannot get it to appear in google search",
+      "timestamp": "2025-09-28T23:48:00",
+      "is_outgoing": true,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Reu",
+      "content": "Apparently it is now indexed",
+      "timestamp": "2025-09-28T23:48:00",
+      "is_outgoing": true,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Reu",
+      "content": "I cannot get it to appear in google search",
+      "timestamp": "2025-09-28T23:48:00",
+      "is_outgoing": true,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Email signups?",
+      "timestamp": "2025-09-28T23:55:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "That’s very good! (At least if it appears in search)",
+      "timestamp": "2025-09-28T23:55:00",
+      "is_outgoing": false,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Email signups?",
+      "timestamp": "2025-09-28T23:55:00",
+      "is_outgoing": false,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Maybe Reddit advertising helped",
+      "timestamp": "2025-09-28T23:55:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "Maybe Reddit advertising helped",
+      "timestamp": "2025-09-28T23:55:00",
+      "is_outgoing": false,
+      "chat_name": "click here for contact info"
+    },
+    {
+      "sender": "Matthew Johnson (Maths Emma)",
+      "content": "That’s very good! (At least if it appears in search)",
+      "timestamp": "2025-09-28T23:55:00",
+      "is_outgoing": false,
+      "chat_name": "last seen today at 00:21"
+    }
+  ]
+}
