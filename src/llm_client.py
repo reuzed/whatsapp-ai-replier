@@ -6,6 +6,7 @@ import anthropic
 from loguru import logger
 from src.schemas import WhatsAppMessage
 from src.config import settings
+import asyncio
 
 class LLMClient(ABC):
     """Abstract base class for LLM clients."""
@@ -44,6 +45,22 @@ class AnthropicClient(LLMClient):
 
     def __init__(self):
         self.client = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
+        
+    async def complete_message(self, message: str, system=None) -> str:
+        """Complete a message using Anthropic's API."""
+        response = await self.client.messages.create(
+            model=settings.anthropic_model,
+            max_tokens=settings.max_tokens,
+            temperature=settings.temperature,
+            system=system or "You are a helpful WhatsApp assistant.",
+            messages=[{
+                "role": "user",
+                "content": message
+            }]
+        )
+        print(response.content[0].text)
+        return response.content[0].text
+
     async def generate_response(
         self, 
         messages: List[Dict[str, str]],
@@ -100,6 +117,10 @@ class LLMManager:
     def _create_client(self) -> LLMClient:
         """Create the Anthropic LLM client."""
         return AnthropicClient()
+    
+    def complete_message(self, message: str, system: Optional[str] = None) -> str:
+        """Complete a message using the LLM client."""
+        return self.client.complete_message(message, system)
     
     async def generate_response(
         self, 

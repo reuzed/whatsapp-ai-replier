@@ -278,6 +278,8 @@ class WhatsAppAutomation:
                 WebDriverWait(self.driver, 1.5).until(lambda d: (target_elem.text or '').strip() == '')
             except Exception:
                 pass
+            
+            time.sleep(0.5)
 
             logger.info(f"Message sent to {self._get_current_chat_name()}: {message[:50]}… (fast insert)")
             return True
@@ -515,7 +517,7 @@ class WhatsAppAutomation:
                 return False
         return False
 
-    def scroll_chat(self) -> bool:
+    def scroll_chat_list(self) -> bool:
         """Scroll the chat list container by one viewport. Returns True if scrolled."""
         container = self._find_chat_list_container()
         if not container:
@@ -523,6 +525,63 @@ class WhatsAppAutomation:
         
         return self._scroll_chat_list_once(container)
 
+    def _find_message_list_container(self):
+        """Find the message list (conversation) scroll container."""
+        candidates = [
+            'div[aria-label*="Message list"]',
+            'div[data-testid="conversation-panel-body"]',
+            'div[data-testid="conversation-panel-wrapper"]',
+        ]
+        for sel in candidates:
+            try:
+                elem = self.driver.find_element(By.CSS_SELECTOR, sel)
+                if elem and elem.is_displayed():
+                    return elem
+            except Exception:
+                continue
+        # Fallback: try to use a parent of any message bubble as the scroll container
+        try:
+            any_msg = self.driver.find_element(By.CSS_SELECTOR, 'div.message-in, div.message-out')
+            parent = any_msg
+            for _ in range(5):
+                parent = parent.find_element(By.XPATH, './..')
+                if parent and parent.is_displayed():
+                    try:
+                        scroll_height = self.driver.execute_script("return arguments[0].scrollHeight;", parent)
+                        client_height = self.driver.execute_script("return arguments[0].clientHeight;", parent)
+                        if scroll_height and client_height and scroll_height > client_height:
+                            return parent
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+        return None
+    
+    def scroll_chat(self, direction: str = 'up') -> bool:
+        """Focus message box then press Function Up or Down to scroll chat"""
+        # find message box and focus
+        message_box = self._find_message_list_container()
+        if message_box is None:
+            message_box = self.driver.find_element(By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="10"]')
+            if message_box is None:
+                print(f"No message box found")
+                return False
+        message_box.click()
+        time.sleep(0.1)
+        # lookup scroll position 
+        scroll_position = self.driver.execute_script("return arguments[0].scrollTop;", message_box)
+        # press function up/down
+        ActionChains(self.driver).send_keys(Keys.PAGE_UP if direction == 'up' else Keys.PAGE_).perform()
+        time.sleep(0.1)
+        # lookup scroll position
+        new_scroll_position = self.driver.execute_script("return arguments[0].scrollTop;", message_box)
+        scroll_amount = new_scroll_position - scroll_position
+        if scroll_amount == 0:
+            print(f"Chat did not scroll")
+            return False
+        print(f"Chat scrolled {scroll_amount} pixels")
+        return True
+    
     def get_visible_messages_simple(self, limit: int = 200) -> List[WhatsAppMessage]:
         """Simpler, robust collection of on-screen messages using message-in/out containers.
 

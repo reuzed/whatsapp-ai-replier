@@ -12,13 +12,13 @@ class Scraper:
         time.sleep(0.5)
         messages = set()
         
-        for i in range(10):
+        for i in range(20):
             new_messages = self.whatsapp_automation.get_visible_messages_simple(50)
             for new_message in new_messages:
                 if new_message not in messages:
                     messages.add(new_message)
             time.sleep(0.5)
-            self.whatsapp_automation.scroll_chat("down")
+            self.whatsapp_automation.scroll_chat()
             time.sleep(0.5)
             
         return messages
