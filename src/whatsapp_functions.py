@@ -94,7 +94,7 @@ async def live_reply(
     try:
         await automation.start()
 
-        if not automation.select_chat(chat_name, chat_type=chat_type):
+        if not automation.select_chat(chat_name):
             logger.error("Could not open chat – exiting live reply")
             return
 

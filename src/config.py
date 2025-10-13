@@ -29,4 +29,4 @@ class Settings(BaseSettings):
         return bool(self.anthropic_api_key)
 
 # Global settings instance
-settings = Settings() 
+settings = Settings()
