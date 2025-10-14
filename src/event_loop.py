@@ -13,7 +13,8 @@ from rich import print
 
 def event_loop(chat_name: str, chatter: Chatter):
     # messages already handled
-    seen_messages = set()
+    # seen_messages = set()
+    seen_message_contents = set()
     # messages to be sent
     chat_actions = []
     
@@ -26,9 +27,12 @@ def event_loop(chat_name: str, chatter: Chatter):
     # mark messages in chat as seen
     start_messages = automation.get_visible_messages_simple(10)
     for message in start_messages:
-        seen_messages.add(message)
+        # seen_messages.add(message)
+        seen_message_contents.add(message.content)
         
     print(f"Marked {len(start_messages)} messages as seen")
+    print("[yellow]Seen message contents:[/yellow]")
+    print(f"\n{seen_message_contents}\n")
     
     while True:
         time.sleep(5)
@@ -37,24 +41,31 @@ def event_loop(chat_name: str, chatter: Chatter):
         messages = automation.get_visible_messages_simple(5)
         for message in messages:
             if message.is_outgoing:
-                print(f"Skipping outgoing message from {message.sender}: {message.content}")
+                # print(f"Skipping outgoing message from {message.sender}: {message.content}")
                 continue
-            if message in seen_messages:
-                print(f"Skipping seen message from {message.sender}: {message.content}")
+            if message.content in seen_message_contents:
+                # print(f"Skipping seen message from {message.sender}: {message.content}")
                 continue
             
-            print(messages)
-            print(f"Found new message from {message.sender}: {message.content}")
+            # print(messages)
             
-            seen_messages.add(message)
+            print("[green]Found new message[/green]")
+            print(f"\nFrom {message.sender}: {message.content}\n")
+            
+            seen_message_contents.add(message.content)
             actions = chatter.on_receive_messages([message])
+            print("[blue]Chatter has decided on the following actions:[/blue]")
+            print(actions)
+            print("\n")
+                
             chat_actions.extend(actions)
         
         now = datetime.now()
         to_remove = []
         for action in chat_actions:
             if now > action.timestamp:
-                print(f"Sending message: {action.message.content}")
+                print(f"[red]Sending message:[/red]")
+                print(f"\n{action.message.content}\n")
                 automation.send_message(action.message.content)
                 to_remove.append(action)
         for action in to_remove:
