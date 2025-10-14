@@ -7,6 +7,26 @@ from loguru import logger
 from src.schemas import WhatsAppMessage
 from src.config import settings
 import asyncio
+from dataclasses import dataclass
+
+@dataclass
+class ErrorResponse:
+    error_message: str
+
+@dataclass
+class SkipResponse:
+    pass
+
+@dataclass
+class ReactResponse:
+    message_to_react: str
+    emoji_name: str
+
+@dataclass
+class MessageResponse:
+    text: str
+
+LLMResponse = SkipResponse | ReactResponse | MessageResponse | ErrorResponse
 
 class LLMClient(ABC):
     """Abstract base class for LLM clients."""
@@ -26,12 +46,21 @@ class LLMClient(ABC):
         pass
 
     @abstractmethod
+    async def generate_react_response(
+        self, 
+        messages: List[Dict[str, str]],
+        system_prompt: Optional[str] = None
+    ) -> LLMResponse:
+        """Generate a response with react and skip tool."""
+        pass
+
+    @abstractmethod
     async def generate_response(
         self, 
         messages: List[Dict[str, str]],
         system_prompt: Optional[str] = None
-    ) -> str:
-        """Generate a response from the LLM."""
+    ) -> LLMResponse:
+        """Generate a response with only skip tool."""
         pass
 
 class AnthropicClient(LLMClient):
@@ -94,8 +123,8 @@ class AnthropicClient(LLMClient):
         self, 
         messages: List[Dict[str, str]],
         system_prompt: Optional[str] = None
-    ) -> str:
-        """Generate a response using Anthropic's API."""
+    ) -> LLMResponse:
+        """Generate a response WITHOUT react tools."""
         try:
             # Convert messages to Anthropic format
             anthropic_messages = []
@@ -111,7 +140,7 @@ class AnthropicClient(LLMClient):
                 model=settings.anthropic_model,
                 max_tokens=settings.max_tokens,
                 temperature=settings.temperature,
-                system=system_prompt or "You are a helpful assistant.",
+                system=system_prompt,
                 messages=anthropic_messages,
                 tools=[self.skip_tool],
             )
@@ -119,20 +148,75 @@ class AnthropicClient(LLMClient):
             # Check if response has content
             if not response.content or len(response.content) == 0:
                 logger.error("Anthropic API returned empty content")
-                return ""
-            
+                return ErrorResponse(error_message="Anthropic API returned empty content")
+
             # Handle different content types
             for content_block in response.content:
                 if content_block.type == "text":
-                    return content_block.text.strip()
+                    return MessageResponse(message=content_block.text.strip())
                 elif content_block.type == "tool_use" and content_block.name == "skip":
                     logger.info("LLM chose to skip response")
-                    return ""  # Return empty string to indicate no response
-            
+                    return SkipResponse()
             # If we get here, no text or skip tool was found
             logger.warning("No valid content found in response")
-            return ""
+            return ErrorResponse(error_message="No valid content found in response")
+
+        except Exception as e:
+            logger.error(f"Anthropic API error: {e}")
+            raise
+
+    async def generate_react_response(
+        self, 
+        messages: List[Dict[str, str]],
+        system_prompt: Optional[str] = None
+    ) -> LLMResponse:
+        """Generate a response with reaction tool."""
+        try:
+            # Convert messages to Anthropic format
+            anthropic_messages = []
+            for msg in messages:
+                if msg["role"] in ["user", "assistant"]:
+                    anthropic_messages.append({
+                        "role": msg["role"],
+                        "content": msg["content"]
+                    })
             
+            # Use Messages API (recommended by Anthropic)
+            response = await self.client.messages.create(
+                model=settings.anthropic_model,
+                max_tokens=settings.max_tokens,
+                temperature=settings.temperature,
+                system=system_prompt,
+                messages=anthropic_messages,
+                tools=[self.react_tool, self.skip_tool],
+            )
+
+            # Check if response has content
+            if not response.content or len(response.content) == 0:
+                logger.error("Anthropic API returned empty content")
+                return ErrorResponse(error_message="Anthropic API returned empty content")
+
+            # Handle different content types
+            for content_block in response.content:
+                if content_block.type == "text":
+                    return MessageResponse(message=content_block.text.strip())
+                elif content_block.type == "tool_use" and content_block.name == "skip":
+                    logger.info("LLM chose to skip response")
+                    return SkipResponse()
+                elif content_block.type == "tool_use" and content_block.name == "react":
+                    inputs = content_block.arguments
+                    if "message_to_react" in inputs and "emoji_name" in inputs:
+                        return ReactResponse(
+                            message_to_react=inputs["message_to_react"],
+                            emoji_name=inputs["emoji_name"]
+                        )
+                    else:
+                        logger.error(f"React tool used but missing arguments, received: {inputs}")
+                        return ErrorResponse(error_message=f"React tool used but missing arguments, received: {inputs}")
+            # If we get here, no text or skip tool was found
+            logger.warning("No valid content found in response")
+            return ErrorResponse(error_message="No valid content found in response")
+
         except Exception as e:
             logger.error(f"Anthropic API error: {e}")
             raise

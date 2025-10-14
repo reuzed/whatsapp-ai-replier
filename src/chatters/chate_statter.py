@@ -2,6 +2,9 @@
 
 ## Functionality to read, manipulate and save state.
 import json
+from src.schemas import WhatsAppMessage, ChatState, ChatAction
+from src.llm_client import LLMManager, LLMResponse, MessageResponse, SkipResponse, ErrorResponse, ReactResponse
+from src.prompts import create_state_updater_prompts, create_replier_system_prompt
 import random
 from pathlib import Path
 import asyncio
@@ -26,7 +29,7 @@ class ChateStatter(Chatter):
         """Main API. Returns (reply, timestamp to send reply after)"""
         # check if chat has changed
         if new_chat_history == self.chat_history:
-            print("THIS SHOULD NOT HAPPEN because we already handle caching elsewehere and that")
+            print("THIS SHOULD NOT HAPPEN because we already handle caching elsewehere and that") # waa waa im reuben im 10x waa waa
             return []
         # update chat history.
         self.chat_history = new_chat_history
@@ -35,8 +38,9 @@ class ChateStatter(Chatter):
         if self.messages_since_state_update >= 10:
             asyncio.run(self._update_state())
             self.messages_since_state_update = 0
+
         # generate reply
-        reply = asyncio.run(self._reply())
+        reply = asyncio.run(self._reply(react_tool=True))
         whatsapp_reply = WhatsAppMessage(
                     sender=self.user_name,
                     content=reply,
@@ -49,7 +53,7 @@ class ChateStatter(Chatter):
 
         return [ChatAction(message=whatsapp_reply, timestamp=reply_timestamp)]
 
-    async def _reply(self) -> str:
+    async def _reply(self, react_tool=True) -> str:
         # llm call with chat history and state
         # make below import timestamp
         current_date = datetime.now().isoformat()
@@ -58,7 +62,10 @@ class ChateStatter(Chatter):
         for msg in self.chat_history:
             role = "user" if not msg.is_outgoing else "assistant"
             messages.append({"role": role, "content": f"{msg.content}"})
-        response = await self.llm_manager.generate_response(messages, system_prompt=system_prompt)
+        if react_tool:
+            response = await self.llm_manager.generate_react_response(messages, system_prompt=system_prompt)
+        else:
+            response = await self.llm_manager.generate_response(messages, system_prompt=system_prompt)
         return response
 
     def _generate_timestamp(self, fast=True) -> datetime:
@@ -109,6 +116,8 @@ class ChateStatter(Chatter):
         return new_state
 
     def _save_state(self, new_state: ChatState):
+        if not STATE_FILE.exists():
+            STATE_FILE.write_text("{}")
         with open(STATE_FILE, "r") as f:
             data = json.load(f)
         data[self.chat_name] = {
@@ -126,6 +135,31 @@ class ChateStatter(Chatter):
         with open(STATE_FILE, "w") as f:
             json.dump(data, f, indent=4)
         self.state = new_state
+    
+    def _transform_llm_response_to_action(self, llm_response: LLMResponse) -> ChatAction:
+        if isinstance(llm_response, MessageResponse):
+            whatsapp_reply = WhatsAppMessage(
+                sender=self.user_name,
+                content=llm_response.message,
+                timestamp=datetime.now(),
+                is_outgoing=True,
+                chat_name=self.chat_name,
+            )
+            reply_timestamp = self._generate_timestamp(self)
+            return ChatAction(message=whatsapp_reply, timestamp=reply_timestamp)
+        elif isinstance(llm_response, ReactResponse):
+            # find whatsapp message in history
+            filter(lambda msg: msg. == llm_response.timestamp, self.chat_history)
+        elif isinstance(llm_response, SkipResponse):
+            return None
+        elif isinstance(llm_response, ErrorResponse):
+            print(f"Error from LLM: {llm_response.error_message}")
+            return None
+        else:
+            print(f"Unknown LLM response type: {llm_response}")
+            return None
+
+    
 
 if __name__ == "__main__":
     chat = Chat("Reuben")
