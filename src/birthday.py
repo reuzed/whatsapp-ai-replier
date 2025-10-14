@@ -37,4 +37,4 @@ def send_birthday_message(chat_name: str, friend_name: str | None = None, check:
         automation.send_message(response)
 
 if __name__ == "__main__":
-    send_birthday_message("Reu")
+    send_birthday_message("Frautomator")
