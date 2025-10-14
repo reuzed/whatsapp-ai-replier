@@ -1,4 +1,3 @@
-from src.chat import Chat
 from src.schemas import Chatter, ChatAction, WhatsAppMessage
 import asyncio
 from datetime import datetime
@@ -7,6 +6,7 @@ from src.whatsapp_automation import WhatsAppAutomation
 # Import chatters
 from src.chatters.trivial_chatter import TrivialChatter, DelayedTrivialChatter
 from src.chatters.simple_ai_chatter import SimpleAIChatter
+from src.chatters.chate_statter import ChateStatter
 
 import time
 from rich import print
@@ -84,5 +84,5 @@ if __name__ == "__main__":
     load_dotenv()
     friend_name = os.getenv("FRIEND_NAME", "Reuben")
     user_name = os.getenv("USER_NAME", "Ben")
-    chatter = Chat(user_name, friend_name)
+    chatter = ChateStatter(user_name, friend_name)
     event_loop(friend_name, chatter)

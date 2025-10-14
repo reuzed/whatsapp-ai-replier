@@ -14,7 +14,7 @@ import asyncio
 MODULE_DIR = Path(__file__).parent.parent
 STATE_FILE = MODULE_DIR / "state.json"
 
-class Chat:
+class ChateStatter(Chatter):
     def __init__(self, user_name:str, chat_name: str):
         self.user_name = user_name
         self.chat_name = chat_name ######## currently assumed chat name == friend name - need to change for group chats
