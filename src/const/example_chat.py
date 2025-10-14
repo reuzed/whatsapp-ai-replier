@@ -20,8 +20,7 @@ sample_messages = [
 ]
 
 if __name__ == "__main__":
-    import asyncio
     chat = Chat("Alice", "Bob")
     chat._reset_state()  # Reset state before testing
-    action = asyncio.run(chat.on_receive_messages(sample_messages))
+    action = chat.on_receive_messages(sample_messages)[0] # this now returns a list of ChatAction, so take first
     print(f"Response: {action.message}, Send after: {action.timestamp}")
