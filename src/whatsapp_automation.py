@@ -18,6 +18,7 @@ import subprocess
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.remote.webelement import WebElement
 from pydantic import BaseModel
+import pyperclip
 
 from src.schemas import WhatsAppMessage, ChatListEntry
 
@@ -190,7 +191,13 @@ class WhatsAppAutomation:
 
         message_box.clear()  # can fail for contenteditable on some Chrome versions
         time.sleep(0.1)
-        message_box.send_keys(message)
+        try:
+            message_box.send_keys(message)
+        except Exception:
+            message_box.clear()
+            # Fallback send with copy and paste
+            pyperclip.copy(message)
+            message_box.send_keys(CONTROL_KEY, 'v')
         message_box.send_keys(Keys.RETURN)
         time.sleep(0.5)
         return True
