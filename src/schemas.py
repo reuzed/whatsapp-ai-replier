@@ -34,4 +34,3 @@ class Chatter(ABC):
     @abstractmethod
     def on_receive_messages(self, messages: List[WhatsAppMessage]) -> List[ChatAction]:
         pass
-    
