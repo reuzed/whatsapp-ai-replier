@@ -1,15 +1,14 @@
 ## API to manage chat state
 
 ## Functionality to read, manipulate and save state.
-
-from datetime import datetime, timedelta
 import json
-from src.schemas import WhatsAppMessage, ChatState, ChatAction
-from src.llm_client import LLMManager
-from src.prompts import create_state_updater_prompts, create_replier_system_prompt
 import random
 from pathlib import Path
 import asyncio
+from datetime import datetime, timedelta
+from src.schemas import WhatsAppMessage, ChatState, ChatAction, Chatter
+from src.llm_client import LLMManager
+from src.prompts import create_state_updater_prompts, create_replier_system_prompt
 
 MODULE_DIR = Path(__file__).parent.parent
 STATE_FILE = MODULE_DIR / "state.json"
