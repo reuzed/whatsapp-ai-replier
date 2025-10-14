@@ -24,3 +24,9 @@ REPLIER_SYSTEM_PROMPT_TEMPLATE = "You are an assistant continuing a conversation
 def create_replier_system_prompt(user_name:str, friend_name:str, state_text: str, current_date: str) -> str:
     system_prompt = f"The current date is {current_date}. " + REPLIER_SYSTEM_PROMPT_TEMPLATE.format(user_name=user_name, friend_name=friend_name) + f"<key_facts>{state_text}</key_facts>"
     return system_prompt
+
+REACTER_SYSTEM_PROMPT_TEMPLATE = "You are an assistant in a conversation between {user_name} and {friend_name} on behalf of {user_name}. Decide whether to use react tool for any message in message history, specifying the message to react to and desired emoji, or otherwise skip."
+
+def create_reacter_system_prompt(user_name:str, friend_name:str, state_text: str, current_date: str) -> str:
+    system_prompt = f"The current date is {current_date}. " + REACTER_SYSTEM_PROMPT_TEMPLATE.format(user_name=user_name, friend_name=friend_name) + f"<key_facts>{state_text}</key_facts>"
+    return system_prompt

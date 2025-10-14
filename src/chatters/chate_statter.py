@@ -2,16 +2,13 @@
 
 ## Functionality to read, manipulate and save state.
 import json
-from src.schemas import WhatsAppMessage, ChatState, ChatAction
+from src.schemas import ReactAction, WhatsAppMessage, ChatState, ChatAction, Chatter, Action
 from src.llm_client import LLMManager, LLMResponse, MessageResponse, SkipResponse, ErrorResponse, ReactResponse
-from src.prompts import create_state_updater_prompts, create_replier_system_prompt
+from src.prompts import create_state_updater_prompts, create_replier_system_prompt, create_reacter_system_prompt
 import random
 from pathlib import Path
 import asyncio
 from datetime import datetime, timedelta
-from src.schemas import WhatsAppMessage, ChatState, ChatAction, Chatter
-from src.llm_client import LLMManager
-from src.prompts import create_state_updater_prompts, create_replier_system_prompt
 
 MODULE_DIR = Path(__file__).parent.parent
 STATE_FILE = MODULE_DIR / "state.json"
@@ -25,7 +22,7 @@ class ChateStatter(Chatter):
         self.messages_since_state_update: int = 1000 # force initial state update
         self.llm_manager = LLMManager()
 
-    def on_receive_messages(self, new_chat_history: list[WhatsAppMessage]) -> list[ChatAction]:
+    def on_receive_messages(self, new_chat_history: list[WhatsAppMessage]) -> list[Action]:
         """Main API. Returns (reply, timestamp to send reply after)"""
         # check if chat has changed
         if new_chat_history == self.chat_history:
@@ -40,33 +37,47 @@ class ChateStatter(Chatter):
             self.messages_since_state_update = 0
 
         # generate reply
-        reply = asyncio.run(self._reply(react_tool=True))
-        whatsapp_reply = WhatsAppMessage(
-                    sender=self.user_name,
-                    content=reply,
-                    timestamp=datetime.now(),
-                    is_outgoing=True,
-                    chat_name=self.chat_name,
-                )
-        # generate reply time
-        reply_timestamp = self._generate_timestamp(self)
+        replies: list[Action] = asyncio.run(self._generate_actions())
 
-        return [ChatAction(message=whatsapp_reply, timestamp=reply_timestamp)]
+        return replies
 
-    async def _reply(self, react_tool=True) -> str:
+    async def _generate_actions(self) -> list[Action]:
         # llm call with chat history and state
         # make below import timestamp
+        actions = []
         current_date = datetime.now().isoformat()
-        system_prompt = create_replier_system_prompt(self.user_name, self.chat_name, self.state.text, current_date)
         messages = []
         for msg in self.chat_history:
             role = "user" if not msg.is_outgoing else "assistant"
             messages.append({"role": role, "content": f"{msg.content}"})
-        if react_tool:
-            response = await self.llm_manager.generate_react_response(messages, system_prompt=system_prompt)
-        else:
-            response = await self.llm_manager.generate_response(messages, system_prompt=system_prompt)
-        return response
+
+        react_system_prompt = create_reacter_system_prompt(self.user_name, self.chat_name, self.state.text, current_date)
+        replier_system_prompt = create_replier_system_prompt(self.user_name, self.chat_name, self.state.text, current_date)
+
+        # Run both LLM calls concurrently (Promise.all equivalent)
+        react_task = asyncio.create_task(self.llm_manager.generate_react_response(messages, system_prompt=react_system_prompt))
+        reply_task = asyncio.create_task(self.llm_manager.generate_response(messages, system_prompt=replier_system_prompt))
+        react_response, message_response = await asyncio.gather(react_task, reply_task)
+
+        # Transform react tool response to action (if applicable)
+        action = self._transform_llm_response_to_action(react_response)
+        if isinstance(action, ReactAction):
+            actions.append(action)
+
+        # if no message response then by default thumb last message
+        if isinstance(message_response, SkipResponse):
+            thumb_last_message_action = ReactAction(
+                message=self.chat_history[-1],
+                timestamp=self._generate_timestamp(fast=True)
+            )
+            actions.append(thumb_last_message_action)
+
+        # Transform message response to action (if applicable)
+        action = self._transform_llm_response_to_action(message_response)
+        if isinstance(action, ChatAction):
+            actions.append(action)
+
+        return actions
 
     def _generate_timestamp(self, fast=True) -> datetime:
         # random between 30 and 90 seconds
@@ -136,7 +147,7 @@ class ChateStatter(Chatter):
             json.dump(data, f, indent=4)
         self.state = new_state
     
-    def _transform_llm_response_to_action(self, llm_response: LLMResponse) -> ChatAction:
+    def _transform_llm_response_to_action(self, llm_response: LLMResponse) -> Action:
         if isinstance(llm_response, MessageResponse):
             whatsapp_reply = WhatsAppMessage(
                 sender=self.user_name,
@@ -149,7 +160,12 @@ class ChateStatter(Chatter):
             return ChatAction(message=whatsapp_reply, timestamp=reply_timestamp)
         elif isinstance(llm_response, ReactResponse):
             # find whatsapp message in history
-            filter(lambda msg: msg.content == llm_response.message_to_react, self.chat_history)
+            message = next(filter(lambda msg: msg.content.lower().strip() in llm_response.message_to_react.lower(), self.chat_history), None)
+            if message is None:
+                print(f"Could not find message to react to: {llm_response.message_to_react}")
+                return None
+            react_timestamp = self._generate_timestamp(self, fast=True)
+            return ReactAction(message_to_react=message, emoji_name=llm_response.emoji_name, timestamp=react_timestamp)
         elif isinstance(llm_response, SkipResponse):
             return None
         elif isinstance(llm_response, ErrorResponse):

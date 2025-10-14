@@ -94,7 +94,7 @@ class AnthropicClient(LLMClient):
                     },
                     "emoji_name": {
                         "type": "string",
-                        "description": "The name of the emoji to react with, e.g. 'thumbs_up', 'smile', 'heart'."
+                        "description": "The name of the emoji to react with, e.g. 'thumbs up', 'smile', 'heart'."
                     }
                 },
                 "required": ["message_to_react", "emoji_name"]
@@ -199,7 +199,7 @@ class AnthropicClient(LLMClient):
             # Handle different content types
             for content_block in response.content:
                 if content_block.type == "text":
-                    return MessageResponse(message=content_block.text.strip())
+                    return ErrorResponse(error_message=f"Text response not supported when react tool is enabled, message: {content_block.text.strip()}")
                 elif content_block.type == "tool_use" and content_block.name == "skip":
                     logger.info("LLM chose to skip response")
                     return SkipResponse()
@@ -239,10 +239,18 @@ class LLMManager:
         self, 
         messages: List[Dict[str, str]], 
         system_prompt: Optional[str] = None
-    ) -> str:
+    ) -> LLMResponse:
         """Generate a response using the LLM client."""
         return await self.client.generate_response(messages, system_prompt)
     
+    async def generate_react_response(
+        self, 
+        messages: List[Dict[str, str]], 
+        system_prompt: Optional[str] = None
+    ) -> ReactResponse | ErrorResponse | SkipResponse:
+        """Generate a react response using the LLM client."""
+        return await self.client.generate_react_response(messages, system_prompt)
+
     async def generate_whatsapp_response(
         self, 
         incoming_message: str,
