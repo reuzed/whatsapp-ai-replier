@@ -7,5 +7,5 @@ class SimpleAIChatter:
         self.llm_manager = LLMManager()
 
     def on_receive_messages(self, messages: list[WhatsAppMessage]) -> ChatAction:
-        response = self.llm_manager.generate_whatsapp_response(messages)
+        response = self.llm_manager.generate_whatsapp_chatter_response(messages)
         return ChatAction(message=response, timestamp=datetime.now())

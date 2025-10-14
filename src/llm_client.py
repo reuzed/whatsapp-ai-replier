@@ -154,8 +154,8 @@ class LLMManager:
         
         return await self.client.generate_response(messages, system_prompt)
     
-    async def generate_whatsapp_response(
-        self, 
+    async def generate_whatsapp_chatter_response(
+        self,
         messages: list[WhatsAppMessage],
     ) -> str:
         """Generate a response using the LLM client."""

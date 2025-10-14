@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-import datetime
+from datetime import datetime
+from typing import Optional
 
 @dataclass
 class WhatsAppMessage:
@@ -15,7 +16,7 @@ class WhatsAppMessage:
 @dataclass
 class ChatState:
     text: str
-    last_message: WhatsAppMessage
+    last_message: Optional[WhatsAppMessage]
     
 @dataclass
 class ChatListEntry:

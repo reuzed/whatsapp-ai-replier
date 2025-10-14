@@ -1,4 +1,5 @@
 from src.whatsapp_automation import WhatsAppAutomation
+from src.llm_client import LLMManager
 from loguru import logger
 import asyncio
 
@@ -20,6 +21,7 @@ async def reply_to_contact(
     each one (up to *replies_limit* if provided).
     """
     automation = WhatsAppAutomation()
+    llm_manager = LLMManager()
     sent = 0
     try:
         await automation.start()
@@ -62,7 +64,7 @@ async def reply_to_contact(
                 else:
                     history.append({"role": "user", "content": f"{e.sender}: {e.content}"})
 
-            response = await automation.llm_manager.generate_whatsapp_response(
+            response = await llm_manager.generate_whatsapp_response(
                 msg.content, msg.sender, history
             )
 
@@ -90,6 +92,7 @@ async def live_reply(
     Stops on Ctrl-C.
     """
     automation = WhatsAppAutomation()
+    llm_manager = LLMManager()
     processed: set[str] = set()
     try:
         await automation.start()
@@ -130,7 +133,7 @@ async def live_reply(
                     else:
                         history.append({"role": "user", "content": f"{e.sender}: {e.content}"})
 
-                response = await automation.llm_manager.generate_whatsapp_response(
+                response = await llm_manager.generate_whatsapp_response(
                     m.content, m.sender, history
                 )
                 if automation.send_message(response):
