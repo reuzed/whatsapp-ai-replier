@@ -17,11 +17,13 @@ def prompt_to_message(chat_name: str,  prompt: str) -> str:
                 ),
     ))
 
-
-    input("is this ok? " + response)
-    automation.send_message(response)
-    time.sleep(1)
-    return response
+    if input("Is this message ok? " + response + "Press y to send, n to deny") == "y":
+        automation.send_message(response)
+        time.sleep(1)
+        return response
+    else:
+        print("Message denied")
+        return None
 
 if __name__ == "__main__":
     chat_name = input("Choose chat: ")
