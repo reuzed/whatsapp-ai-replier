@@ -1,4 +1,4 @@
-from src.schemas import Chatter, ChatAction, WhatsAppMessage
+from src.schemas import Chatter, ChatAction, WhatsAppMessage, ReactAction
 import asyncio
 from datetime import datetime
 from src.whatsapp_automation import WhatsAppAutomation
@@ -7,6 +7,7 @@ from src.whatsapp_automation import WhatsAppAutomation
 from src.chatters.trivial_chatter import TrivialChatter, DelayedTrivialChatter
 from src.chatters.simple_ai_chatter import SimpleAIChatter
 from src.chatters.chate_statter import ChateStatter
+from src.chatters.react_chatter import ReactChatter
 
 import time
 from rich import print
@@ -77,12 +78,29 @@ def event_loop(chat_name: str, chatter: Chatter):
                     print(f"[red]Unknown action type:[/red] {action}")
         for action in to_remove:
             chat_actions.remove(action)
-
+    
 if __name__ == "__main__":
     from dotenv import load_dotenv
     import os
-    load_dotenv()
-    friend_name = os.getenv("FRIEND_NAME", "Reuben")
-    user_name = os.getenv("USER_NAME", "Ben")
-    chatter = ChateStatter(user_name, friend_name)
-    event_loop(friend_name, chatter)
+    
+    if input("Manually control chatter? (return for env variables)"):
+        load_dotenv()
+        friend_name = os.getenv("FRIEND_NAME", "Reuben")
+        user_name = os.getenv("USER_NAME", "Ben")
+        chatter = ChateStatter(user_name, friend_name)
+        event_loop(friend_name, chatter)
+    else:
+        friend_name = input("Name of friend to chat to")
+        user_name = os.getenv("USER_NAME", "Ben")
+        chatter_name = input("Name of chatter to use (t, dt, sai, cs, rc)")
+        if chatter_name == "t":
+            chatter = TrivialChatter()
+        elif chatter_name == "dt":
+            chatter = DelayedTrivialChatter()
+        elif chatter_name == "sai":
+            chatter = SimpleAIChatter()
+        elif chatter_name == "cs":
+            chatter = ChateStatter(user_name, friend_name)
+        elif chatter_name == "rc":
+            chatter = ReactChatter(user_name, friend_name)
+        event_loop(friend_name, chatter)
