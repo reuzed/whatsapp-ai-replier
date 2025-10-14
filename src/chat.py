@@ -69,6 +69,8 @@ class Chat:
         return future_time
 
     def _load_state(self) -> ChatState:
+        if not STATE_FILE.exists():
+            STATE_FILE.write_text("{}")
         with open(STATE_FILE, "r") as f:
             data = json.load(f)
             if (state_data:=data.get(self.chat_name)) and (last_message_data:=state_data.get("last_message")):
@@ -120,6 +122,8 @@ class Chat:
                 "chat_name": new_state.last_message.chat_name,
             } if new_state.last_message else None
         }
+        if not STATE_FILE.exists():
+            STATE_FILE.write_text("{}")
         with open(STATE_FILE, "w") as f:
             json.dump(data, f, indent=4)
         self.state = new_state
