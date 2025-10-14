@@ -149,7 +149,7 @@ class ChateStatter(Chatter):
             return ChatAction(message=whatsapp_reply, timestamp=reply_timestamp)
         elif isinstance(llm_response, ReactResponse):
             # find whatsapp message in history
-            filter(lambda msg: msg. == llm_response.timestamp, self.chat_history)
+            filter(lambda msg: msg.content == llm_response.message_to_react, self.chat_history)
         elif isinstance(llm_response, SkipResponse):
             return None
         elif isinstance(llm_response, ErrorResponse):
