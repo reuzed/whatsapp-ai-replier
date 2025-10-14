@@ -3,6 +3,7 @@
 
 # state
 src/state.json
+state.json
 
 # Python
 __pycache__/

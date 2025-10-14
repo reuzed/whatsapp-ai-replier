@@ -11,7 +11,7 @@ import random
 from pathlib import Path
 import asyncio
 
-MODULE_DIR = Path(__file__).parent
+MODULE_DIR = Path(__file__).parent.parent
 STATE_FILE = MODULE_DIR / "state.json"
 
 class Chat:

@@ -11,7 +11,7 @@ if __name__ == "__main__":
     asyncio.run(whatsapp_automation.start())
     
     time.sleep(1)
-    chat_name = "Reuben"
+    chat_name = "Reu"
     whatsapp_automation.select_chat(chat_name)
     time.sleep(1)
     

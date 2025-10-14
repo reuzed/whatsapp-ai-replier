@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     anthropic_api_key: str = Field(default="", description="Anthropic API key")
     # WhatsApp Configuration
     chrome_profile_path: str = Field(default="", description="Path to Chrome profile directory")
-    signup_my_name: str = Field(default="", description="Display name used when auto-signing up")
+    user_name: str = Field(default="", description="Display name used when auto-signing up")
     # LLM Configuration
     anthropic_model: str = Field(default="claude-sonnet-4-20250514")
     max_tokens: int = Field(default=1000)

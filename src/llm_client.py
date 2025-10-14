@@ -138,7 +138,7 @@ class LLMManager:
     ) -> str:
         """Generate a WhatsApp response based on incoming message and context."""
         
-        system_prompt = f"""You are {settings.signup_my_name}, replying on WhatsApp.
+        system_prompt = f"""You are {settings.user_name}, replying on WhatsApp.
         - Use the conversation history for context.
         - Each line includes the speaker for information, but only output the message.
         - Reply to the MOST RECENT user's message specifically.
@@ -159,7 +159,7 @@ class LLMManager:
         messages: list[WhatsAppMessage],
     ) -> str:
         """Generate a response using the LLM client."""
-        system_prompt = f"""You are {settings.signup_my_name}, replying on WhatsApp.
+        system_prompt = f"""You are {settings.user_name}, replying on WhatsApp.
         - Use the conversation history for context.
         - Each line includes the speaker for information, but only output the message.
         - Reply to the MOST RECENT user's message specifically.
