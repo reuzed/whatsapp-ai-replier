@@ -64,10 +64,17 @@ def event_loop(chat_name: str, chatter: Chatter):
         to_remove = []
         for action in chat_actions:
             if now > action.timestamp:
-                print(f"[red]Sending message:[/red]")
-                print(f"\n{action.message.content}\n")
-                automation.send_message(action.message.content)
-                to_remove.append(action)
+                if isinstance(action, ChatAction):
+                    print(f"[red]Sending message:[/red]")
+                    print(f"\n{action.message.content}\n")
+                    automation.send_message(action.message.content)
+                    to_remove.append(action)
+                elif isinstance(action, ReactAction):
+                    print(f"[red]Reacting with[/red] {action.emoji_name} [red]to[/red] {action.message_to_react.content}")
+                    automation.react_to_message(action.message_to_react.content, action.emoji_name)
+                    to_remove.append(action)
+                else:
+                    print(f"[red]Unknown action type:[/red] {action}")
         for action in to_remove:
             chat_actions.remove(action)
 
