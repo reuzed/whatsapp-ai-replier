@@ -52,6 +52,7 @@ class ChatAction:
 class ReactAction:
     message_to_react: WhatsAppMessage
     emoji_name: str
+    timestamp: datetime
 
 Action = ChatAction | ReactAction
 
