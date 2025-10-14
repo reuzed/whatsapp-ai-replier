@@ -162,7 +162,7 @@ class ChateStatter(Chatter):
     
 
 if __name__ == "__main__":
-    chat = Chat("Reuben")
+    chat = ChateStatter("Reuben", "Reuben")
     new_msg = WhatsAppMessage(
         sender="Reuben",
         content="Hey, how are you? It's my birthday tomorrow :o",

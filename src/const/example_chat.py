@@ -1,5 +1,5 @@
 from src.schemas import WhatsAppMessage
-from src.chat import Chat
+from src.chatters.chate_statter import ChateStatter
 from datetime import datetime
 
 sample_messages = [
@@ -20,7 +20,7 @@ sample_messages = [
 ]
 
 if __name__ == "__main__":
-    chat = Chat("Alice", "Bob")
+    chat = ChateStatter("Alice", "Bob")
     chat._reset_state()  # Reset state before testing
     action = chat.on_receive_messages(sample_messages)[0] # this now returns a list of ChatAction, so take first
     print(f"Response: {action.message}, Send after: {action.timestamp}")
