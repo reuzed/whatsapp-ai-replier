@@ -27,6 +27,7 @@ class Chat:
         """Main API. Returns (reply, timestamp to send reply after)"""
         # check if chat has changed
         if new_chat_history == self.chat_history:
+            print("THIS SHOULD NOT HAPPEN because we already handle caching elsewehere and that")
             return []
         # update chat history.
         self.chat_history = new_chat_history
