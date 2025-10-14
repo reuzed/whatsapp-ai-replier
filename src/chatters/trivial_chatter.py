@@ -1,17 +1,18 @@
-from src.schemas import WhatsAppMessage, ChatAction
+from typing import List
+from src.schemas import WhatsAppMessage, ChatAction, Chatter
 
 from datetime import datetime, timedelta
 
-class TrivialChatter:
+class TrivialChatter(Chatter):
     def __init__(self):
         pass
 
-    def on_receive_messages(self, messages: list[WhatsAppMessage]) -> ChatAction:
-        return ChatAction(message=messages[0], timestamp=datetime.now())
+    def on_receive_messages(self, messages: List[WhatsAppMessage]) -> List[ChatAction]:
+        return [ChatAction(message=messages[0], timestamp=datetime.now())]
     
-class DelayedTrivialChatter:
+class DelayedTrivialChatter(Chatter):
     def __init__(self):
         pass
 
-    def on_receive_messages(self, messages: list[WhatsAppMessage]) -> ChatAction:
-        return ChatAction(message=messages[0], timestamp=datetime.now() + timedelta(seconds=10))
+    def on_receive_messages(self, messages: List[WhatsAppMessage]) -> List[ChatAction]:
+        return [ChatAction(message=messages[0], timestamp=datetime.now() + timedelta(seconds=10))]

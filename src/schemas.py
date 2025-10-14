@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
+from abc import ABC, abstractmethod
 
 @dataclass
 class WhatsAppMessage:
@@ -29,10 +30,8 @@ class ChatAction:
     message: WhatsAppMessage
     timestamp: datetime
 
-class Chatter:
-    def __init__(self, *args, **kwargs):
-        pass
-    
-    def on_receive_messages(self, messages: list[WhatsAppMessage]) -> ChatAction:
+class Chatter(ABC):
+    @abstractmethod
+    def on_receive_messages(self, messages: List[WhatsAppMessage]) -> List[ChatAction]:
         pass
     
