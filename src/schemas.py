@@ -12,7 +12,25 @@ class WhatsAppMessage:
     is_outgoing: bool
     chat_name: str
     def __hash__(self):
-        return hash((self.sender, self.content, self.timestamp, self.is_outgoing, self.chat_name))
+        return hash((self.content, self.is_outgoing)) # this needs to be improved
+
+
+class MessageReaction:
+    reactor: str
+    reaction:str
+
+class ImageContent:
+    image_url: str
+
+class GeneralWhatsappMessage:
+    sender: str
+    content: str | ImageContent
+    timestamp: datetime
+    is_outgoing: bool
+    chat_name: str
+    reactions: list[MessageReaction]
+    
+
 
 @dataclass
 class ChatState:

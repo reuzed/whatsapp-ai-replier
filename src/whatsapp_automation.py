@@ -2,7 +2,7 @@
 import time
 import os
 import asyncio
-from typing import List, Optional
+from typing import List, Optional, Tuple
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -16,6 +16,8 @@ from loguru import logger
 import html
 import subprocess
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.remote.webelement import WebElement
+from pydantic import BaseModel
 
 from src.schemas import WhatsAppMessage, ChatListEntry
 
@@ -30,6 +32,11 @@ CONTROL_KEY = {
     "MAC": Keys.COMMAND,
     "LINUX": Keys.CONTROL,
 }[os_name]
+
+class ChatInfo(BaseModel):
+    chat_name: str
+    is_group: bool
+    extra_info: str
 
 class WhatsAppAutomation:
     """Simplified WhatsApp Web automation."""
@@ -83,212 +90,114 @@ class WhatsAppAutomation:
             logger.error(f"Failed to start: {e}")
             await self.stop()
             raise
+    
+    def focus_chat_list_search(self) -> Optional[WebElement]:
+        """Focus the chat list search."""
+        """The chat list search always has the following aria-label"""
+        """aria-label="Search input textbox"""
         
-    def select_chat(self, contact_name: str) -> bool:
-        """Select a chat by contact name."""
+        try:
+            search_box = self.driver.find_element(By.CSS_SELECTOR, 'div[aria-label="Search input textbox"]')
+        except Exception:
+            return None
         
-        # 1. Ensure the search input is visible & interactable
-        def _activate_search():
-            """Try clicking the sidebar search icon to reveal search box."""
-            try:
-                search_icon = self.driver.find_element(By.CSS_SELECTOR, 'button[data-testid="chat-list-search"]')
-                self.driver.execute_script("arguments[0].click();", search_icon)
-                time.sleep(0.5)
-                return 
-            except Exception:
-                pass
-            # fallback: try generic search svg/icon
-            try:
-                icon_generic = self.driver.find_element(By.CSS_SELECTOR, 'span[data-icon="search"]')
-                self.driver.execute_script("arguments[0].click();", icon_generic)
-                time.sleep(0.5)
-                return 
-            except Exception:
-                pass
+        time.sleep(0.5)
+        
+        if not (search_box.is_displayed() and search_box.is_enabled()):
+            logger.error("Failed to focus chat list search.")
+            return None
+        
+        search_box.click()
+        time.sleep(0.5)
+        return search_box
+    
+    def focus_message_box(self) -> Optional[WebElement]:
+        """Focus the message box."""
+        """The message box always has an aria-label of the form "Type to group <chat name>" or "Type to +44 78..."""
+        """<div aria-label="Type to group T-Climbing Climbs/Sessions" </div>"""
+        try:
+            message_box = self.driver.find_element(By.CSS_SELECTOR, 'div[aria-label^="Type to"]')
+        except Exception:
+            logger.error("Failed to focus message box.")
+            return None
+        
+        message_box.click()
+        time.sleep(0.1)
+        return message_box
             
+    def select_chat(self, search_term: str) -> Optional[ChatInfo]:
+        '''Select a chat by contact name.'''
+        search_box = self.focus_chat_list_search()
+        if not search_box:
             raise Exception("Failed to activate search.")
     
-        try:
-            search_box = self.driver.find_element(By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="3"]')
-            if not (search_box.is_displayed() and search_box.is_enabled()):
-                raise ElementNotInteractableException()
-        except (NoSuchElementException, ElementNotInteractableException):
-            _activate_search()
-            search_box = self.driver.find_element(By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="3"]')
+        search_box.click()
+        search_box.clear()
+        search_box.send_keys(CONTROL_KEY + "a", Keys.DELETE)
+        search_box.send_keys(search_term)
+        time.sleep(1)
+        
+        # Quick keyboard selection – press ENTER to open the first/highlighted result
+        search_box.send_keys(Keys.RETURN)
+        time.sleep(2)
 
-        try:
-            # Interact with search box
-            search_box.click()
-            search_box.clear()
-            search_box.send_keys(CONTROL_KEY + "a", Keys.DELETE)
-            search_box.send_keys(contact_name)
-            time.sleep(1)
-            
-            # Quick keyboard selection – press ENTER to open the first/highlighted result
-            search_box.send_keys(Keys.RETURN)
-            time.sleep(2)
-
-            # Verify again
-            if self._verify_chat_opened():
-                logger.info(f"Successfully opened chat via keyboard: {contact_name}")
-                return True
-            
-            return False
-
-        except Exception as e:
-            logger.error(f"Failed to select chat for '{contact_name}': {e}")
-            return False
+        # Verify again
+        chat_info = self.which_chat_is_open()
+        if chat_info:
+            logger.info(f"Successfully opened chat {chat_info.chat_name} via search for: {search_term}")
+            return chat_info
+        
+        return None
     
-    def _verify_chat_opened(self) -> bool:
-        """Verify a chat is open by reliably finding the message compose box."""
+    def which_chat_is_open(self) -> Optional[ChatInfo]:
+        """Get the name of the currently open chat."""
+        """The message box always has an aria-label of the form "Type to group <chat name>" or "Type to +44 78..."""
+        """For a person with a phone number, the title of the page is their contact name"""
+        """<div aria-label="Type to group T-Climbing Climbs/Sessions" </div>"""
+        
+        # Find aria label starting "Type to"... and extract the chat name
         try:
-            # Wait up to 5 seconds for the compose box to appear
-            wait = WebDriverWait(self.driver, 5)
-            compose_box = wait.until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="10"]'))
-            )
-            # Ensure it's visible and at the bottom of the screen
-            if compose_box and compose_box.is_displayed() and compose_box.location['y'] > 400:
-                return True
-        except TimeoutException:
-            logger.debug("Verification failed: Could not find message compose box.")
-            return False
-        return False
+            aria_label = self.driver.find_element(By.CSS_SELECTOR, 'div[aria-label^="Type to"]').get_attribute('aria-label')
+        except:
+            logger.info("Did not finnd an open chat.")
+            return None
+        
+        if 'Type to group ' in aria_label:
+            is_group = True
+            chat_name = aria_label.split('Type to group ')[1]
+        else:
+            is_group = False
+            chat_name = aria_label.split('Type to ')[1]
+        
+        try:
+            title_elem = self.driver.find_element(By.CSS_SELECTOR, 'header span[title]')
+            extra_info = title_elem.get_attribute('title') or title_elem.text
+        except:
+            logger.error("Failed to get extra info from title element.")
+            extra_info = "?"
+        
+        return ChatInfo(chat_name=chat_name, is_group=is_group, extra_info=extra_info)
+        
     
     def send_message(self, message: str) -> bool:
         """Send a message to current chat using the compose box and Enter key."""
-        try:
-            time.sleep(1)  # small pause for chat to stabilise
 
-            input_selectors = [
-                'div[data-testid="conversation-compose-box-input"]',
-                'div[contenteditable="true"][data-tab="10"]',
-            ]
+        message_box = self.focus_message_box()
 
-            message_box = None
-            for selector in input_selectors:
-                try:
-                    elems = self.driver.find_elements(By.CSS_SELECTOR, selector)
-                    for e in elems:
-                        if e.is_displayed() and e.is_enabled() and e.location["y"] > 200:
-                            message_box = e
-                            logger.info(f"Found message input using {selector}")
-                            break
-                    if message_box:
-                        break
-                except Exception:
-                    continue
-
-            if not message_box:
-                logger.error("Could not locate message input box")
-                return False
-
-            # Focus and send the text followed by Enter
-            message_box.click()
-            try:
-                message_box.clear()  # can fail for contenteditable on some Chrome versions
-            except Exception:
-                pass
-
-            target_elem = message_box  # ensure we write into the observed compose box
-
-            # Try fast human-like paste first (works best in non-headless)
-            inserted = False
-            try:
-                try:
-                    self.driver.execute_cdp_cmd('Browser.grantPermissions', {
-                        'origin': 'https://web.whatsapp.com',
-                        'permissions': ['clipboardReadWrite', 'clipboardSanitizedWrite'],
-                    })
-                except Exception:
-                    pass
-
-                # Write to clipboard via async script, then paste with Ctrl+V
-                try:
-                    res = self.driver.execute_async_script(
-                        """
-                        const txt = arguments[0];
-                        const cb = arguments[arguments.length-1];
-                        (async () => {
-                          try { await navigator.clipboard.writeText(txt); cb(true); }
-                          catch(e) { cb('ERR:' + (e && e.message ? e.message : 'unknown')); }
-                        })();
-                        """,
-                        message,
-                    )
-                except Exception as e:
-                    res = f"ERR:{e}"
-
-                if res is True:
-                    ActionChains(self.driver).key_down(CONTROL_KEY, target_elem).send_keys('a').key_up(CONTROL_KEY).perform()
-                    ActionChains(self.driver).send_keys(Keys.DELETE).perform()
-                    ActionChains(self.driver).key_down(CONTROL_KEY, target_elem).send_keys('v').key_up(CONTROL_KEY).perform()
-                    try:
-                        WebDriverWait(self.driver, 0.6).until(
-                            lambda d: (target_elem.get_attribute('innerText') or '').strip() != ''
-                        )
-                        inserted = True
-                    except Exception:
-                        inserted = False
-                else:
-                    # Fallback: OS clipboard via xclip if available
-                    try:
-                        subprocess.run(['xclip', '-selection', 'clipboard'], input=message.encode('utf-8'), check=True)
-                        ActionChains(self.driver).key_down(Keys.CONTROL, target_elem).send_keys('a').key_up(Keys.CONTROL).perform()
-                        ActionChains(self.driver).send_keys(Keys.DELETE).perform()
-                        ActionChains(self.driver).key_down(Keys.CONTROL, target_elem).send_keys('v').key_up(Keys.CONTROL).perform()
-                        try:
-                            WebDriverWait(self.driver, 0.6).until(
-                                lambda d: (target_elem.get_attribute('innerText') or '').strip() != ''
-                            )
-                            inserted = True
-                        except Exception:
-                            inserted = False
-                    except Exception:
-                        inserted = False
-            except Exception:
-                inserted = False
-
-            # If paste did not land, abort without attempting other insertion methods
-            if not inserted:
-                logger.error("Paste failed; aborting send to avoid slow fallbacks")
-                return False
- 
-            # Content is present after paste (verified above), proceed to send
-
-            # Send by clicking the send button (faster and more reliable than Enter)
-            sent = False
-            for sel in [
-                'span[data-testid="send"]',
-                'button[data-testid="compose-btn-send"]',
-            ]:
-                try:
-                    send_btn = self.driver.find_element(By.CSS_SELECTOR, sel)
-                    if send_btn and send_btn.is_displayed():
-                        self.driver.execute_script("arguments[0].click();", send_btn)
-                        sent = True
-                        break
-                except Exception:
-                    continue
-            if not sent:
-                target_elem.send_keys(Keys.RETURN)
-
-            # Briefly wait for compose to clear instead of a fixed sleep
-            try:
-                WebDriverWait(self.driver, 1.5).until(lambda d: (target_elem.text or '').strip() == '')
-            except Exception:
-                pass
-            
-            time.sleep(0.5)
-
-            logger.info(f"Message sent to {self._get_current_chat_name()}: {message[:50]}… (fast insert)")
-            return True
-        except Exception as e:
-            logger.error(f"Failed to send message: {e}")
+        if not message_box:
+            logger.error("Could not locate message input box to send message.")
             return False
-    
+
+        message_box.clear()  # can fail for contenteditable on some Chrome versions
+        time.sleep(0.1)
+        message_box.send_keys(message)
+        message_box.send_keys(Keys.RETURN)
+        time.sleep(0.5)
+        return True
+
     def get_recent_messages(self, limit: int = 10) -> List[WhatsAppMessage]:
         """Get recent messages from current chat."""
+        # This is to be deprecated in favour of the more general get_visible_messages_simple
         try:
             # Try multiple selectors for message containers
             message_selectors = [
@@ -588,6 +497,10 @@ class WhatsAppAutomation:
         - Select containers with classes containing 'message-in' or 'message-out'.
         - Read `data-pre-plain-text` from an element within each container to parse timestamp and sender.
         - Extract textual content from `span.selectable-text` descendants.
+        
+        - Reactions have an aria label like: "aria-label="reaction 👍. View reactions"" or "aria-label="Reactions 😂, 👍 2 in total. View reactions""
+        
+        - Images have a div with "aria-label="Open picture"" and a child like <img src="blob:https://web.whatsapp.com/4539aace-4b76-46e2-acdc-d3986239f348">
         """
 
         containers = self.driver.find_elements(By.CSS_SELECTOR, 'div.message-in, div.message-out')
@@ -1063,3 +976,8 @@ class WhatsAppAutomation:
             await asyncio.sleep(5)
             self.driver.quit()
             self.driver = None
+
+if __name__ == "__main__":
+    automation = WhatsAppAutomation()
+    asyncio.run(automation.start())
+    
