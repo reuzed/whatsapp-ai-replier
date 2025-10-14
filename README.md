@@ -2,7 +2,6 @@
 
 Automate Whatsapp replies.
 To use this, do the setup in advance, then leave the auto signup program running while waiting for the signups to open.
-This is intended for Linux.
 
 ## Requirements
 - Python 3.9+
