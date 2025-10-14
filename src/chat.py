@@ -46,7 +46,7 @@ class Chat:
                     chat_name=self.chat_name,
                 )
         # generate reply time
-        reply_timestamp = self._generate_reply_timestamp(self)
+        reply_timestamp = self._generate_timestamp(self)
 
         return [ChatAction(message=whatsapp_reply, timestamp=reply_timestamp)]
 
@@ -59,11 +59,10 @@ class Chat:
         for msg in self.chat_history:
             role = "user" if not msg.is_outgoing else "assistant"
             messages.append({"role": role, "content": f"{msg.content}"})
-        print(messages)
         response = await self.llm_manager.generate_response(messages, system_prompt=system_prompt)
         return response
 
-    def _generate_reply_timestamp(self, fast=True) -> datetime:
+    def _generate_timestamp(self, fast=True) -> datetime:
         # random between 30 and 90 seconds
         delay_seconds = random.randint(3, 10) if fast else random.randint(30, 100)
         future_time = datetime.now() + timedelta(seconds=delay_seconds)

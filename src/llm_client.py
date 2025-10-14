@@ -18,6 +18,13 @@ class LLMClient(ABC):
         # make sure included in tool call api
         pass
 
+    @property
+    @abstractmethod
+    def react_tool(self) -> dict:
+        """Tool definition for reacting to messages."""
+        # make sure included in tool call api
+        pass
+
     @abstractmethod
     async def generate_response(
         self, 
@@ -40,6 +47,28 @@ class AnthropicClient(LLMClient):
                 "type": "object",
                 "properties": {},
                 "required": []
+            }
+        }
+    
+    @property
+    def react_tool(self) -> dict:
+        """Tool definition for reacting to messages."""
+        return {
+            "name": "react",
+            "description": "Use this tool liberally to react to a message with an emoji.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "message_to_react": {
+                        "type": "string",
+                        "description": "The content of the message to react to."
+                    },
+                    "emoji_name": {
+                        "type": "string",
+                        "description": "The name of the emoji to react with, e.g. 'thumbs_up', 'smile', 'heart'."
+                    }
+                },
+                "required": ["message_to_react", "emoji_name"]
             }
         }
 

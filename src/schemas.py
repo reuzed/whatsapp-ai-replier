@@ -48,7 +48,14 @@ class ChatAction:
     message: WhatsAppMessage
     timestamp: datetime
 
+@dataclass
+class ReactAction:
+    message_to_react: WhatsAppMessage
+    emoji_name: str
+
+Action = ChatAction | ReactAction
+
 class Chatter(ABC):
     @abstractmethod
-    def on_receive_messages(self, messages: List[WhatsAppMessage]) -> List[ChatAction]:
+    def on_receive_messages(self, messages: List[WhatsAppMessage]) -> List[Action]:
         pass
