@@ -3,7 +3,7 @@ from src.llm_client import LLMManager
 import asyncio
 import time
 
-def prompt_to_message(chat_name: str,  prompt: str) -> str:
+def prompt_to_message(chat_name: str,  prompt: str) -> str | None:
     automation = WhatsAppAutomation()
     asyncio.run(automation.start())
     automation.select_chat(chat_name)

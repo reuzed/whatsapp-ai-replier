@@ -7,7 +7,7 @@ from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -521,7 +521,7 @@ class WhatsAppAutomation:
         # lookup scroll position 
         scroll_position = self.driver.execute_script("return arguments[0].scrollTop;", message_box)
         # press function up/down
-        ActionChains(self.driver).send_keys(Keys.PAGE_UP if direction == 'up' else Keys.PAGE_).perform()
+        ActionChains(self.driver).send_keys(Keys.PAGE_UP if direction == 'up' else Keys.PAGE_DOWN).perform()
         time.sleep(0.1)
         # lookup scroll position
         new_scroll_position = self.driver.execute_script("return arguments[0].scrollTop;", message_box)

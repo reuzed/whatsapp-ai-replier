@@ -62,6 +62,10 @@ class LLMClient(ABC):
     ) -> LLMResponse:
         """Generate a response with only skip tool."""
         pass
+    @abstractmethod
+    async def complete_message(self, message: str, system=None) -> str:
+        """Complete a message using the LLM client."""
+        pass
 
 class AnthropicClient(LLMClient):
     """Anthropic API client."""
@@ -71,7 +75,7 @@ class AnthropicClient(LLMClient):
         """Tool definition for skipping responses."""
         return {
             "name": "skip",
-            "description": "Use this tool to skip response.",
+            "description": "Use this tool to skip response, but only if that would be the most natural thing to do, which would not often be the case.",
             "input_schema": {
                 "type": "object",
                 "properties": {},
@@ -231,9 +235,9 @@ class LLMManager:
         """Create the Anthropic LLM client."""
         return AnthropicClient()
     
-    def complete_message(self, message: str, system: Optional[str] = None) -> str:
+    async def complete_message(self, message: str, system: Optional[str] = None) -> str:
         """Complete a message using the LLM client."""
-        return self.client.complete_message(message, system)
+        return await self.client.complete_message(message, system)
     
     async def generate_response(
         self, 
