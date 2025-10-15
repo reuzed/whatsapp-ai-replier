@@ -58,7 +58,8 @@ class LLMClient(ABC):
     async def generate_response(
         self, 
         messages: List[Dict[str, str]],
-        system_prompt: Optional[str] = None
+        system_prompt: Optional[str] = None,
+        allow_skip: bool = True
     ) -> LLMResponse:
         """Generate a response with only skip tool."""
         pass
@@ -126,7 +127,8 @@ class AnthropicClient(LLMClient):
     async def generate_response(
         self, 
         messages: List[Dict[str, str]],
-        system_prompt: Optional[str] = None
+        system_prompt: Optional[str] = None,
+        allow_skip: bool = True
     ) -> LLMResponse:
         """Generate a response WITHOUT react tools."""
         try:
@@ -140,14 +142,23 @@ class AnthropicClient(LLMClient):
                     })
             
             # Use Messages API (recommended by Anthropic)
-            response = await self.client.messages.create(
-                model=settings.anthropic_model,
-                max_tokens=settings.max_tokens,
-                temperature=settings.temperature,
-                system=system_prompt,
-                messages=anthropic_messages,
-                tools=[self.skip_tool],
-            )
+            if allow_skip:
+                response = await self.client.messages.create(
+                    model=settings.anthropic_model,
+                    max_tokens=settings.max_tokens,
+                    temperature=settings.temperature,
+                    system=system_prompt,
+                    messages=anthropic_messages,
+                    tools=[self.skip_tool],
+                )
+            else:
+                response = await self.client.messages.create(
+                    model=settings.anthropic_model,
+                    max_tokens=settings.max_tokens,
+                    temperature=settings.temperature,
+                    system=system_prompt,
+                    messages=anthropic_messages,
+                )
 
             # Check if response has content
             if not response.content or len(response.content) == 0:
@@ -242,10 +253,11 @@ class LLMManager:
     async def generate_response(
         self, 
         messages: List[Dict[str, str]], 
-        system_prompt: Optional[str] = None
+        system_prompt: Optional[str] = None,
+        allow_skip: bool = True
     ) -> LLMResponse:
         """Generate a response using the LLM client."""
-        return await self.client.generate_response(messages, system_prompt)
+        return await self.client.generate_response(messages, system_prompt, allow_skip)
     
     async def generate_react_response(
         self, 

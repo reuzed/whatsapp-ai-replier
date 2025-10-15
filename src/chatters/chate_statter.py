@@ -119,13 +119,14 @@ class ChateStatter(Chatter):
         state_system_prompt, state_user_prompt = create_state_updater_prompts(self.user_name, self.chat_name, old_state, current_date, new_messages)
         response = await self.llm_manager.generate_response(
             messages=[{"role": "user", "content": state_user_prompt}],
-            system_prompt=state_system_prompt
+            system_prompt=state_system_prompt,
+            allow_skip=False
         )
         if isinstance(response, SkipResponse):
             # LLM chose to skip generation (or outputted nothing)
             self._save_state(ChatState(text=old_state, last_message=new_messages[-1]))
         else:
-            new_state = response.message
+            new_state = response.text
             self._save_state(ChatState(text=new_state, last_message=new_messages[-1]))
 
     def _save_state(self, new_state: ChatState):
