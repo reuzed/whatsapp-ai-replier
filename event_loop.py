@@ -102,6 +102,7 @@ if __name__ == "__main__":
             chatter = SimpleAIChatter()
         elif chatter_name == "cs":
             chatter = ChateStatter(user_name, friend_name)
-        elif chatter_name == "rc":
+        else:
+            #chatter_name == "rc":
             chatter = ReactChatter(input("Emoji name to react with"))
         event_loop(friend_name, chatter)
