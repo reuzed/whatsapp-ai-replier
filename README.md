@@ -15,4 +15,6 @@ You can interact with frautomator by running one of the following:
 
 Code is contained in `/src`
 
-Chatters are conntained in `/chatters`
+Chatters are conntained in `/chatters` - these handle deciding how to reply to messages.
+
+## Development
