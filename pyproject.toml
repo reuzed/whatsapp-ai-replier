@@ -27,3 +27,30 @@ exclude = ["*.tests", "tests*"]
 
 [tool.setuptools.package-data]
 src = ["state.json"]
+
+[tool.pyright]
+typeCheckingMode = "basic" #"strict"
+pythonVersion = "3.11"
+pythonPlatform = "Darwin"
+venvPath = "."
+venv = ".venv"
+include = [
+    ".",
+    "src"
+]
+exclude = [
+    "**/__pycache__/**",
+    "**/.venv/**",
+    "**/.git/**",
+    "whatsapp_profile/**",
+    "src/whatsapp_profile/**",
+    "whatsapp_ai_replier.egg-info/**",
+    "src/whatsapp_ai_replier.egg-info/**",
+    "logs/**",
+    "conversations/**"
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.406",
+]

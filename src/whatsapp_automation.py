@@ -66,6 +66,8 @@ class WhatsAppAutomation:
        
     async def connect_to_whatsapp(self):
         """Connect to WhatsApp Web."""
+        if not self.driver:
+            raise Exception("Driver not initialized")
         logger.info("Connecting to WhatsApp Web...")
         self.driver.get("https://web.whatsapp.com")
         try:
@@ -96,6 +98,8 @@ class WhatsAppAutomation:
         """Focus the chat list search."""
         """The chat list search always has the following aria-label"""
         """aria-label="Search input textbox"""
+        if not self.driver:
+            raise Exception("Driver not initialized")
         
         try:
             search_box = self.driver.find_element(By.CSS_SELECTOR, 'div[aria-label="Search input textbox"]')
@@ -116,6 +120,9 @@ class WhatsAppAutomation:
         """Focus the message box."""
         """The message box always has an aria-label of the form "Type to group <chat name>" or "Type to +44 78..."""
         """<div aria-label="Type to group T-Climbing Climbs/Sessions" </div>"""
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        
         try:
             message_box = self.driver.find_element(By.CSS_SELECTOR, 'div[aria-label^="Type to"]')
         except Exception:
@@ -155,10 +162,15 @@ class WhatsAppAutomation:
         """The message box always has an aria-label of the form "Type to group <chat name>" or "Type to +44 78..."""
         """For a person with a phone number, the title of the page is their contact name"""
         """<div aria-label="Type to group T-Climbing Climbs/Sessions" </div>"""
+        if not self.driver:
+            raise Exception("Driver not initialized")
         
         # Find aria label starting "Type to"... and extract the chat name
         try:
             aria_label = self.driver.find_element(By.CSS_SELECTOR, 'div[aria-label^="Type to"]').get_attribute('aria-label')
+            if aria_label is None:
+                logger.error("Did not find an open chat.")
+                return None
         except:
             logger.info("Did not finnd an open chat.")
             return None
@@ -205,6 +217,9 @@ class WhatsAppAutomation:
     def get_recent_messages(self, limit: int = 10) -> List[WhatsAppMessage]:
         """Get recent messages from current chat."""
         # This is to be deprecated in favour of the more general get_visible_messages_simple
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        
         try:
             # Try multiple selectors for message containers
             message_selectors = [
@@ -317,6 +332,9 @@ class WhatsAppAutomation:
     
     def _get_current_chat_name(self) -> str:
         """Get current chat name."""
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        
         try:
             title_elem = self.driver.find_element(By.CSS_SELECTOR, 'header span[title]')
             return title_elem.get_attribute('title') or title_elem.text
@@ -325,6 +343,9 @@ class WhatsAppAutomation:
     
     def _find_chat_list_container(self):
         """Find the sidebar chat list container using resilient selectors."""
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        
         candidates = [
             'div[aria-label*="Chat list"]',
             'div[data-testid="chat-list"]',
@@ -342,6 +363,8 @@ class WhatsAppAutomation:
 
     def _ensure_search_box(self):
         """Ensure the sidebar search box is visible and return it."""
+        if not self.driver:
+            raise Exception("Driver not initialized")
         # Try to locate; if not interactable, click search icon
         try:
             search_box = self.driver.find_element(By.CSS_SELECTOR, 'div[contenteditable="true"][data-tab="3"]')
@@ -368,6 +391,9 @@ class WhatsAppAutomation:
 
     def _clear_and_apply_search(self, text: Optional[str]) -> bool:
         """Clear the sidebar search, optionally apply a new search term."""
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        
         try:
             sb = self._ensure_search_box()
             try:
@@ -402,6 +428,9 @@ class WhatsAppAutomation:
 
     def _scroll_chat_list_once(self, container) -> bool:
         """Scroll the chat list container by one viewport. Returns True if scrolled."""
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        
         try:
             scroll_elem = container
             try:
@@ -443,6 +472,9 @@ class WhatsAppAutomation:
 
     def _find_message_list_container(self):
         """Find the message list (conversation) scroll container."""
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        
         candidates = [
             'div[aria-label*="Message list"]',
             'div[data-testid="conversation-panel-body"]',
@@ -475,6 +507,8 @@ class WhatsAppAutomation:
     
     def scroll_chat(self, direction: str = 'up') -> bool:
         """Focus message box then press Function Up or Down to scroll chat"""
+        if not self.driver:
+            raise Exception("Driver not initialized")
         # find message box and focus
         message_box = self._find_message_list_container()
         if message_box is None:
@@ -509,7 +543,9 @@ class WhatsAppAutomation:
         
         - Images have a div with "aria-label="Open picture"" and a child like <img src="blob:https://web.whatsapp.com/4539aace-4b76-46e2-acdc-d3986239f348">
         """
-
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        
         containers = self.driver.find_elements(By.CSS_SELECTOR, 'div.message-in, div.message-out')
         
         print(f"Found {len(containers)} containers, limiting to {limit}")
@@ -560,6 +596,9 @@ class WhatsAppAutomation:
         - incoming: True for received, False for sent, None for either.
         - text_contains: case-insensitive substring to match inside the message text.
         """
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        
         try:
             selectors = [
                 'div.message-in, div.message-out',
@@ -621,6 +660,9 @@ class WhatsAppAutomation:
 
         emoji_query: e.g. "thumbs up", "heart", ":party:" or similar.
         """
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        
         try:
             bubble = self._locate_message_bubble(index_from_end=index_from_end, incoming=incoming, text_contains=text_contains)
             if not bubble:
@@ -857,6 +899,9 @@ class WhatsAppAutomation:
         - Preview selector: within the same row, `span[dir="ltr"]:not([title])`.
         - Time selector: sibling `div._ak8i` (as seen in provided HTML), fallback to any time-like cell.
         """
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, 'div[aria-label*="Chat list"], div[data-testid="chat-list"], div[role="grid"]'))
@@ -927,7 +972,10 @@ class WhatsAppAutomation:
                         time_text = (time_el.text or '').strip()
                     except Exception:
                         time_text = None
-
+                if not preview:
+                    preview = "NO PREVIEW"
+                if not time_text:
+                    time_text = "NO TIME TEXT"
                 return ChatListEntry(name=name, preview=preview, time_text=time_text)
             except Exception:
                 return None
