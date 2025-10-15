@@ -8,4 +8,4 @@ class ReactChatter(Chatter):
         self.emoji_name = emoji_name
 
     def on_receive_messages(self, messages: List[WhatsAppMessage]) -> List[ChatAction]:
-        return [ReactChatAction(message=messages[0], timestamp=datetime.now(), emoji_name=self.emoji_name)]
+        return [ReactAction(message=messages[0], timestamp=datetime.now(), emoji_name=self.emoji_name)]
