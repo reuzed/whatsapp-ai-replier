@@ -22,5 +22,5 @@ sample_messages = [
 if __name__ == "__main__":
     chat = ChateStatter("Alice", "Bob")
     chat._reset_state()  # Reset state before testing
-    action = chat.on_receive_messages(sample_messages)[0] # this now returns a list of ChatAction, so take first
-    print(f"Response: {action.message}, Send after: {action.timestamp}")
+    action = chat.on_receive_messages(sample_messages)
+    print(action)

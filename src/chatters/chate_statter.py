@@ -10,7 +10,7 @@ from pathlib import Path
 import asyncio
 from datetime import datetime, timedelta
 
-MODULE_DIR = Path(__file__).parent.parent
+MODULE_DIR = Path(__file__).parent.parent.parent
 STATE_FILE = MODULE_DIR / "state.json"
 
 class ChateStatter(Chatter):
@@ -26,7 +26,7 @@ class ChateStatter(Chatter):
         """Main API. Returns (reply, timestamp to send reply after)"""
         # check if chat has changed
         if new_chat_history == self.chat_history:
-            print("THIS SHOULD NOT HAPPEN because we already handle caching elsewehere and that") # waa waa im reuben im 10x waa waa
+            print("THIS SHOULD NOT HAPPEN because we already handle caching elsewehere and that") # waa waa im reuben im 0.1x waa waa
             return []
         # update chat history.
         self.chat_history = new_chat_history
@@ -68,6 +68,7 @@ class ChateStatter(Chatter):
         if isinstance(message_response, SkipResponse):
             thumb_last_message_action = ReactAction(
                 message=self.chat_history[-1],
+                emoji_name="thumbs up",
                 timestamp=self._generate_timestamp(fast=True)
             )
             actions.append(thumb_last_message_action)
@@ -106,8 +107,8 @@ class ChateStatter(Chatter):
         self._save_state(ChatState(text="", last_message=None))
         self.state = ChatState(text="", last_message=None)
 
-    async def _update_state(self) -> str:
-        # llm call with system prompt returns new state
+    async def _update_state(self):
+        # llm call with system prompt
         old_state = self.state.text
         current_date = datetime.now().isoformat()
         if self.state.last_message in self.chat_history:
@@ -115,16 +116,17 @@ class ChateStatter(Chatter):
             new_messages = self.chat_history[index+1:]
         else:
             new_messages = self.chat_history
-        system_prompt, user_prompt = create_state_updater_prompts(self.user_name, self.chat_name, old_state, current_date, new_messages)
-        new_state = await self.llm_manager.generate_response(
-            messages=[{"role": "user", "content": user_prompt}],
-            system_prompt=system_prompt
+        state_system_prompt, state_user_prompt = create_state_updater_prompts(self.user_name, self.chat_name, old_state, current_date, new_messages)
+        response = await self.llm_manager.generate_response(
+            messages=[{"role": "user", "content": state_user_prompt}],
+            system_prompt=state_system_prompt
         )
-        if new_state == "":
+        if isinstance(response, SkipResponse):
             # LLM chose to skip generation (or outputted nothing)
             self._save_state(ChatState(text=old_state, last_message=new_messages[-1]))
-        self._save_state(ChatState(text=new_state, last_message=new_messages[-1]))
-        return new_state
+        else:
+            new_state = response.message
+            self._save_state(ChatState(text=new_state, last_message=new_messages[-1]))
 
     def _save_state(self, new_state: ChatState):
         if not STATE_FILE.exists():
@@ -144,6 +146,7 @@ class ChateStatter(Chatter):
         if not STATE_FILE.exists():
             STATE_FILE.write_text("{}")
         with open(STATE_FILE, "w") as f:
+            print(STATE_FILE)
             json.dump(data, f, indent=4)
         self.state = new_state
     
@@ -151,7 +154,7 @@ class ChateStatter(Chatter):
         if isinstance(llm_response, MessageResponse):
             whatsapp_reply = WhatsAppMessage(
                 sender=self.user_name,
-                content=llm_response.message,
+                content=llm_response.text,
                 timestamp=datetime.now(),
                 is_outgoing=True,
                 chat_name=self.chat_name,
@@ -164,7 +167,7 @@ class ChateStatter(Chatter):
             if message is None:
                 print(f"Could not find message to react to: {llm_response.message_to_react}")
                 return None
-            react_timestamp = self._generate_timestamp(self, fast=True)
+            react_timestamp = self._generate_timestamp(fast=True)
             return ReactAction(message_to_react=message, emoji_name=llm_response.emoji_name, timestamp=react_timestamp)
         elif isinstance(llm_response, SkipResponse):
             return None
@@ -187,5 +190,4 @@ if __name__ == "__main__":
         chat_name="Reuben"
     )
     import asyncio
-    new_state = asyncio.run(chat._update_state([new_msg]))
-    print(new_state)
+    asyncio.run(chat._update_state([new_msg]))

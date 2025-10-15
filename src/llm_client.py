@@ -153,7 +153,7 @@ class AnthropicClient(LLMClient):
             # Handle different content types
             for content_block in response.content:
                 if content_block.type == "text":
-                    return MessageResponse(message=content_block.text.strip())
+                    return MessageResponse(text=content_block.text.strip())
                 elif content_block.type == "tool_use" and content_block.name == "skip":
                     logger.info("LLM chose to skip response")
                     return SkipResponse()
@@ -204,7 +204,7 @@ class AnthropicClient(LLMClient):
                     logger.info("LLM chose to skip response")
                     return SkipResponse()
                 elif content_block.type == "tool_use" and content_block.name == "react":
-                    inputs = content_block.arguments
+                    inputs = content_block.input
                     if "message_to_react" in inputs and "emoji_name" in inputs:
                         return ReactResponse(
                             message_to_react=inputs["message_to_react"],
