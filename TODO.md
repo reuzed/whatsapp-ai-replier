@@ -18,3 +18,9 @@ Nice to Haves (not needlemoving)
 Only if necessary:
 
 - change state caching to not be on content
+
+
+Regarding Refactoring the event loop:
+- need to have the previously processed messages handled and put in files
+- need to make ActionsHandler class and put actions handling logic there
+- need to fix syntax issues in the event loop and chate_statter and delete the multi-event loop
