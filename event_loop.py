@@ -72,7 +72,8 @@ def event_loop(chat_name: str, chatter: Chatter):
                     to_remove.append(action)
                 elif isinstance(action, ReactAction):
                     print(f"[red]Reacting with[/red] {action.emoji_name} [red]to[/red] {action.message_to_react.content}")
-                    automation.react_to_message(action.message_to_react.content, action.emoji_name)
+                    print(action)
+                    automation.react_to_message(emoji_query=action.emoji_name, text_contains=action.message_to_react.content, )
                     to_remove.append(action)
                 else:
                     print(f"[red]Unknown action type:[/red] {action}")

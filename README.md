@@ -1,43 +1,18 @@
-## WhatsApp Controls — Auto‑signup For Tennis Groupchats
+# Frautomator
 
-Automate Whatsapp replies.
-To use this, do the setup in advance, then leave the auto signup program running while waiting for the signups to open.
+Automate your friendships by using AI to reply to their whatsapp messages. Learn facts about your friend and store these in a state.
 
-## Requirements
-- Python 3.9+
-- Google Chrome and a matching ChromeDriver
+## Scripts
 
-You will need to log onto WhatsappWeb on the first use, and may need to (rather quickly) click 'continue'. Just retry if you encounter issues on first use, and if that doesn't work, you can let me know.
+You can interact with frautomator by running one of the following:
 
-## Install
-```bash
-git clone https://github.com/reuzed/whatsapp-ai-replier
-cd WhatsappControls
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+- `birthday.py` - send a happy birthday message geenerated by ai to a frieend
+- `event_loop.py` - run a loop to continuously monitor a chat of your choice, and ai reply to messages there
+- `multi_event_loop.py` - run a loop to monitor several chats replying to all their messages
+- `prompt_to_message.py` - prompt ai to send a single message to somebody
 
-## Notes
-- The script uses a local `./whatsapp_profile` directory by default and will create it if missing. Log in to WhatsApp Web when Chrome opens the first time.
-- ChromeDriver must be installed and compatible with your Chrome version (the code expects it at `/usr/bin/chromedriver`).
+## Library
 
-## Whatsapp Controls - Automated LLM answers
+Code is contained in `/src`
 
-Make a .env file in the WhatsappControls directory. See .env.example for an example. Add these variables:
-```bash
-# The display name to insert into signup lists, and as context for LLM generated messages
-SIGNUP_MY_NAME=Your Name
-
-# For LLM-powered replies in the scripts below
-ANTHROPIC_API_KEY=...
-```
-
-- Live auto‑reply to new messages in a chat:
-```bash
-python live_reply.py "Chat Name"
-```
-- Reply to recent unanswered messages since your last message in a chat:
-```bash
-python reply_unanswered.py "Chat Name"
-```
+Chatters are conntained in `/chatters`
