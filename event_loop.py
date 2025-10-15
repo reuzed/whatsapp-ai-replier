@@ -83,7 +83,7 @@ if __name__ == "__main__":
     from dotenv import load_dotenv
     import os
     
-    if input("Manually control chatter? (return for env variables)"):
+    if not input("Manually control chatter? (return for env variables)"):
         load_dotenv()
         friend_name = os.getenv("FRIEND_NAME", "Reuben")
         user_name = os.getenv("USER_NAME", "Ben")
@@ -102,5 +102,5 @@ if __name__ == "__main__":
         elif chatter_name == "cs":
             chatter = ChateStatter(user_name, friend_name)
         elif chatter_name == "rc":
-            chatter = ReactChatter(user_name, friend_name)
+            chatter = ReactChatter(input("Emoji name to react with"))
         event_loop(friend_name, chatter)

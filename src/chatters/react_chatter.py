@@ -1,5 +1,5 @@
 from typing import List
-from src.schemas import WhatsAppMessage, ChatAction, ReactChatAction, Chatter
+from src.schemas import WhatsAppMessage, ChatAction, ReactAction, Chatter
 
 from datetime import datetime, timedelta
 
