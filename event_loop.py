@@ -79,7 +79,25 @@ def event_loop(chat_name: str, chatter: Chatter):
                     print(f"[red]Unknown action type:[/red] {action}")
         for action in to_remove:
             chat_actions.remove(action)
-    
+
+
+def event_loop_develop(friend_list: str | list[str], chatter: Chatter):
+    if isinstance(friend_list, str):
+        friend_list = [friend_list]
+    automation = WhatsAppAutomation()
+    while True:
+        for friend in friend_list:
+            automation.select_chat(friend)
+            time.sleep(1)
+            process_friend(friend, chatter, automation)
+            time.sleep(3)
+
+def process_friend(friend: str, chatter: Chatter, automation: WhatsAppAutomation):
+    print("Not implemented friend processing yet")
+    pass
+
+
+
 if __name__ == "__main__":
     from dotenv import load_dotenv
     import os
