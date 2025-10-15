@@ -67,7 +67,7 @@ class ChateStatter(Chatter):
         # if no message response then by default thumb last message
         if isinstance(message_response, SkipResponse):
             thumb_last_message_action = ReactAction(
-                message=self.chat_history[-1],
+                message_to_react=self.chat_history[-1],
                 emoji_name="thumbs up",
                 timestamp=self._generate_timestamp(fast=True)
             )
