@@ -7,7 +7,7 @@ from src.prompts import create_state_updater_prompts
 from pathlib import Path
 from datetime import datetime
 
-MODULE_DIR = Path(__file__).parent.parent.parent
+MODULE_DIR = Path(__file__).parent.parent
 STATE_FILE = MODULE_DIR / "state.json"
 
 class StateMaintenance:
