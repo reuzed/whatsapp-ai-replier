@@ -21,6 +21,7 @@ Only if necessary:
 
 
 Regarding Refactoring the event loop:
-- need to have the previously processed messages handled and put in files
-- need to make ActionsHandler class and put actions handling logic there
-- need to fix syntax issues in the event loop and chate_statter and delete the multi-event loop
+- fix the example chat test script
+- ensure consistent handling of the chat name for use in the logging
+- modify the logic in chate_statter for responding using the logged context + batch messages and split
+
