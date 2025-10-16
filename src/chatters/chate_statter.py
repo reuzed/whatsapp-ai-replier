@@ -109,7 +109,7 @@ if __name__ == "__main__":
     chat = ChateStatter("Bob")
     new_msg = WhatsAppMessage(
         sender="Bob",
-        content="Hey, how are you? It's my birthday tomorrow :o",
+        content="Hey, how are you? It's my mum's birthday in 2 days :o",
         timestamp=datetime.now(),
         is_outgoing=False,
         chat_name="Bob"

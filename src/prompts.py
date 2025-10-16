@@ -1,7 +1,7 @@
 from src.schemas import WhatsAppMessage
 
 STATE_UPDATER_SYSTEM_PROMPT_TEMPLATE = """You are an assistant representing {user_name} tasked with keeping track of key facts about a {friend_name}.
-Based on the new messages, only update long term state tracking if there has been new important information about the person.
+Based on the new messages, update long term state tracking if there has been new important information about the person.
 If facts are date dependent include specific day or time references.
 """
 
@@ -9,7 +9,7 @@ def create_state_updater_prompts(user_name:str, friend_name:str, prev_state_text
     system_prompt = f"The current date is {current_date}. " + STATE_UPDATER_SYSTEM_PROMPT_TEMPLATE.format(user_name=user_name, friend_name=friend_name) + "\n"
     system_prompt += f"<current_state>{prev_state_text}</current_state>\n"
     system_prompt += f"<new_messages>{_map_messages_to_str(new_messages)}</new_messages>"
-    user = f"Now return a concise updated state, without any additional commentary."
+    user = f"Now return a relatively concise updated state, without any additional commentary."
     return system_prompt, user
 
 def _map_messages_to_str(messages: list[WhatsAppMessage]) -> str:
