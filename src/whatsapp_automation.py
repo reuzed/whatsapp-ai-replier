@@ -334,11 +334,22 @@ class WhatsAppAutomation:
         """Get current chat name."""
         if not self.driver:
             raise Exception("Driver not initialized")
-        
+
+        # Prefer deriving the chat name from the compose area's aria-label, which
+        # encodes the real chat title (and not presence text like "online" or
+        # "last seen ...").
+        try:
+            info = self.which_chat_is_open()
+            if info and info.chat_name:
+                return info.chat_name
+        except Exception:
+            pass
+
+        # Fallback: old header lookup (may sometimes return presence text).
         try:
             title_elem = self.driver.find_element(By.CSS_SELECTOR, 'header span[title]')
             return title_elem.get_attribute('title') or title_elem.text
-        except:
+        except Exception:
             return "Unknown Chat"
     
     def _find_chat_list_container(self):
