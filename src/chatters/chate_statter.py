@@ -21,10 +21,8 @@ class ChateStatter(Chatter):
     def on_receive_messages(self, new_chat_history: list[WhatsAppMessage], chat_name: str) -> list[Action]:
         """Main API. Returns (reply, timestamp to send reply after)"""
         # update state
-        self.messages_since_state_update += 1
-        if self.messages_since_state_update >= 10:
-            asyncio.run(self.state_maintenance.update_state(chat_name, new_chat_history))
-            self.messages_since_state_update = 0
+        asyncio.run(self.state_maintenance.update_state(chat_name, new_chat_history))
+        # no longer using self.messages_since_state_update for this, so do every time
 
         # generate reply
         replies: list[Action] = asyncio.run(self._generate_actions(new_chat_history, chat_name))
@@ -36,8 +34,11 @@ class ChateStatter(Chatter):
         # make below import timestamp
         actions = []
         current_date = datetime.now().isoformat()
+        logged_chat_history = self.state_maintenance.get_seen_messages(chat_name)
+        logged_chat_history.extend(new_chat_history)
+        chat_history = logged_chat_history
         messages = []
-        for msg in new_chat_history:
+        for msg in chat_history:
             role = "user" if not msg.is_outgoing else "assistant"
             messages.append({"role": role, "content": f"{msg.content}"})
 

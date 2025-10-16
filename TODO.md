@@ -23,5 +23,5 @@ Only if necessary:
 Regarding Refactoring the event loop:
 - fix the example chat test script
 - ensure consistent handling of the chat name for use in the logging
-- modify the logic in chate_statter for responding using the logged context + batch messages and split
+- modify the logic for action handling to allow splitting chat actions into multiple by new lines
 
