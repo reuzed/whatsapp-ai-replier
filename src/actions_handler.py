@@ -1,23 +1,39 @@
 from datetime import datetime
 from src.schemas import Action, ChatAction, ReactAction
 from src.whatsapp_automation import WhatsAppAutomation
+import time
 
 class ActionsHandler:
     def __init__(self, automation: WhatsAppAutomation):
         self.automation = automation
 
-    def handle_actions(self, chat_actions: list[Action]):
+    def handle_actions(self, chat_actions: list[Action], friend: str | None = None) -> list[Action]:
         now = datetime.now()
+        to_remove = []
+        if friend is not None:
+            self.automation.select_chat(friend)
+            time.sleep(2)
         for action in chat_actions:
             if now > action.timestamp:
                 if isinstance(action, ChatAction):
                     print(f"[red]Sending message:[/red]")
                     print(f"\n{action.message.content}\n")
+                    if friend is None:
+                        self.automation.select_chat(action.message.chat_name)
+                        time.sleep(2)
                     self.automation.send_message(action.message.content)
+                    to_remove.append(action)
                 elif isinstance(action, ReactAction):
                     print(f"[red]Reacting with[/red] {action.emoji_name} [red]to[/red] {action.message_to_react.content}")
                     print(action)
+                    if friend is None:
+                        self.automation.select_chat(action.message_to_react.chat_name)
+                        time.sleep(2)
                     self.automation.react_to_message(emoji_query=action.emoji_name, text_contains=action.message_to_react.content, )
+                    to_remove.append(action)
                 else:
                     print(f"[red]Unknown action type:[/red] {action}")
-        # maybe add back in removing handled actions for error handling
+        # this allows for actions to be done in later future
+        for action in to_remove:
+            chat_actions.remove(action)
+        return chat_actions

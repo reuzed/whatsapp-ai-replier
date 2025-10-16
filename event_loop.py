@@ -1,4 +1,4 @@
-from src.schemas import Chatter, ChatAction, WhatsAppMessage, ReactAction
+from src.schemas import Chatter, ChatAction, WhatsAppMessage, ReactAction, Action
 import asyncio
 from datetime import datetime
 from src.whatsapp_automation import WhatsAppAutomation
@@ -8,94 +8,45 @@ from src.chatters.trivial_chatter import TrivialChatter, DelayedTrivialChatter
 from src.chatters.simple_ai_chatter import SimpleAIChatter
 from src.chatters.chate_statter import ChateStatter
 from src.chatters.react_chatter import ReactChatter
+from src.state_maintenance import StateMaintenance
+from src.actions_handler import ActionsHandler
 
 import time
 from rich import print
 
-def event_loop(chat_name: str, chatter: Chatter):
-    # messages already handled
-    # seen_messages = set()
-    seen_message_contents = set()
-    # messages to be sent
-    chat_actions = []
-    
-    automation = WhatsAppAutomation()
-    asyncio.run(automation.start())
-    
-    automation.select_chat(chat_name)
-    print(f"Selected chat {chat_name}")
-    
-    # mark messages in chat as seen
-    start_messages = automation.get_visible_messages_simple(10)
-    for message in start_messages:
-        # seen_messages.add(message)
-        seen_message_contents.add(message.content)
-        
-    print(f"Marked {len(start_messages)} messages as seen")
-    print("[yellow]Seen message contents:[/yellow]")
-    print(f"\n{seen_message_contents}\n")
-    
-    while True:
-        time.sleep(5)
-        
-        # get recent messages
-        messages = automation.get_visible_messages_simple(5)
-        for message in messages:
-            if message.is_outgoing:
-                # print(f"Skipping outgoing message from {message.sender}: {message.content}")
-                continue
-            if message.content in seen_message_contents:
-                # print(f"Skipping seen message from {message.sender}: {message.content}")
-                continue
-            
-            # print(messages)
-            
-            print("[green]Found new message[/green]")
-            print(f"\nFrom {message.sender}: {message.content}\n")
-            
-            seen_message_contents.add(message.content)
-            actions = chatter.on_receive_messages([message])
-            print("[blue]Chatter has decided on the following actions:[/blue]")
-            print(actions)
-            print("\n")
-                
-            chat_actions.extend(actions)
-        
-        now = datetime.now()
-        to_remove = []
-        for action in chat_actions:
-            if now > action.timestamp:
-                if isinstance(action, ChatAction):
-                    print(f"[red]Sending message:[/red]")
-                    print(f"\n{action.message.content}\n")
-                    automation.send_message(action.message.content)
-                    to_remove.append(action)
-                elif isinstance(action, ReactAction):
-                    print(f"[red]Reacting with[/red] {action.emoji_name} [red]to[/red] {action.message_to_react.content}")
-                    print(action)
-                    automation.react_to_message(emoji_query=action.emoji_name, text_contains=action.message_to_react.content, )
-                    to_remove.append(action)
-                else:
-                    print(f"[red]Unknown action type:[/red] {action}")
-        for action in to_remove:
-            chat_actions.remove(action)
 
-
-def event_loop_develop(friend_list: str | list[str], chatter: Chatter):
+def event_loop(user_name: str, friend_list: str | list[str], chatter: Chatter):
     if isinstance(friend_list, str):
         friend_list = [friend_list]
+        single_friend = True
+    else:
+        single_friend = False
     automation = WhatsAppAutomation()
+    asyncio.run(automation.start())
+    state_maintenance = StateMaintenance(user_name)
+    actions_handler = ActionsHandler(automation)
+    chat_actions = []
+    if single_friend:
+        automation.select_chat(friend_list[0])
+        time.sleep(2)
     while True:
         for friend in friend_list:
-            automation.select_chat(friend)
-            time.sleep(1)
-            process_friend(friend, chatter, automation)
-            time.sleep(3)
+            chat_actions.extend(process_friend(friend, chatter, automation, state_maintenance, single_friend=single_friend))
+        chat_actions = actions_handler.handle_actions(chat_actions)
 
-def process_friend(friend: str, chatter: Chatter, automation: WhatsAppAutomation):
-    print("Not implemented friend processing yet")
-    pass
-
+def process_friend(friend: str, chatter: Chatter, automation: WhatsAppAutomation, state_maintenance: StateMaintenance, single_friend: bool = False) -> list[Action]:
+    """Process a friend's messages and return actions, adding messages to message log.
+    This is to respond to all new messages since last user message.
+    The logging is done in this function only for message logging, not state, which is done by the chatter."""
+    if not single_friend:
+        automation.select_chat(friend)
+        time.sleep(2)
+    messages = automation.get_visible_messages_simple(20)
+    new_messages = state_maintenance.get_new_messages(friend, messages, after_last_outgoing=True)
+    friend_actions = chatter.on_receive_messages(new_messages, friend)
+    state_maintenance.log_seen_messages(messages)
+    time.sleep(2)
+    return friend_actions
 
 
 if __name__ == "__main__":
@@ -106,8 +57,8 @@ if __name__ == "__main__":
         load_dotenv()
         friend_name = os.getenv("FRIEND_NAME", "Reuben")
         user_name = os.getenv("USER_NAME", "Ben")
-        chatter = ChateStatter(user_name, friend_name)
-        event_loop(friend_name, chatter)
+        chatter = ChateStatter(user_name)
+        event_loop(user_name, friend_name, chatter)
     else:
         friend_name = input("Name of friend to chat to")
         user_name = os.getenv("USER_NAME", "Ben")
@@ -119,8 +70,8 @@ if __name__ == "__main__":
         elif chatter_name == "sai":
             chatter = SimpleAIChatter()
         elif chatter_name == "cs":
-            chatter = ChateStatter(user_name, friend_name)
+            chatter = ChateStatter(user_name)
         else:
             #chatter_name == "rc":
             chatter = ReactChatter(input("Emoji name to react with"))
-        event_loop(friend_name, chatter)
+        event_loop(user_name, friend_name, chatter)

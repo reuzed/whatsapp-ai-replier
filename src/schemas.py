@@ -12,7 +12,7 @@ class WhatsAppMessage:
     is_outgoing: bool
     chat_name: str
     def __hash__(self):
-        return hash((self.content, self.is_outgoing)) # this needs to be improved
+        return hash((self.content, self.is_outgoing)) # this needs to be improved - and used more broadly
 
 
 class MessageReaction:
