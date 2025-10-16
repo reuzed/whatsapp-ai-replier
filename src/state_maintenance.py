@@ -82,3 +82,5 @@ class StateMaintenance:
         with open(STATE_FILE, "w") as f:
             print(STATE_FILE)
             json.dump(data, f, indent=4)
+
+# still need to implement functions for logging all handled messages

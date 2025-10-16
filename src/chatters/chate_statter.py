@@ -103,7 +103,6 @@ class ChateStatter(Chatter):
             return None
         # should be one of these options
 
-    
 
 if __name__ == "__main__":
     chat = ChateStatter("Bob")
