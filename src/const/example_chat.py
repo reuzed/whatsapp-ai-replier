@@ -1,5 +1,6 @@
 from src.schemas import WhatsAppMessage
 from src.chatters.chate_statter import ChateStatter
+from src.state_maintenance import StateMaintenance
 from datetime import datetime
 
 sample_messages = [
@@ -20,7 +21,10 @@ sample_messages = [
 ]
 
 if __name__ == "__main__":
-    chat = ChateStatter("Alice", "Bob")
-    chat._reset_state()  # Reset state before testing
-    action = chat.on_receive_messages(sample_messages)
+    user_name = "Matthew"
+    chat = ChateStatter(user_name)
+    state_maintenance = StateMaintenance(user_name)
+    state_maintenance.reset_state("Bob")  # Reset state before testing
+    state_maintenance.reset_state("Alice")
+    action = chat.on_receive_messages(sample_messages, "Bob")
     print(action)
