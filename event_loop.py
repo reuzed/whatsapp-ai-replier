@@ -43,6 +43,8 @@ def process_friend(friend: str, chatter: Chatter, automation: WhatsAppAutomation
         time.sleep(2)
     messages = automation.get_visible_messages_simple(20)
     new_messages = state_maintenance.get_new_messages(friend, messages, after_last_outgoing=True)
+    if len(new_messages) == 0:
+        return []
     friend_actions = chatter.on_receive_messages(new_messages, friend)
     state_maintenance.log_seen_messages(messages)
     time.sleep(2)

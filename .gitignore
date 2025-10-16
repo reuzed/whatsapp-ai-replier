@@ -4,6 +4,7 @@
 # state
 src/state.json
 state.json
+message_log.json
 
 # Python
 __pycache__/
