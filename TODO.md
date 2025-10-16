@@ -25,3 +25,10 @@ Regarding Refactoring the event loop:
 - ensure consistent handling of the chat name for use in the logging
 - modify the logic for action handling to allow splitting chat actions into multiple by new lines
 
+
+Bugs found in event loop currently:
+- the reaction logic sometimes broadens the search beyond the chat, so should select chat each time to avoid this, or stop this extra search
+- sometimes the logging does not catch the messages to see they are not new until later, and then fails when there are no new messages
+- the default to give a reaction on a skip is bad when there's already a reaction action on the same message, so it fails
+
+

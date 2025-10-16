@@ -41,7 +41,7 @@ def process_friend(friend: str, chatter: Chatter, automation: WhatsAppAutomation
     if not single_friend:
         automation.select_chat(friend)
         time.sleep(2)
-    messages = automation.get_visible_messages_simple(20)
+    messages = automation.get_visible_messages_simple(20) # this seems capable of bugging
     new_messages = state_maintenance.get_new_messages(friend, messages, after_last_outgoing=True)
     if len(new_messages) == 0:
         state_maintenance.log_seen_messages(messages)
@@ -63,7 +63,7 @@ if __name__ == "__main__":
         chatter = ChateStatter(user_name)
         event_loop(user_name, friend_name, chatter)
     else:
-        friend_name = input("Name of friend to chat to")
+        friend_name = input("Name of friend to chat to") # TODO: make this a list of friends
         user_name = os.getenv("USER_NAME", "Ben")
         chatter_name = input("Name of chatter to use (t, dt, sai, cs, rc)")
         if chatter_name == "t":
