@@ -9,6 +9,7 @@ from datetime import datetime
 
 MODULE_DIR = Path(__file__).parent.parent
 STATE_FILE = MODULE_DIR / "state.json"
+MESSAGE_LOG_FILE = MODULE_DIR / "message_log.json"
 
 class StateMaintenance:
     def __init__(self, user_name: str):
@@ -83,4 +84,49 @@ class StateMaintenance:
             print(STATE_FILE)
             json.dump(data, f, indent=4)
 
-# still need to implement functions for logging all handled messages
+    def log_seen_messages(self, messages: list[WhatsAppMessage]):
+        if not MESSAGE_LOG_FILE.exists():
+            MESSAGE_LOG_FILE.write_text("{}")
+        with open(MESSAGE_LOG_FILE, "r") as f:
+            data = json.load(f)
+        for message in messages:
+            if message.chat_name not in data:
+                data[message.chat_name] = []
+            data[message.chat_name].append({
+                "content": message.content,
+                "timestamp": message.timestamp.isoformat(),
+                "is_outgoing": message.is_outgoing,
+            })
+            data[message.chat_name] = dedupe_messages(data[message.chat_name])
+        with open(MESSAGE_LOG_FILE, "w") as f:
+            json.dump(data, f, indent=4)
+    
+    def get_seen_messages(self, chat_name: str, limit: int = 20) -> list[WhatsAppMessage]:
+        if not MESSAGE_LOG_FILE.exists():
+            MESSAGE_LOG_FILE.write_text("{}")
+            return []
+        with open(MESSAGE_LOG_FILE, "r") as f:
+            data = json.load(f)
+        if chat_name not in data:
+            return []
+        raw_message_data = data[chat_name][-limit:]
+        whatsapp_messages = [WhatsAppMessage(
+            sender="You" if m["is_outgoing"] else chat_name,
+            content=m["content"],
+            timestamp=datetime.fromisoformat(m["timestamp"]),
+            is_outgoing=m["is_outgoing"],
+            chat_name=chat_name,
+        ) for m in raw_message_data]
+        return whatsapp_messages
+
+
+def dedupe_messages(entries):
+    seen = set()
+    out = []
+    for m in entries:
+        key = (m["content"], m["timestamp"], m["is_outgoing"])
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(m)
+    return out
