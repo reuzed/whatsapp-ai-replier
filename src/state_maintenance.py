@@ -54,10 +54,10 @@ class StateMaintenance:
         )
         if isinstance(response, SkipResponse):
             # LLM chose to skip generation (or outputted nothing)
-            self.save_state(ChatState(text=old_state_text, last_message=new_messages[-1]), chat_name)
+            self.save_state(ChatState(text=old_state_text, last_message=chat_history[-1]), chat_name)
         elif isinstance(response, MessageResponse):
             new_state_text = response.text
-            self.save_state(ChatState(text=new_state_text, last_message=new_messages[-1]), chat_name)
+            self.save_state(ChatState(text=new_state_text, last_message=chat_history[-1]), chat_name)
         # should not have other options
 
     def reset_state(self, chat_name: str):
