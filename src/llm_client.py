@@ -167,6 +167,8 @@ class AnthropicClient(LLMClient):
 
             # Handle different content types
             for content_block in response.content:
+                if len(response.content) > 1:
+                    print(response)
                 if content_block.type == "text":
                     return MessageResponse(text=content_block.text.strip())
                 elif content_block.type == "tool_use" and content_block.name == "skip":
@@ -213,6 +215,8 @@ class AnthropicClient(LLMClient):
 
             # Handle different content types
             for content_block in response.content:
+                if len(response.content) > 1:
+                    print(response)
                 if content_block.type == "text":
                     return ErrorResponse(error_message=f"Text response not supported when react tool is enabled, message: {content_block.text.strip()}")
                 elif content_block.type == "tool_use" and content_block.name == "skip":

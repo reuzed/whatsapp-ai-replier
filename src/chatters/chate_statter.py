@@ -56,15 +56,6 @@ class ChateStatter(Chatter):
         if isinstance(action, ReactAction):
             actions.append(action)
 
-        # if no message response then by default thumb last message
-        if isinstance(message_response, SkipResponse):
-            thumb_last_message_action = ReactAction(
-                message_to_react=new_chat_history[-1],
-                emoji_name="clown", # want thumbs up, but this doesn't work due to multiple same name emojis
-                timestamp=self._generate_timestamp(fast=True)
-            )
-            actions.append(thumb_last_message_action)
-
         # Transform message response to action (if applicable)
         action = self._transform_llm_response_to_action(message_response, new_chat_history, chat_name)
         if isinstance(action, ChatAction):
