@@ -63,7 +63,10 @@ if __name__ == "__main__":
         chatter = ChateStatter(user_name)
         event_loop(user_name, friend_name, chatter)
     else:
-        friend_name = input("Name of friend to chat to") # TODO: make this a list of friends
+        num_friends = int(input("Number of friends to chat to"))
+        friend_names = []
+        for i in range(num_friends):
+            friend_names.append(input(f"Name of friend {i+1} to chat to"))
         user_name = os.getenv("USER_NAME", "Ben")
         chatter_name = input("Name of chatter to use (t, dt, sai, cs, rc)")
         if chatter_name == "t":
@@ -77,4 +80,4 @@ if __name__ == "__main__":
         else:
             #chatter_name == "rc":
             chatter = ReactChatter(input("Emoji name to react with"))
-        event_loop(user_name, friend_name, chatter)
+        event_loop(user_name, friend_names, chatter)

@@ -786,7 +786,8 @@ class WhatsAppAutomation:
                 'input[placeholder*="Search" i]',
                 'div[contenteditable="true"]'
             ]
-            search = _wait_for_any(search_selectors, scope=picker) if picker else _wait_for_any(search_selectors)
+            # Only allow typing inside the emoji picker; never type globally
+            search = _wait_for_any(search_selectors, scope=picker)
             if search:
                 try:
                     search.click()
@@ -809,24 +810,7 @@ class WhatsAppAutomation:
                     return True
                 except Exception:
                     pass
-            else:
-                # Focus may already be inside the picker; try active element, then global typing
-                try:
-                    active = self.driver.switch_to.active_element
-                    try:
-                        active.send_keys(emoji_query)
-                    except Exception:
-                        ActionChains(self.driver).send_keys(emoji_query).perform()
-                    # User requested: type -> wait 0.2s -> press Enter
-                    time.sleep(0.2)
-                    try:
-                        ActionChains(self.driver).send_keys(Keys.RETURN).perform()
-                        time.sleep(0.2)
-                        return True
-                    except Exception:
-                        pass
-                except Exception:
-                    pass
+            # If no search field is found within the picker, do not type globally
 
             # Select first result; some UIs render results as span[role="button"][data-emoji]
             result_selectors = [
@@ -835,16 +819,10 @@ class WhatsAppAutomation:
                 'button[aria-label]',
                 'span[role="button"][data-emoji]'
             ]
-            result = (_wait_for_any(result_selectors, scope=picker) if picker else _wait_for_any(result_selectors)) or _wait_for_any(['span[role="button"][data-emoji]'])
+            result = (_wait_for_any(result_selectors, scope=picker) if picker else None)
             if not result:
-                # As fallback, press Enter to pick first suggestion
-                try:
-                    ActionChains(self.driver).send_keys(Keys.RETURN).perform()
-                    time.sleep(0.3)
-                    return True
-                except Exception:
-                    logger.error("No emoji result selectable")
-                    return False
+                logger.error("No emoji result selectable")
+                return False
 
             # Try robust clicking strategies
             try:
@@ -877,14 +855,7 @@ class WhatsAppAutomation:
                         except Exception:
                             time.sleep(0.05)
                             continue
-            if not clicked:
-                try:
-                    # Final fallback: press Enter which often selects the first suggestion
-                    ActionChains(self.driver).send_keys(Keys.RETURN).perform()
-                    time.sleep(0.2)
-                    clicked = True
-                except Exception:
-                    pass
+            # Do not send global Enter as a fallback; avoid triggering chat search
             if not clicked:
                 logger.error("Failed to click emoji result")
                 return False

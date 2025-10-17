@@ -122,7 +122,6 @@ class StateMaintenance:
     def get_new_messages(self, chat_name: str, new_messages: list[WhatsAppMessage], after_last_outgoing: bool = False) -> list[WhatsAppMessage]:
         old_messages = self.get_seen_messages(chat_name)
         old_message_keys = [(m.content, m.timestamp, m.is_outgoing) for m in old_messages]
-        new_message_keys = [(m.content, m.timestamp, m.is_outgoing) for m in new_messages]
         new_messages = [m for m in new_messages if (m.content, m.timestamp, m.is_outgoing) not in old_message_keys]
         if after_last_outgoing:
             outgoing_indices = [i for i, m in enumerate(new_messages) if m.is_outgoing]

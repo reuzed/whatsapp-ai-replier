@@ -13,7 +13,6 @@ Long term:
 Nice to Haves (not needlemoving)
 
 - create a better tester to be able to test independently
-- Have a set of people to automate - cycles through checking chats every 5s
 
 Only if necessary:
 
