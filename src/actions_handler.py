@@ -1,5 +1,5 @@
 from datetime import datetime
-from src.schemas import Action, ChatAction, ReactAction
+from src.schemas import Action, ChatAction, ReactAction, WhatsAppMessage
 from src.whatsapp_automation import WhatsAppAutomation
 import time
 
@@ -13,6 +13,14 @@ class ActionsHandler:
         if friend is not None:
             self.automation.select_chat(friend)
             time.sleep(2)
+        split_chat_actions = []
+        for action in chat_actions:
+            if isinstance(action, ChatAction):
+                split_chat_actions.extend(self._split_chat_action_into_multiple(action))
+            else:
+                split_chat_actions.append(action)
+        chat_actions = split_chat_actions
+
         for action in chat_actions:
             if now > action.timestamp:
                 if isinstance(action, ChatAction):
@@ -37,3 +45,11 @@ class ActionsHandler:
         for action in to_remove:
             chat_actions.remove(action)
         return chat_actions
+
+    def _split_chat_action_into_multiple(self, chat_action: ChatAction) -> list[ChatAction]:
+        messages = chat_action.message.content.split("\n\n") # try this for now
+        new_chat_actions = []
+        for i, message in enumerate(messages):
+            new_message = WhatsAppMessage(sender=chat_action.message.sender, content=message, timestamp=chat_action.timestamp, is_outgoing=chat_action.message.is_outgoing, chat_name=chat_action.message.chat_name)
+            new_chat_actions.append(ChatAction(message=new_message, timestamp=chat_action.timestamp))
+        return new_chat_actions
