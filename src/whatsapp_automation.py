@@ -93,6 +93,86 @@ class WhatsAppAutomation:
             logger.error(f"Failed to start: {e}")
             await self.stop()
             raise
+
+    # ---------- Generic helpers ----------
+    def _click_element(self, elem: WebElement) -> None:
+        """Robustly click an element using JS fallback.
+
+        - Scrolls into view
+        - Tries JS click(), then native click()
+        - No silent swallowing: raises if both strategies fail
+        """
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        if elem is None:
+            raise NoSuchElementException("Element is None")
+        last_err: Optional[Exception] = None
+        try:
+            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", elem)
+        except Exception:
+            pass
+        try:
+            self.driver.execute_script("arguments[0].click();", elem)
+            return
+        except Exception as e:
+            last_err = e
+        try:
+            elem.click()
+            return
+        except Exception as e:
+            last_err = e
+        raise last_err if last_err else Exception("Unknown click failure")
+
+    def _find_first_displayed(self, selectors: List[str], scope: Optional[WebElement] = None) -> Optional[WebElement]:
+        """Return the first displayed element found by any selector in order.
+
+        scope: search inside this element if provided; otherwise search the driver.
+        """
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        search_root: Any = scope or self.driver
+        for css in selectors:
+            try:
+                elems = search_root.find_elements(By.CSS_SELECTOR, css)
+                for e in elems:
+                    if e and e.is_displayed():
+                        return e
+            except Exception:
+                continue
+        return None
+
+    def _wait_for_any(self, selectors: List[str], timeout: float = 6.0, scope: Optional[WebElement] = None) -> Optional[WebElement]:
+        """Wait up to timeout for first displayed element matching any selector."""
+        end = time.time() + timeout
+        while time.time() < end:
+            el = self._find_first_displayed(selectors, scope=scope)
+            if el:
+                return el
+            time.sleep(0.1)
+        return None
+
+    def _focus_element(self, elem: WebElement) -> None:
+        """Scroll into view and focus an element, verifying activeElement when possible."""
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        try:
+            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", elem)
+        except Exception:
+            pass
+        try:
+            elem.click()
+        except Exception:
+            pass
+        try:
+            self.driver.execute_script("arguments[0].focus();", elem)
+        except Exception:
+            pass
+        try:
+            focused = self.driver.execute_script("return document.activeElement === arguments[0];", elem)
+            if not focused:
+                self.driver.execute_script("arguments[0].focus();", elem)
+        except Exception:
+            pass
     
     def focus_chat_list_search(self) -> Optional[WebElement]:
         """Focus the chat list search."""
@@ -722,7 +802,7 @@ class WhatsAppAutomation:
                 '[data-testid*="reactions" i]'
             ]
 
-            react_btn = _find_first_displayed(bubble, react_btn_selectors) or _find_first_displayed(self.driver, react_btn_selectors)
+            react_btn = self._find_first_displayed(react_btn_selectors, scope=bubble) or self._find_first_displayed(react_btn_selectors)
             if not react_btn:
                 # Try moving slightly inside bubble to trigger toolbar
                 try:
@@ -736,10 +816,7 @@ class WhatsAppAutomation:
                 logger.error("Reaction button not found")
                 return False
 
-            try:
-                self.driver.execute_script("arguments[0].click();", react_btn)
-            except Exception:
-                react_btn.click()
+            self._click_element(react_btn)
             time.sleep(0.2)
 
             # Click "+" to open full emoji picker
@@ -759,15 +836,12 @@ class WhatsAppAutomation:
                     time.sleep(0.1)
                 return None
 
-            more_btn = _wait_for_any(more_btn_selectors)
+            more_btn = self._wait_for_any(more_btn_selectors)
             if not more_btn:
                 # Some builds show the full picker immediately; continue
                 logger.debug("More reactions button not found; proceeding to search picker directly")
             else:
-                try:
-                    self.driver.execute_script("arguments[0].click();", more_btn)
-                except Exception:
-                    more_btn.click()
+                self._click_element(more_btn)
                 time.sleep(0.5)
             time.sleep(0.5)
             # Emoji picker panel
@@ -776,7 +850,7 @@ class WhatsAppAutomation:
                 'div[data-testid="emoji-panel"]',
                 'div[role="dialog"][aria-label*="Emoji" i]'
             ]
-            picker = _wait_for_any(picker_selectors)
+            picker = self._wait_for_any(picker_selectors)
             if not picker:
                 logger.debug("Emoji picker container not detected; proceeding to search globally")
 
@@ -790,7 +864,7 @@ class WhatsAppAutomation:
                 'div[contenteditable="true"]'
             ]
             # Only allow typing inside the emoji picker; never type globally
-            search = _wait_for_any(search_selectors, scope=picker)
+            search = self._wait_for_any(search_selectors, scope=picker)
             if search:
                 try:
                     search.click()
@@ -822,7 +896,7 @@ class WhatsAppAutomation:
                 'button[aria-label]',
                 'span[role="button"][data-emoji]'
             ]
-            result = (_wait_for_any(result_selectors, scope=picker) if picker else None)
+            result = (self._wait_for_any(result_selectors, scope=picker) if picker else None)
             if not result:
                 logger.error("No emoji result selectable")
                 return False
@@ -907,25 +981,19 @@ class WhatsAppAutomation:
         panel_btn_selectors = [
             '[aria-label="Emojis, GIFs, Stickers"]',
         ]
-        btn = _first_displayed(panel_btn_selectors)
+        btn = self._find_first_displayed(panel_btn_selectors)
         if not btn:
             raise NoSuchElementException("Emojis/GIFs/Stickers button not found")
-        try:
-            self.driver.execute_script("arguments[0].click();", btn)
-        except Exception:
-            btn.click()
+        self._click_element(btn)
         time.sleep(0.2)
 
         # Switch to GIFs tab
         gifs_btn_selectors = [
             '[aria-label="Gifs selector"]',
         ]
-        gifs_btn = _first_displayed(gifs_btn_selectors)
+        gifs_btn = self._find_first_displayed(gifs_btn_selectors)
         if gifs_btn:
-            try:
-                self.driver.execute_script("arguments[0].click();", gifs_btn)
-            except Exception:
-                gifs_btn.click()
+            self._click_element(gifs_btn)
             time.sleep(0.2)
 
         # Search input inside the GIFs panel
@@ -937,36 +1005,12 @@ class WhatsAppAutomation:
             'div[contenteditable="true"][aria-label*="Search GIFs" i]',
             '[role="textbox"][aria-label*="Search GIFs" i]'
         ]
-        end = time.time() + timeout
-        search_box = None
-        while time.time() < end and not search_box:
-            search_box = _first_displayed(search_selectors)
-            if not search_box:
-                time.sleep(0.1)
+        search_box = self._wait_for_any(search_selectors, timeout=timeout)
 
         if not search_box:
             raise NoSuchElementException("GIF search input not found")
 
-        try:
-            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", search_box)
-        except Exception:
-            pass
-        try:
-            search_box.click()
-        except Exception:
-            pass
-        try:
-            # Ensure focus via JS to avoid overlays stealing click
-            self.driver.execute_script("arguments[0].focus();", search_box)
-        except Exception:
-            pass
-        # Verify we actually focused the Tenor search field
-        try:
-            focused = self.driver.execute_script("return document.activeElement === arguments[0];", search_box)
-            if not focused:
-                self.driver.execute_script("arguments[0].focus();", search_box)
-        except Exception:
-            pass
+        self._focus_element(search_box)
         try:
             search_box.clear()
         except Exception:
@@ -985,15 +1029,7 @@ class WhatsAppAutomation:
         time.sleep(0.5)
 
         # Wait for results grid to appear
-        grid_end = time.time() + timeout
-        grid_container = None
-        while time.time() < grid_end and not grid_container:
-            try:
-                grid_container = _first_displayed(['div[role="grid"]'], scope=None)
-            except Exception:
-                grid_container = None
-            if not grid_container:
-                time.sleep(0.1)
+        grid_container = self._wait_for_any(['div[role="grid"]'], timeout=timeout)
 
         # Navigate to first result with keyboard (fallback to click if needed)
         used_keyboard = False
@@ -1011,12 +1047,12 @@ class WhatsAppAutomation:
         if not used_keyboard:
             # Fallback: click the first result button
             try:
-                first_btn = _first_displayed([
+                first_btn = self._find_first_displayed([
                     'div[role="grid"] [role="gridcell"] button',
                     'div[role="grid"] button',
                 ])
                 if first_btn:
-                    self.driver.execute_script("arguments[0].click();", first_btn)
+                    self._click_element(first_btn)
             except Exception:
                 pass
         time.sleep(0.6)
@@ -1073,7 +1109,7 @@ class WhatsAppAutomation:
             'div[aria-label*="Attach" i]',
             'span[data-icon="clip"]',
         ]
-        attach_btn = _first_displayed(attach_btn_selectors)
+        attach_btn = self._find_first_displayed(attach_btn_selectors)
         if attach_btn:
             try:
                 self.driver.execute_script("arguments[0].click();", attach_btn)
@@ -1110,16 +1146,13 @@ class WhatsAppAutomation:
         while time.time() < end_send and not sent:
             try:
                 # Common send buttons in media composer
-                send_btn = _first_displayed([
+                send_btn = self._find_first_displayed([
                     'button[aria-label="Send"]',
                     'button[data-testid="compose-btn-send"]',
                     'div[role="button"][aria-label="Send"]',
                 ])
                 if send_btn:
-                    try:
-                        self.driver.execute_script("arguments[0].click();", send_btn)
-                    except Exception:
-                        send_btn.click()
+                    self._click_element(send_btn)
                     sent = True
                     break
             except Exception:
@@ -1174,9 +1207,9 @@ class WhatsAppAutomation:
             return None
 
         # Prefer clicking explicit Context menu button for reliability
-        menu_btn = _first_displayed(['[aria-label="Context menu"]'], scope=bubble)
+        menu_btn = self._find_first_displayed(['[aria-label="Context menu"]'], scope=bubble)
         if not menu_btn:
-            menu_btn = _first_displayed(['[aria-label="Context menu"]'])
+            menu_btn = self._find_first_displayed(['[aria-label="Context menu"]'])
         if not menu_btn:
             # Fallback to right-click
             try:
@@ -1185,10 +1218,7 @@ class WhatsAppAutomation:
             except Exception:
                 raise NoSuchElementException("Context menu control not found")
         else:
-            try:
-                self.driver.execute_script("arguments[0].click();", menu_btn)
-            except Exception:
-                menu_btn.click()
+            self._click_element(menu_btn)
             time.sleep(0.2)
 
         # Click the "Reply" menu item

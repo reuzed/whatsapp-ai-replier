@@ -1,4 +1,4 @@
-"""Configuration management for WhatsApp automation tool (Anthropic-only)."""
+"""Configuration management for WhatsApp automation tool (Anthropic + OpenAI)."""
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field
 from typing import Literal
@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     )
     # API Keys
     anthropic_api_key: str = Field(default="", description="Anthropic API key")
+    openai_api_key: str = Field(default="", description="OpenAI API key")
     # WhatsApp Configuration
     chrome_profile_path: str = Field(default="", description="Path to Chrome profile directory")
     user_name: str = Field(default="", description="Display name used when auto-signing up")
@@ -25,8 +26,8 @@ class Settings(BaseSettings):
     log_file: str = Field(default="logs/whatsapp_automation.log")
     
     def validate_api_keys(self) -> bool:
-        """Validate that Anthropic API key is provided."""
-        return bool(self.anthropic_api_key)
+        """Validate that at least one API key is provided."""
+        return bool(self.anthropic_api_key or self.openai_api_key)
 
 # Global settings instance
 settings = Settings()
