@@ -1,7 +1,7 @@
 """LLM client for generating responses using the Anthropic API."""
 
 from typing import Optional
-from anthropic.types import Message, MessageParam, TextBlockParam, TextBlock, ToolUseBlock, 
+from anthropic.types import Message, MessageParam, TextBlockParam, TextBlock, ToolUseBlock
 from abc import ABC, abstractmethod
 import anthropic
 from loguru import logger
@@ -225,7 +225,7 @@ class AnthropicClient(LLMClient):
                 responses.append(SkipResponse())
             elif content_block.type == "tool_use" and content_block.name == "react":
                 assert isinstance(content_block, ToolUseBlock)
-                inputs = content_block.input
+                inputs:dict = content_block.input  # type: ignore
                 if "message_to_react" in inputs and "emoji_name" in inputs:
                     react_response = ReactResponse(
                         message_to_react=inputs["message_to_react"],
