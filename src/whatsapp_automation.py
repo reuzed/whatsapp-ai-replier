@@ -946,6 +946,11 @@ class WhatsAppAutomation:
                             self.driver.execute_script("arguments[0].click();", variant)
                         except Exception:
                             variant.click()
+                        # Some UIs require an explicit confirm; send Enter to the focused variant
+                        try:
+                            variant.send_keys(Keys.RETURN)
+                        except Exception:
+                            pass
                         time.sleep(0.2)
                 except Exception:
                     pass
