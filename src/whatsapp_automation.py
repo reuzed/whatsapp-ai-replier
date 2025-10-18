@@ -2,7 +2,7 @@
 import time
 import os
 import asyncio
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Any
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -876,6 +876,403 @@ class WhatsAppAutomation:
 
     def react_to_message_containing(self, text_contains: str, emoji_query: str, incoming: Optional[bool] = None) -> bool:
         return self.react_to_message(emoji_query=emoji_query, text_contains=text_contains, incoming=incoming)
+
+    def send_gif_by_search(self, query: str, press_enter_to_send: bool = True, timeout: float = 12.0) -> bool:
+        """Open the GIF picker, search Tenor, select first result, optionally send.
+
+        DOM guide hints:
+        - Open panel via button with aria-label "Emojis, GIFs, Stickers"
+        - Switch to GIFs via button with aria-label "Gifs selector"
+        - Search box aria-label "Search GIFs via Tenor"
+        - Then: Enter (search), ArrowDown (first), Enter (select), Enter (send)
+        """
+        if not self.driver:
+            raise Exception("Driver not initialized")
+
+        def _first_displayed(css_list: List[str], scope: Optional[WebElement] = None) -> Optional[WebElement]:
+            s: Any = scope or self.driver
+            if s is None:
+                return None
+            for css in css_list:
+                try:
+                    elems = s.find_elements(By.CSS_SELECTOR, css)
+                    for e in elems:
+                        if e and e.is_displayed():
+                            return e
+                except Exception:
+                    continue
+            return None
+
+        # Open the Emoji/GIFs/Stickers panel
+        panel_btn_selectors = [
+            '[aria-label="Emojis, GIFs, Stickers"]',
+        ]
+        btn = _first_displayed(panel_btn_selectors)
+        if not btn:
+            raise NoSuchElementException("Emojis/GIFs/Stickers button not found")
+        try:
+            self.driver.execute_script("arguments[0].click();", btn)
+        except Exception:
+            btn.click()
+        time.sleep(0.2)
+
+        # Switch to GIFs tab
+        gifs_btn_selectors = [
+            '[aria-label="Gifs selector"]',
+        ]
+        gifs_btn = _first_displayed(gifs_btn_selectors)
+        if gifs_btn:
+            try:
+                self.driver.execute_script("arguments[0].click();", gifs_btn)
+            except Exception:
+                gifs_btn.click()
+            time.sleep(0.2)
+
+        # Search input inside the GIFs panel
+        search_selectors = [
+            'div[role="dialog"] input[aria-label="Search GIFs via Tenor"]',
+            'div[role="dialog"] div[contenteditable="true"][aria-label*="Search GIFs" i]',
+            'div[role="dialog"] [role="textbox"][aria-label*="Search GIFs" i]',
+            'input[aria-label="Search GIFs via Tenor"]',
+            'div[contenteditable="true"][aria-label*="Search GIFs" i]',
+            '[role="textbox"][aria-label*="Search GIFs" i]'
+        ]
+        end = time.time() + timeout
+        search_box = None
+        while time.time() < end and not search_box:
+            search_box = _first_displayed(search_selectors)
+            if not search_box:
+                time.sleep(0.1)
+
+        if not search_box:
+            raise NoSuchElementException("GIF search input not found")
+
+        try:
+            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", search_box)
+        except Exception:
+            pass
+        try:
+            search_box.click()
+        except Exception:
+            pass
+        try:
+            # Ensure focus via JS to avoid overlays stealing click
+            self.driver.execute_script("arguments[0].focus();", search_box)
+        except Exception:
+            pass
+        # Verify we actually focused the Tenor search field
+        try:
+            focused = self.driver.execute_script("return document.activeElement === arguments[0];", search_box)
+            if not focused:
+                self.driver.execute_script("arguments[0].focus();", search_box)
+        except Exception:
+            pass
+        try:
+            search_box.clear()
+        except Exception:
+            pass
+        try:
+            search_box.send_keys(query)
+        except Exception:
+            ActionChains(self.driver).send_keys(query).perform()
+        time.sleep(0.25)
+
+        # Enter to search
+        try:
+            search_box.send_keys(Keys.RETURN)
+        except Exception:
+            ActionChains(self.driver).send_keys(Keys.RETURN).perform()
+        time.sleep(0.5)
+
+        # Wait for results grid to appear
+        grid_end = time.time() + timeout
+        grid_container = None
+        while time.time() < grid_end and not grid_container:
+            try:
+                grid_container = _first_displayed(['div[role="grid"]'], scope=None)
+            except Exception:
+                grid_container = None
+            if not grid_container:
+                time.sleep(0.1)
+
+        # Navigate to first result with keyboard (fallback to click if needed)
+        used_keyboard = False
+        if grid_container:
+            try:
+                # Ensure the search box is still focused before key navigation
+                self.driver.execute_script("arguments[0].focus();", search_box)
+                time.sleep(0.05)
+                search_box.send_keys(Keys.ARROW_DOWN)
+                time.sleep(0.2)
+                search_box.send_keys(Keys.RETURN)
+                used_keyboard = True
+            except Exception:
+                used_keyboard = False
+        if not used_keyboard:
+            # Fallback: click the first result button
+            try:
+                first_btn = _first_displayed([
+                    'div[role="grid"] [role="gridcell"] button',
+                    'div[role="grid"] button',
+                ])
+                if first_btn:
+                    self.driver.execute_script("arguments[0].click();", first_btn)
+            except Exception:
+                pass
+        time.sleep(0.6)
+
+        if press_enter_to_send:
+            # Avoid clicking the composer to prevent interception; just send Enter
+            try:
+                ActionChains(self.driver).send_keys(Keys.RETURN).pause(0.15).send_keys(Keys.RETURN).perform()
+            except Exception:
+                pass
+            time.sleep(0.3)
+        return True
+
+        
+    def attach_media(self, file_paths: List[str], timeout: float = 12.0) -> bool:
+        """Attach one or more images/videos to the current chat and send them.
+
+        - Click the attach button (aria-label contains "Attach").
+        - Locate hidden file input with accept including image/video.
+        - Send absolute paths (joined with newline for multiple).
+        - Press Enter to send once preview is attached.
+        """
+        if not self.driver:
+            raise Exception("Driver not initialized")
+
+        if not file_paths:
+            raise ValueError("file_paths must not be empty")
+
+        # Resolve and validate paths
+        abs_paths: List[str] = []
+        for p in file_paths:
+            ap = os.path.abspath(p)
+            if not os.path.exists(ap):
+                raise FileNotFoundError(ap)
+            abs_paths.append(ap)
+
+        def _first_displayed(css_list: List[str], scope: Optional[WebElement] = None) -> Optional[WebElement]:
+            s: Any = scope or self.driver
+            if s is None:
+                return None
+            for css in css_list:
+                try:
+                    elems = s.find_elements(By.CSS_SELECTOR, css)
+                    for e in elems:
+                        if e and e.is_displayed():
+                            return e
+                except Exception:
+                    continue
+            return None
+
+        # Click the attach button
+        attach_btn_selectors = [
+            'button[aria-label*="Attach" i]',
+            'div[aria-label*="Attach" i]',
+            'span[data-icon="clip"]',
+        ]
+        attach_btn = _first_displayed(attach_btn_selectors)
+        if attach_btn:
+            try:
+                self.driver.execute_script("arguments[0].click();", attach_btn)
+            except Exception:
+                attach_btn.click()
+            time.sleep(0.2)
+
+        # Find the file input which accepts images/videos
+        end = time.time() + timeout
+        file_input = None
+        while time.time() < end and not file_input:
+            try:
+                candidates = self.driver.find_elements(By.CSS_SELECTOR, 'input[type="file"][accept*="image"], input[type="file"][accept*="video"]')
+                for el in candidates:
+                    # Hidden inputs are acceptable for send_keys
+                    if el.get_attribute('type') == 'file':
+                        file_input = el
+                        break
+            except Exception:
+                pass
+            if not file_input:
+                time.sleep(0.1)
+
+        if not file_input:
+            raise NoSuchElementException("File input for images/videos not found")
+
+        files_value = "\n".join(abs_paths)
+        file_input.send_keys(files_value)
+
+        # Wait for media preview and try clicking the Send button within the preview
+        time.sleep(0.5)
+        end_send = time.time() + timeout
+        sent = False
+        while time.time() < end_send and not sent:
+            try:
+                # Common send buttons in media composer
+                send_btn = _first_displayed([
+                    'button[aria-label="Send"]',
+                    'button[data-testid="compose-btn-send"]',
+                    'div[role="button"][aria-label="Send"]',
+                ])
+                if send_btn:
+                    try:
+                        self.driver.execute_script("arguments[0].click();", send_btn)
+                    except Exception:
+                        send_btn.click()
+                    sent = True
+                    break
+            except Exception:
+                pass
+            time.sleep(0.1)
+
+        if not sent:
+            # Fallback: press Enter via keyboard without clicking the composer
+            try:
+                ActionChains(self.driver).send_keys(Keys.RETURN).perform()
+                sent = True
+            except Exception:
+                sent = False
+            time.sleep(0.3)
+        if not sent:
+            return False
+        return True
+
+    def reply_to_message(self, reply_text: str, index_from_end: int = 1, incoming: Optional[bool] = None, text_contains: Optional[str] = None, timeout: float = 8.0) -> bool:
+        """Reply to a specific message via the context menu then send text.
+
+        - Hover the target message to reveal toolbar.
+        - Open context menu (aria-label contains "Context menu").
+        - Click the menu item labeled "Reply".
+        - Type the reply and press Enter to send.
+        """
+        if not self.driver:
+            raise Exception("Driver not initialized")
+
+        bubble = self._locate_message_bubble(index_from_end=index_from_end, incoming=incoming, text_contains=text_contains)
+        if not bubble:
+            raise NoSuchElementException("Target message bubble not found")
+
+        try:
+            ActionChains(self.driver).move_to_element(bubble).perform()
+            time.sleep(0.2)
+        except Exception:
+            pass
+
+        def _first_displayed(css_list: List[str], scope: Optional[WebElement] = None) -> Optional[WebElement]:
+            s: Any = scope or self.driver
+            if s is None:
+                return None
+            for css in css_list:
+                try:
+                    elems = s.find_elements(By.CSS_SELECTOR, css)
+                    for e in elems:
+                        if e and e.is_displayed():
+                            return e
+                except Exception:
+                    continue
+            return None
+
+        # Prefer clicking explicit Context menu button for reliability
+        menu_btn = _first_displayed(['[aria-label="Context menu"]'], scope=bubble)
+        if not menu_btn:
+            menu_btn = _first_displayed(['[aria-label="Context menu"]'])
+        if not menu_btn:
+            # Fallback to right-click
+            try:
+                ActionChains(self.driver).context_click(bubble).perform()
+                time.sleep(0.2)
+            except Exception:
+                raise NoSuchElementException("Context menu control not found")
+        else:
+            try:
+                self.driver.execute_script("arguments[0].click();", menu_btn)
+            except Exception:
+                menu_btn.click()
+            time.sleep(0.2)
+
+        # Click the "Reply" menu item
+        end = time.time() + timeout
+        clicked_reply = False
+        while time.time() < end and not clicked_reply:
+            try:
+                # Look within common menu containers first
+                xpath = (
+                    "//div[@role='menu']//span[normalize-space(.)='Reply'] | "
+                    "//div[@role='menu']//div[normalize-space(.)='Reply'] | "
+                    "//span[normalize-space(.)='Reply'] | //div[normalize-space(.)='Reply']"
+                )
+                reply_item = self.driver.find_element(By.XPATH, xpath)
+                if reply_item and reply_item.is_displayed():
+                    self.driver.execute_script("arguments[0].click();", reply_item)
+                    clicked_reply = True
+                    break
+            except Exception:
+                pass
+            time.sleep(0.1)
+        if not clicked_reply:
+            raise NoSuchElementException("Reply menu item not found")
+
+        # Type and send reply
+        box = self.focus_message_box()
+        if not box:
+            return False
+        try:
+            box.clear()
+        except Exception:
+            pass
+        try:
+            pyperclip.copy(reply_text)
+            box.send_keys(CONTROL_KEY, 'v')
+        except Exception:
+            box.send_keys(reply_text)
+        box.send_keys(Keys.RETURN)
+        time.sleep(0.3)
+        return True
+
+    def reply_to_message_containing(self, contains_text: str, reply_text: str, incoming: Optional[bool] = None, timeout: float = 8.0) -> bool:
+        """Find a message containing a substring and reply to it.
+
+        contains_text: case-insensitive substring to find in a message bubble.
+        incoming: True/False to restrict direction; None for either.
+        """
+        return self.reply_to_message(
+            reply_text=reply_text,
+            index_from_end=1,
+            incoming=incoming,
+            text_contains=contains_text,
+            timeout=timeout,
+        )
+
+    def simulate_typing_indicator(self, duration_sec: float = 2.0) -> bool:
+        """Simulate typing indicator by entering text ("..."), waiting, then clearing without sending."""
+        if not self.driver:
+            raise Exception("Driver not initialized")
+        if duration_sec < 0:
+            raise ValueError("duration_sec must be non-negative")
+        box = self.focus_message_box()
+        if not box:
+            return False
+        try:
+            box.click()
+        except Exception:
+            pass
+        try:
+            box.send_keys("...")
+        except Exception:
+            ActionChains(self.driver).send_keys("...").perform()
+        time.sleep(duration_sec)
+        try:
+            ActionChains(self.driver).key_down(CONTROL_KEY).send_keys('a').key_up(CONTROL_KEY).send_keys(Keys.DELETE).perform()
+        except Exception:
+            # Fallback: backspace the same number of characters
+            for _ in range(3):
+                try:
+                    box.send_keys(Keys.BACK_SPACE)
+                except Exception:
+                    break
+        time.sleep(0.1)
+        return True
 
     def list_recent_chat_entries(self, max_rows: int = 30, max_scrolls: int = 40, search_term: Optional[str] = None) -> List[ChatListEntry]:
         """Return structured recent chat entries with name, preview, and time.

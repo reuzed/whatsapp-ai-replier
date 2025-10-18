@@ -160,6 +160,11 @@ class AutomationShell:
             ("react_in", "react_in <emoji>", "React to latest incoming message"),
             ("react_out", "react_out <emoji>", "React to latest outgoing message"),
             ("react_contains", "react_contains <text> <emoji> [incoming|outgoing|either]", "React to message containing text"),
+            ("gif", "gif <search>", "Search Tenor and send first GIF"),
+            ("attach", "attach <file> [more files...]", "Attach and send media files"),
+            ("reply", "reply <text> [incoming|outgoing|either] [index]", "Reply to a specific message"),
+            ("reply_contains", "reply_contains <substring> :: <reply> [incoming|outgoing|either]", "Reply to a message containing substring"),
+            ("typing", "typing [seconds]", "Simulate typing indicator"),
             ("help", "help", "Show this help"),
             ("quit", "quit", "Exit"),
         ]
@@ -256,6 +261,71 @@ async def repl() -> None:
                         text = args[0]
                     emoji_query = args[1]
                     shell.react_contains(text, emoji_query, incoming)
+            elif cmd == "gif":
+                if not args:
+                    console.print("[warn]Usage: gif <search>[/warn]")
+                else:
+                    ok = shell.automation.send_gif_by_search(" ".join(args))
+                    console.print("[ok]GIF sent[/ok]" if ok else "[warn]Failed to send GIF[/warn]")
+            elif cmd == "attach":
+                if not args:
+                    console.print("[warn]Usage: attach <file> [more files...] [/warn]")
+                else:
+                    ok = shell.automation.attach_media(args)
+                    console.print("[ok]Media sent[/ok]" if ok else "[warn]Failed to send media[/warn]")
+            elif cmd == "reply":
+                if not args:
+                    console.print("[warn]Usage: reply <text> [incoming|outgoing|either] [index][/warn]")
+                else:
+                    incoming_val = None
+                    index_val = 1
+                    # Parse optional flags from the end
+                    if args and args[-1].isdigit():
+                        index_val = int(args[-1])
+                        args = args[:-1]
+                    if args:
+                        scope = args[-1].lower()
+                        if scope in ("incoming", "in"):
+                            incoming_val = True
+                            args = args[:-1]
+                        elif scope in ("outgoing", "out"):
+                            incoming_val = False
+                            args = args[:-1]
+                        elif scope in ("either", "any"):
+                            incoming_val = None
+                            args = args[:-1]
+                    reply_text = " ".join(args)
+                    ok = shell.automation.reply_to_message(reply_text, index_from_end=index_val, incoming=incoming_val)
+                    console.print("[ok]Replied[/ok]" if ok else "[warn]Failed to reply[/warn]")
+            elif cmd == "reply_contains":
+                if not args or "::" not in " ".join(args):
+                    console.print("[warn]Usage: reply_contains <substring> :: <reply> [incoming|outgoing|either][/warn]")
+                else:
+                    joined = " ".join(args)
+                    parts2 = [p.strip() for p in joined.split("::", 1)]
+                    substr = parts2[0]
+                    tail = parts2[1]
+                    incoming_val = None
+                    reply_text = tail
+                    # Optional scope at end
+                    tail_parts = tail.split()
+                    if tail_parts:
+                        scope = tail_parts[-1].lower()
+                        if scope in ("incoming", "in"):
+                            incoming_val = True
+                            reply_text = " ".join(tail_parts[:-1])
+                        elif scope in ("outgoing", "out"):
+                            incoming_val = False
+                            reply_text = " ".join(tail_parts[:-1])
+                        elif scope in ("either", "any"):
+                            incoming_val = None
+                            reply_text = " ".join(tail_parts[:-1])
+                    ok = shell.automation.reply_to_message_containing(substr, reply_text, incoming=incoming_val)
+                    console.print("[ok]Replied[/ok]" if ok else "[warn]Failed to reply[/warn]")
+            elif cmd == "typing":
+                dur = float(args[0]) if args else 2.0
+                ok = shell.automation.simulate_typing_indicator(duration_sec=dur)
+                console.print("[ok]Typing simulated[/ok]" if ok else "[warn]Failed to simulate typing[/warn]")
             else:
                 console.print("[warn]Unknown command. Type 'help' for commands.[/warn]")
         except Exception as e:
