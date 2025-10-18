@@ -266,7 +266,7 @@ class WhatsAppAutomation:
             title_elem = self.driver.find_element(By.CSS_SELECTOR, 'header span[title]')
             extra_info = title_elem.get_attribute('title') or title_elem.text
         except:
-            logger.error("Failed to get extra info from title element.")
+            # logger.error("Failed to get extra info from title element.")
             extra_info = "?"
         
         return ChatInfo(chat_name=chat_name, is_group=is_group, extra_info=extra_info)
@@ -932,6 +932,23 @@ class WhatsAppAutomation:
                         except Exception:
                             time.sleep(0.05)
                             continue
+            # If clicking the base emoji opened a variant (skin tone) chooser, click the first variant
+            if clicked:
+                try:
+                    variant = _wait_for_any([
+                        'div[role="menu"] button',
+                        'div[role="menu"] [role="menuitem"]',
+                        'div[role="dialog"] button[role="button"]',
+                        'div[aria-label*="skin" i] button'
+                    ])
+                    if variant:
+                        try:
+                            self.driver.execute_script("arguments[0].click();", variant)
+                        except Exception:
+                            variant.click()
+                        time.sleep(0.2)
+                except Exception:
+                    pass
             # Do not send global Enter as a fallback; avoid triggering chat search
             if not clicked:
                 logger.error("Failed to click emoji result")
