@@ -9,9 +9,11 @@ from typing import Optional
 
 from loguru import logger
 from openai import OpenAI  # type: ignore[import-not-found]
+import httpx
 
 from src.config import settings
 
+from rich import print
 
 TEMP_DIR_NAME = "temp"
 
@@ -44,7 +46,7 @@ def _get_openai_client() -> OpenAI:
 def generate_image(
     prompt: str,
     *,
-    model: str = "gpt-image-1",
+    model: str = "dall-e-3", # "gpt-image-1",
     size: str = "1024x1024",
     n: int = 1,
     output_filename: Optional[str] = None,
@@ -59,36 +61,48 @@ def generate_image(
         raise ValueError("n must be >= 1")
 
     client = _get_openai_client()
-    logger.info(f"Generating {n} image(s) with model={model}, size={size}")
+    logger.info(f"Generating {n} image(s) with model={model} and prompt={prompt}")
 
     result = client.images.generate(
         model=model,
         prompt=prompt,
-        n=n,
-        size=size,
+        n=n
     )
 
     temp_dir = ensure_temp_dir(repo_root)
     saved_paths: list[Path] = []
 
     for idx, data in enumerate(result.data):  # type: ignore[attr-defined]
-        # SDK returns base64 JSON for each image
         b64 = getattr(data, "b64_json", None)
-        if not b64:
-            logger.warning("No b64_json found for an image result; skipping")
-            continue
-        image_bytes = base64.b64decode(b64)
+        url = getattr(data, "url", None)
 
         base_name = output_filename or "generated_image"
         suffix = "" if n == 1 else f"_{idx+1}"
         filename = f"{base_name}{suffix}.png"
         out_path = temp_dir / filename
 
-        with open(out_path, "wb") as f:
-            f.write(image_bytes)
+        if b64:
+            image_bytes = base64.b64decode(b64)
+            with open(out_path, "wb") as f:
+                f.write(image_bytes)
+            logger.info(f"Saved image to {out_path}")
+            saved_paths.append(out_path)
+            continue
 
-        logger.info(f"Saved image to {out_path}")
-        saved_paths.append(out_path)
+        if url:
+            try:
+                with httpx.Client(follow_redirects=True, timeout=60.0) as http:
+                    resp = http.get(url)
+                    resp.raise_for_status()
+                    with open(out_path, "wb") as f:
+                        f.write(resp.content)
+                logger.info(f"Downloaded image to {out_path}")
+                saved_paths.append(out_path)
+            except Exception as e:
+                logger.warning(f"Failed downloading image from URL: {e}")
+            continue
+
+        logger.warning("No b64_json or url found for an image result; skipping")
 
     if not saved_paths:
         raise RuntimeError("Image generation did not yield any images")
@@ -102,7 +116,6 @@ if __name__ == "__main__":
         paths = generate_image(
             prompt="A high-quality photo of a group of playful dogs in a park",
             n=1,
-            size="1024x1024",
             output_filename="dogs_test",
         )
         print("Generated:", ", ".join(str(p) for p in paths))

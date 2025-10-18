@@ -54,7 +54,16 @@ class ReactAction:
     emoji_name: str
     timestamp: datetime
 
-Action = ChatAction | ReactAction
+@dataclass
+class ImageChatAction:
+    prompt: str
+    chat_name: str
+    timestamp: datetime
+    n: int = 1
+    model: Optional[str] = None
+    output_filename: Optional[str] = None
+
+Action = ChatAction | ReactAction | ImageChatAction
 
 class Chatter(ABC):
     @abstractmethod
