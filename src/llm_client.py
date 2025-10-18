@@ -170,7 +170,7 @@ class AnthropicClient(LLMClient):
         messages: list[dict[str, str]],
         system_prompt: Optional[str] = None,
         allow_skip: bool = True,
-        allow_react: bool = True,
+        allow_react: bool = False,
         tool_choice: str = "auto"
     ) -> list[LLMResponse]:
         """Generate a responses WITHOUT react tools."""
@@ -269,7 +269,7 @@ class LLMManager:
     async def generate_react_response(
         self, 
         messages: list[dict[str, str]], 
-        system_prompt: Optional[str] = None
+        system_prompt: Optional[str] = None,
     ) -> ReactResponse | ErrorResponse | SkipResponse:
         """Generate a react response using the LLM client."""
         return await self.client.generate_react_response(messages, system_prompt)
