@@ -204,12 +204,12 @@ class WhatsAppAutomation:
         message_box.clear()  # can fail for contenteditable on some Chrome versions
         time.sleep(0.1)
         try:
-            message_box.send_keys(message)
-        except Exception:
             message_box.clear()
             # Fallback send with copy and paste
             pyperclip.copy(message)
             message_box.send_keys(CONTROL_KEY, 'v')
+        except Exception:
+            message_box.send_keys(message)
         message_box.send_keys(Keys.RETURN)
         time.sleep(0.5)
         return True
