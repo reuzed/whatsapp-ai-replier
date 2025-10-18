@@ -47,7 +47,8 @@ class ActionsHandler:
         return chat_actions
 
     def _split_chat_action_into_multiple(self, chat_action: ChatAction) -> list[ChatAction]:
-        messages = chat_action.message.content.split("\n\n") # try this for now
+        messages = chat_action.message.content.split("\n\n")
+        messages = [message.replace("\\n\\n", "\n\n") for message in messages]
         new_chat_actions = []
         for i, message in enumerate(messages):
             new_message = WhatsAppMessage(sender=chat_action.message.sender, content=message, timestamp=chat_action.timestamp, is_outgoing=chat_action.message.is_outgoing, chat_name=chat_action.message.chat_name)
