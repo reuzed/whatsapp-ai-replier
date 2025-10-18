@@ -1,6 +1,7 @@
 """LLM client for generating responses using the Anthropic API."""
 
-from typing import Optional, List, Dict
+from typing import Optional
+from anthropic.types import Message, MessageParam, TextBlockParam, TextBlock
 from abc import ABC, abstractmethod
 import anthropic
 from loguru import logger
@@ -48,7 +49,7 @@ class LLMClient(ABC):
     @abstractmethod
     async def generate_react_response(
         self, 
-        messages: List[Dict[str, str]],
+        messages: list[dict[str, str]],
         system_prompt: Optional[str] = None
     ) -> LLMResponse:
         """Generate a response with react and skip tool."""
@@ -57,12 +58,13 @@ class LLMClient(ABC):
     @abstractmethod
     async def generate_response(
         self, 
-        messages: List[Dict[str, str]],
+        messages: list[dict[str, str]],
         system_prompt: Optional[str] = None,
         allow_skip: bool = True
     ) -> LLMResponse:
         """Generate a response with only skip tool."""
         pass
+    
     @abstractmethod
     async def complete_message(self, message: str, system=None) -> str:
         """Complete a message using the LLM client."""
@@ -89,17 +91,17 @@ class AnthropicClient(LLMClient):
         """Tool definition for reacting to messages."""
         return {
             "name": "react",
-            "description": "Use this tool liberally to react to a message with an emoji.",
+            "description": "Use this tool liberally to react to a Whatsapp message with an emoji.",
             "input_schema": {
                 "type": "object",
                 "properties": {
                     "message_to_react": {
                         "type": "string",
-                        "description": "The content of the message to react to."
+                        "description": "The exact text content of the message to react to."
                     },
                     "emoji_name": {
                         "type": "string",
-                        "description": "The name of the emoji to react with, e.g. 'thumbs up', 'smile', 'heart'."
+                        "description": "The name of the emoji to react with, e.g. 'thumbs up', 'smile', 'heart'. This should be a short search term with just spaces and letters that will return the desired emoji."
                     }
                 },
                 "required": ["message_to_react", "emoji_name"]
@@ -121,124 +123,119 @@ class AnthropicClient(LLMClient):
                 "content": message
             }]
         )
-        print(response.content[0].text)
-        return response.content[0].text
+        blocks = response.content
+        for block in blocks:
+            if isinstance(block, TextBlock):
+                return block.text
+        raise ValueError("No text block found in response from anthropic API.")
 
     async def generate_response(
         self, 
-        messages: List[Dict[str, str]],
+        messages: list[dict[str, str]],
         system_prompt: Optional[str] = None,
         allow_skip: bool = True
     ) -> LLMResponse:
         """Generate a response WITHOUT react tools."""
-        try:
-            # Convert messages to Anthropic format
-            anthropic_messages = []
-            for msg in messages:
-                if msg["role"] in ["user", "assistant"]:
-                    anthropic_messages.append({
-                        "role": msg["role"],
-                        "content": msg["content"]
-                    })
-            
-            # Use Messages API (recommended by Anthropic)
-            if allow_skip:
-                response = await self.client.messages.create(
-                    model=settings.anthropic_model,
-                    max_tokens=settings.max_tokens,
-                    temperature=settings.temperature,
-                    system=system_prompt,
-                    messages=anthropic_messages,
-                    tools=[self.skip_tool],
-                )
-            else:
-                response = await self.client.messages.create(
-                    model=settings.anthropic_model,
-                    max_tokens=settings.max_tokens,
-                    temperature=settings.temperature,
-                    system=system_prompt,
-                    messages=anthropic_messages,
-                )
-
-            # Check if response has content
-            if not response.content or len(response.content) == 0:
-                logger.error("Anthropic API returned empty content")
-                return ErrorResponse(error_message="Anthropic API returned empty content")
-
-            # Handle different content types
-            for content_block in response.content:
-                if len(response.content) > 1:
-                    print(response)
-                if content_block.type == "text":
-                    return MessageResponse(text=content_block.text.strip())
-                elif content_block.type == "tool_use" and content_block.name == "skip":
-                    logger.info("LLM chose to skip response")
-                    return SkipResponse()
-            # If we get here, no text or skip tool was found
-            logger.warning("No valid content found in response")
-            return ErrorResponse(error_message="No valid content found in response")
-
-        except Exception as e:
-            logger.error(f"Anthropic API error: {e}")
-            raise
+        return (await self.generate_responses(
+            messages,
+            system_prompt,
+            allow_skip
+        ))[0]
 
     async def generate_react_response(
         self, 
-        messages: List[Dict[str, str]],
-        system_prompt: Optional[str] = None
+        messages: list[dict[str, str]],
+        system_prompt: Optional[str] = None,
     ) -> LLMResponse:
         """Generate a response with reaction tool."""
+        return (await self.generate_responses(
+            messages,
+            system_prompt,
+            allow_skip=True,
+            allow_react=True,
+            tool_choice="any"
+        ))[0]
+    
+# When working with the tool_choice parameter, we have four possible options:
+# auto allows Claude to decide whether to call any provided tools or not. This is the default value when tools are provided.
+# any tells Claude that it must use one of the provided tools, but doesn’t force a particular tool.
+# tool allows us to force Claude to always use a particular tool.
+# none prevents Claude from using any tools. This is the default value when no tools are provided.
+
+    async def generate_responses(
+        self, 
+        messages: list[dict[str, str]],
+        system_prompt: Optional[str] = None,
+        allow_skip: bool = True,
+        allow_react: bool = True,
+        tool_choice: str = "auto"
+    ) -> list[LLMResponse]:
+        """Generate a responses WITHOUT react tools."""
+        extra_params = {}
+        if system_prompt:
+            extra_params["system"] = system_prompt
+        extra_params["tool_choice"] = tool_choice
+        if allow_skip or allow_react:
+            extra_params["tools"] = []
+            if allow_skip:
+                extra_params["tools"].append(self.skip_tool)
+            if allow_react:
+                extra_params["tools"].append(self.react_tool)
+        
+        
+        # Convert messages to Anthropic format
+        anthropic_messages = []
+        for msg in messages:
+            if msg["role"] in ["user", "assistant"]:
+                anthropic_messages.append({
+                    "role": msg["role"],
+                    "content": msg["content"]
+                })
+        
         try:
-            # Convert messages to Anthropic format
-            anthropic_messages = []
-            for msg in messages:
-                if msg["role"] in ["user", "assistant"]:
-                    anthropic_messages.append({
-                        "role": msg["role"],
-                        "content": msg["content"]
-                    })
-            
             # Use Messages API (recommended by Anthropic)
-            response = await self.client.messages.create(
+            response: Message = await self.client.messages.create(
                 model=settings.anthropic_model,
                 max_tokens=settings.max_tokens,
                 temperature=settings.temperature,
-                system=system_prompt,
                 messages=anthropic_messages,
-                tools=[self.react_tool, self.skip_tool],
+                **extra_params
             )
-
-            # Check if response has content
-            if not response.content or len(response.content) == 0:
-                logger.error("Anthropic API returned empty content")
-                return ErrorResponse(error_message="Anthropic API returned empty content")
-
-            # Handle different content types
-            for content_block in response.content:
-                if len(response.content) > 1:
-                    print(response)
-                if content_block.type == "text":
-                    return ErrorResponse(error_message=f"Text response not supported when react tool is enabled, message: {content_block.text.strip()}")
-                elif content_block.type == "tool_use" and content_block.name == "skip":
-                    logger.info("LLM chose to skip response")
-                    return SkipResponse()
-                elif content_block.type == "tool_use" and content_block.name == "react":
-                    inputs = content_block.input
-                    if "message_to_react" in inputs and "emoji_name" in inputs:
-                        return ReactResponse(
-                            message_to_react=inputs["message_to_react"],
-                            emoji_name=inputs["emoji_name"]
-                        )
-                    else:
-                        logger.error(f"React tool used but missing arguments, received: {inputs}")
-                        return ErrorResponse(error_message=f"React tool used but missing arguments, received: {inputs}")
-            # If we get here, no text or skip tool was found
-            logger.warning("No valid content found in response")
-            return ErrorResponse(error_message="No valid content found in response")
-
+            
         except Exception as e:
             logger.error(f"Anthropic API error: {e}")
             raise
+
+        # Check if response has content
+        if not response.content or len(response.content) == 0:
+            logger.error("Anthropic API returned empty content")
+            return [ErrorResponse(error_message="Anthropic API returned empty content")]
+
+        # Handle different content types
+        responses = []
+        for content_block in response.content:
+            if len(response.content) > 1:
+                print(response)
+            if content_block.type == "text":
+                responses.append(MessageResponse(text=content_block.text.strip()))
+            elif content_block.type == "tool_use" and content_block.name == "skip":
+                logger.info("LLM chose to skip response")
+                responses.append(SkipResponse())
+            elif content_block.type == "tool_use" and content_block.name == "react":
+                inputs = content_block.input
+                if "message_to_react" in inputs and "emoji_name" in inputs:
+                    react_response = ReactResponse(
+                        message_to_react=inputs["message_to_react"],
+                        emoji_name=inputs["emoji_name"]
+                        )
+                    responses.append(react_response)
+                
+        if len(responses) == 0:
+            # If we get here, no text or skip tool was found
+            logger.warning("No valid content found in response")
+            responses.append(ErrorResponse(error_message="No valid content found in response"))
+        
+        return responses
 
 class LLMManager:
     """Manager class for LLM operations."""
@@ -256,7 +253,7 @@ class LLMManager:
     
     async def generate_response(
         self, 
-        messages: List[Dict[str, str]], 
+        messages: list[dict[str, str]], 
         system_prompt: Optional[str] = None,
         allow_skip: bool = True
     ) -> LLMResponse:
@@ -265,7 +262,7 @@ class LLMManager:
     
     async def generate_react_response(
         self, 
-        messages: List[Dict[str, str]], 
+        messages: list[dict[str, str]], 
         system_prompt: Optional[str] = None
     ) -> ReactResponse | ErrorResponse | SkipResponse:
         """Generate a react response using the LLM client."""
@@ -275,7 +272,7 @@ class LLMManager:
         self, 
         incoming_message: str,
         sender_name: str,
-        conversation_history: List[Dict[str, str]] = None
+        conversation_history: list[dict[str, str]] | None = None
     ) -> str:
         """Generate a WhatsApp response based on incoming message and context."""
         

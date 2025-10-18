@@ -7,15 +7,20 @@ from src.prompts import create_state_updater_prompts
 from pathlib import Path
 from datetime import datetime
 
-MODULE_DIR = Path(__file__).parent.parent
-STATE_FILE = MODULE_DIR / "state.json"
-MESSAGE_LOG_FILE = MODULE_DIR / "message_log.json"
+from rich import print
+
+from typing import Literal, Any
+
+MODULE_DIR = Path(__file__).parent.parent 
+STATE_FILE = MODULE_DIR / "user_data/state.json"
+MESSAGE_LOG_FILE = MODULE_DIR / "user_data/message_log.json"
+     
+MessageLog = dict[str, Any] #dict[Literal["content", "timestamp", "is_outgoing"], Any]
 
 class StateMaintenance:
     def __init__(self, user_name: str):
-        self.state_file = STATE_FILE
-        self.user_name = user_name
         self.llm_manager = LLMManager()
+        self.user_name = user_name
 
     def load_friend_state(self, chat_name: str) -> ChatState:
         if not STATE_FILE.exists():
@@ -36,6 +41,8 @@ class StateMaintenance:
         return ChatState(text="", last_message=None)
 
     async def update_state(self, chat_name: str, chat_history: list[WhatsAppMessage]):
+        """Assimilate new messages into existing state information with LLM call
+        Writes to STATE_FILE (user_data/state.json)"""
         # llm call with system prompt
         old_state = self.load_friend_state(chat_name)
         last_message = old_state.last_message
@@ -61,14 +68,16 @@ class StateMaintenance:
         # should not have other options
 
     def reset_state(self, chat_name: str):
+        """Overwrite state with a blank version."""
         self.save_state(ChatState(text="", last_message=None), chat_name)
 
     def save_state(self, new_state: ChatState, chat_name: str):
+        """Save chat state to the STATE_FILE file, if not existing, create this file at the correct location"""
         if not STATE_FILE.exists():
             STATE_FILE.write_text("{}")
         with open(STATE_FILE, "r") as f:
-            data = json.load(f)
-        data[chat_name] = {
+            state_data = json.load(f)
+        state_data[chat_name] = {
             "text": new_state.text,
             "last_message": {
                 "sender": new_state.last_message.sender,
@@ -79,27 +88,28 @@ class StateMaintenance:
             } if new_state.last_message else None
         }
         if not STATE_FILE.exists():
-            STATE_FILE.write_text("{}")
+            STATE_FILE.write_text("{}")   
         with open(STATE_FILE, "w") as f:
+            print("[red]Saving state file:s[/red]")
             print(STATE_FILE)
-            json.dump(data, f, indent=4)
+            json.dump(state_data, f, indent=4)
 
     def log_seen_messages(self, messages: list[WhatsAppMessage]):
         if not MESSAGE_LOG_FILE.exists():
             MESSAGE_LOG_FILE.write_text("{}")
         with open(MESSAGE_LOG_FILE, "r") as f:
-            data = json.load(f)
+            message_data:MessageLog = json.load(f)
         for message in messages:
-            if message.chat_name not in data:
-                data[message.chat_name] = []
-            data[message.chat_name].append({
+            if message.chat_name not in message_data:
+                message_data[message.chat_name] = []
+            message_data[message.chat_name].append({
                 "content": message.content,
                 "timestamp": message.timestamp.isoformat(),
                 "is_outgoing": message.is_outgoing,
             })
-            data[message.chat_name] = dedupe_messages(data[message.chat_name])
+            message_data[message.chat_name] = dedupe_messages(message_data[message.chat_name])
         with open(MESSAGE_LOG_FILE, "w") as f:
-            json.dump(data, f, indent=4)
+            json.dump(message_data, f, indent=4)
     
     def get_seen_messages(self, chat_name: str, limit: int = 20) -> list[WhatsAppMessage]:
         if not MESSAGE_LOG_FILE.exists():
@@ -128,19 +138,16 @@ class StateMaintenance:
             if outgoing_indices:
                 last_outgoing_index = outgoing_indices[-1]
                 return new_messages[last_outgoing_index+1:]
-            else:
-                return new_messages
-        else:
-            return new_messages
+        return new_messages
 
 
-def dedupe_messages(entries):
+def dedupe_messages(messages: list[MessageLog]) -> list[MessageLog]:
     seen = set()
     out = []
-    for m in entries:
-        key = (m["content"], m["timestamp"], m["is_outgoing"])
+    for message in messages:
+        key = (message["content"], message["timestamp"], message["is_outgoing"])
         if key in seen:
             continue
         seen.add(key)
-        out.append(m)
+        out.append(message)
     return out

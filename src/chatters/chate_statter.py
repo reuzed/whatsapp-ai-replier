@@ -13,12 +13,11 @@ from src.state_maintenance import StateMaintenance
 
 class ChateStatter(Chatter):
     def __init__(self, user_name:str):
-        self.user_name = user_name
+        self.user_name = user_name # the person running the automation's name
         self.state_maintenance = StateMaintenance(self.user_name) # read json file with key chat_name
-        self.messages_since_state_update: int = 1000 # force initial state update
         self.llm_manager = LLMManager()
         try:
-            with open(Path(__file__).parent.parent.parent / "user_style_guide.txt", "r") as f:
+            with open(Path(__file__).parent.parent.parent / "user_data/user_style_guide.txt", "r") as f:
                 self.user_style_guide = f.read()
         except FileNotFoundError:
             self.user_style_guide = None
@@ -27,7 +26,6 @@ class ChateStatter(Chatter):
         """Main API. Returns (reply, timestamp to send reply after)"""
         # update state
         asyncio.run(self.state_maintenance.update_state(chat_name, new_chat_history))
-        # no longer using self.messages_since_state_update for this, so do every time
 
         # generate reply
         replies: list[Action] = asyncio.run(self._generate_actions(new_chat_history, chat_name))

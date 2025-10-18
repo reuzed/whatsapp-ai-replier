@@ -578,6 +578,9 @@ class WhatsAppAutomation:
 
                 ts, sender = parse_pre_plain_text(pre_elem.get_attribute('data-pre-plain-text') or '')
                 
+                if ts is None:
+                    raise ValueError("Timestamp must not be None")
+                
                 if sender is None:
                     sender = 'You' if is_outgoing else chat_name
 
@@ -590,7 +593,7 @@ class WhatsAppAutomation:
                 message = WhatsAppMessage(
                     sender=sender,
                     content=content,
-                    timestamp=ts or datetime.now(),
+                    timestamp=ts,
                     is_outgoing=is_outgoing,
                     chat_name=chat_name,
                 )

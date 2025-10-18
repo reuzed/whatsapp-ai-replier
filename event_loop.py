@@ -12,8 +12,6 @@ from src.state_maintenance import StateMaintenance
 from src.actions_handler import ActionsHandler
 
 import time
-from rich import print
-
 
 def event_loop(user_name: str, friend_list: str | list[str], chatter: Chatter):
     if isinstance(friend_list, str):
