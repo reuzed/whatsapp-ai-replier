@@ -1,5 +1,6 @@
 import asyncio
 import sys
+import argparse
 from typing import Optional
 
 from rich.console import Console
@@ -173,9 +174,16 @@ class AutomationShell:
         console.print(table)
 
 
-async def repl() -> None:
+async def repl(preselect_chat: Optional[str] = None) -> None:
     console.print(Panel.fit("WhatsApp Automation Test Shell", title="[title]WhatsApp AI Replier[/title]"))
     shell = AutomationShell()
+    # Optional auto-start and chat selection
+    if preselect_chat:
+        try:
+            await shell.start()
+            shell.select_chat(preselect_chat)
+        except Exception as e:
+            console.print(f"[warn]Auto-start/select failed: {e}[/warn]")
     shell.help()
 
     while True:
@@ -333,8 +341,11 @@ async def repl() -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="WhatsApp Automation Test Shell")
+    parser.add_argument("-chat", "--chat", dest="chat", help="Auto-start and open the specified chat name", default=None)
+    args = parser.parse_args()
     try:
-        asyncio.run(repl())
+        asyncio.run(repl(preselect_chat=args.chat))
     except KeyboardInterrupt:
         console.print("\n[warn]Interrupted[/warn]")
 
