@@ -5,6 +5,7 @@
 src/state.json
 state.json
 message_log.json
+user_style_guide.txt
 
 # Python
 __pycache__/

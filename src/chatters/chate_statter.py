@@ -17,6 +17,11 @@ class ChateStatter(Chatter):
         self.state_maintenance = StateMaintenance(self.user_name) # read json file with key chat_name
         self.messages_since_state_update: int = 1000 # force initial state update
         self.llm_manager = LLMManager()
+        try:
+            with open("../../user_style_guide.txt", "r") as f:
+                self.user_style_guide = f.read()
+        except FileNotFoundError:
+            self.user_style_guide = None
 
     def on_receive_messages(self, new_chat_history: list[WhatsAppMessage], chat_name: str) -> list[Action]:
         """Main API. Returns (reply, timestamp to send reply after)"""
@@ -44,7 +49,7 @@ class ChateStatter(Chatter):
 
         state_text = self.state_maintenance.load_friend_state(chat_name).text
         react_system_prompt = create_reacter_system_prompt(self.user_name, chat_name, state_text, current_date)
-        replier_system_prompt = create_replier_system_prompt(self.user_name, chat_name, state_text, current_date)
+        replier_system_prompt = create_replier_system_prompt(self.user_name, chat_name, state_text, current_date, self.user_style_guide)
 
         # Run both LLM calls concurrently (Promise.all equivalent)
         react_task = asyncio.create_task(self.llm_manager.generate_react_response(messages, system_prompt=react_system_prompt))
