@@ -172,7 +172,7 @@ class WhatsAppAutomation:
                 logger.error("Did not find an open chat.")
                 return None
         except:
-            logger.info("Did not finnd an open chat.")
+            logger.info("Did not find an open chat.")
             return None
         
         if 'Type to group ' in aria_label:

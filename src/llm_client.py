@@ -51,7 +51,7 @@ class LLMClient(ABC):
         self, 
         messages: list[dict[str, str]],
         system_prompt: Optional[str] = None
-    ) -> LLMResponse:
+    ) -> SkipResponse | ReactResponse | ErrorResponse:
         """Generate a response with react and skip tool."""
         pass
 
@@ -274,46 +274,26 @@ class LLMManager:
         """Generate a react response using the LLM client."""
         return await self.client.generate_react_response(messages, system_prompt)
 
-    async def generate_whatsapp_response(
-        self, 
-        incoming_message: str,
-        sender_name: str,
-        conversation_history: list[dict[str, str]] | None = None
-    ) -> str:
-        """Generate a WhatsApp response based on incoming message and context."""
-        
-        system_prompt = f"""You are {settings.user_name}, replying on WhatsApp.
-        - Use the conversation history for context.
-        - Each line includes the speaker for information, but only output the message.
-        - Reply to the MOST RECENT user's message specifically.
-        - Be very brief, no more than 20 words, and informal.
-        - Avoid multi-paragraph messages.
-        - Do not include meta text (like "friendly reply"). Only output the message you would send."""
-
-        messages = conversation_history or []
-        messages.append({
-            "role": "user", 
-            "content": f"From {sender_name}: {incoming_message}"
-        })
-        
-        return await self.client.generate_response(messages, system_prompt)
-    
     async def generate_whatsapp_chatter_response(
         self,
         messages: list[WhatsAppMessage],
     ) -> str:
         """Generate a response using the LLM client."""
         system_prompt = f"""You are {settings.user_name}, replying on WhatsApp.
-        - Use the conversation history for context.
+        - Use the conversation history for context, try to emulate the style of your previous messages as closely as possible.
         - Each line includes the speaker for information, but only output the message.
         - Reply to the MOST RECENT user's message specifically.
         - Be very brief, no more than 20 words, and informal.
         - Avoid multi-paragraph messages.
         - Do not include meta text (like "friendly reply"). Only output the message you would send."""
-        messages = []
+        new_messages = []
         for message in messages:
-            messages.append({
+            new_messages.append({
                 "role": "user" if not message.is_outgoing else "assistant",
                 "content": f"{message.sender}: {message.content}"
             })
-        return await self.client.generate_response(messages, system_prompt)
+        llm_response = await self.client.generate_response(new_messages, system_prompt)
+        if isinstance(llm_response, MessageResponse):
+            return llm_response.text
+        
+        raise ValueError("generating response failed to produce a MessageResponse")
