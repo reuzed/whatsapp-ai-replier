@@ -146,15 +146,18 @@ class AnthropicClient(LLMClient):
         self, 
         messages: list[dict[str, str]],
         system_prompt: Optional[str] = None,
-    ) -> LLMResponse:
+    ) -> ReactResponse | ErrorResponse | SkipResponse:
         """Generate a response with reaction tool."""
-        return (await self.generate_responses(
+        llm_response = (await self.generate_responses(
             messages,
             system_prompt,
             allow_skip=True,
             allow_react=True,
             tool_choice="any"
         ))[0]
+        if isinstance(llm_response, MessageResponse):
+            raise ValueError("generate react reesponse gennerated a message instead")
+        return llm_response
     
 # When working with the tool_choice parameter, we have four possible options:
 # auto allows Claude to decide whether to call any provided tools or not. This is the default value when tools are provided.
@@ -174,7 +177,7 @@ class AnthropicClient(LLMClient):
         extra_params = {}
         if system_prompt:
             extra_params["system"] = system_prompt
-        extra_params["tool_choice"] = {"tool": tool_choice}
+        extra_params["tool_choice"] = {"type": tool_choice}
         if allow_skip or allow_react:
             extra_params["tools"] = []
             if allow_skip:
