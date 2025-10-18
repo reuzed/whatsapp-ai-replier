@@ -18,7 +18,7 @@ class ChateStatter(Chatter):
         self.messages_since_state_update: int = 1000 # force initial state update
         self.llm_manager = LLMManager()
         try:
-            with open("../../user_style_guide.txt", "r") as f:
+            with open(Path(__file__).parent.parent.parent / "user_style_guide.txt", "r") as f:
                 self.user_style_guide = f.read()
         except FileNotFoundError:
             self.user_style_guide = None
