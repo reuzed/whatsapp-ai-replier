@@ -41,7 +41,7 @@ def process_friend(friend: str, chatter: Chatter, automation: WhatsAppAutomation
     if not single_friend:
         automation.select_chat(friend)
         time.sleep(2)
-    messages = automation.get_visible_messages_simple(20) # this seems capable of bugging
+    messages = automation.get_visible_messages_simple(20)
     new_messages = state_maintenance.get_new_messages(friend, messages, after_last_outgoing=True)
     if len(new_messages) == 0:
         state_maintenance.log_seen_messages(messages)
