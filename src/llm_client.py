@@ -1,7 +1,7 @@
 """LLM client for generating responses using the Anthropic API."""
 
 from typing import Optional
-from anthropic.types import Message, MessageParam, TextBlockParam, TextBlock
+from anthropic.types import Message, MessageParam, TextBlockParam, TextBlock, ToolUseBlock, 
 from abc import ABC, abstractmethod
 import anthropic
 from loguru import logger
@@ -174,7 +174,7 @@ class AnthropicClient(LLMClient):
         extra_params = {}
         if system_prompt:
             extra_params["system"] = system_prompt
-        extra_params["tool_choice"] = tool_choice
+        extra_params["tool_choice"] = {"tool": tool_choice}
         if allow_skip or allow_react:
             extra_params["tools"] = []
             if allow_skip:
@@ -217,11 +217,14 @@ class AnthropicClient(LLMClient):
             if len(response.content) > 1:
                 print(response)
             if content_block.type == "text":
+                assert isinstance(content_block, TextBlock)
                 responses.append(MessageResponse(text=content_block.text.strip()))
             elif content_block.type == "tool_use" and content_block.name == "skip":
+                assert isinstance(content_block, ToolUseBlock)
                 logger.info("LLM chose to skip response")
                 responses.append(SkipResponse())
             elif content_block.type == "tool_use" and content_block.name == "react":
+                assert isinstance(content_block, ToolUseBlock)
                 inputs = content_block.input
                 if "message_to_react" in inputs and "emoji_name" in inputs:
                     react_response = ReactResponse(
