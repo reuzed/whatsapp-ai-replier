@@ -108,18 +108,23 @@ class WhatsAppAutomation:
             raise NoSuchElementException("Element is None")
         last_err: Optional[Exception] = None
         try:
+            logger.debug("click_element: scrollIntoView")
             self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", elem)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"click_element: scrollIntoView failed: {e}")
         try:
+            logger.debug("click_element: JS click")
             self.driver.execute_script("arguments[0].click();", elem)
             return
         except Exception as e:
+            logger.debug(f"click_element: JS click failed: {e}")
             last_err = e
         try:
+            logger.debug("click_element: native click")
             elem.click()
             return
         except Exception as e:
+            logger.debug(f"click_element: native click failed: {e}")
             last_err = e
         raise last_err if last_err else Exception("Unknown click failure")
 
@@ -156,23 +161,27 @@ class WhatsAppAutomation:
         if not self.driver:
             raise Exception("Driver not initialized")
         try:
+            logger.debug("focus_element: scrollIntoView")
             self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", elem)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"focus_element: scrollIntoView failed: {e}")
         try:
+            logger.debug("focus_element: click to focus")
             elem.click()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"focus_element: click failed: {e}")
         try:
+            logger.debug("focus_element: JS focus")
             self.driver.execute_script("arguments[0].focus();", elem)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"focus_element: JS focus failed: {e}")
         try:
             focused = self.driver.execute_script("return document.activeElement === arguments[0];", elem)
             if not focused:
+                logger.debug("focus_element: activeElement mismatch; retrying JS focus")
                 self.driver.execute_script("arguments[0].focus();", elem)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"focus_element: activeElement check failed: {e}")
     
     def focus_chat_list_search(self) -> Optional[WebElement]:
         """Focus the chat list search."""
@@ -985,21 +994,8 @@ class WhatsAppAutomation:
         if not self.driver:
             raise Exception("Driver not initialized")
 
-        def _first_displayed(css_list: List[str], scope: Optional[WebElement] = None) -> Optional[WebElement]:
-            s: Any = scope or self.driver
-            if s is None:
-                return None
-            for css in css_list:
-                try:
-                    elems = s.find_elements(By.CSS_SELECTOR, css)
-                    for e in elems:
-                        if e and e.is_displayed():
-                            return e
-                except Exception:
-                    continue
-            return None
-
         # Open the Emoji/GIFs/Stickers panel
+        logger.info("GIF: opening panel")
         panel_btn_selectors = [
             '[aria-label="Emojis, GIFs, Stickers"]',
         ]
@@ -1007,16 +1003,21 @@ class WhatsAppAutomation:
         if not btn:
             raise NoSuchElementException("Emojis/GIFs/Stickers button not found")
         self._click_element(btn)
-        time.sleep(0.2)
+        logger.info("GIF: panel opened")
+        time.sleep(0.3)
 
         # Switch to GIFs tab
         gifs_btn_selectors = [
             '[aria-label="Gifs selector"]',
         ]
+        logger.info("GIF: locating GIFs tab")
         gifs_btn = self._find_first_displayed(gifs_btn_selectors)
-        if gifs_btn:
-            self._click_element(gifs_btn)
-            time.sleep(0.2)
+        if not gifs_btn:
+            raise NoSuchElementException("GIF button not found")
+        
+        self._click_element(gifs_btn)
+        logger.info("GIF: switched to GIFs tab")
+        time.sleep(0.3)
 
         # Search input inside the GIFs panel
         search_selectors = [
@@ -1027,66 +1028,85 @@ class WhatsAppAutomation:
             'div[contenteditable="true"][aria-label*="Search GIFs" i]',
             '[role="textbox"][aria-label*="Search GIFs" i]'
         ]
+        logger.info("GIF: waiting for Tenor search input")
         search_box = self._wait_for_any(search_selectors, timeout=timeout)
 
         if not search_box:
             raise NoSuchElementException("GIF search input not found")
 
+        logger.info("GIF: focusing search input")
         self._focus_element(search_box)
+
         try:
+            logger.info("GIF: clearing search input")
             search_box.clear()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"GIF: clear failed: {e}")
         try:
+            logger.info(f"GIF: typing query '{query}'")
             search_box.send_keys(query)
-        except Exception:
+        except Exception as e:
+            logger.debug(f"GIF: element send_keys failed ({e}); using ActionChains")
             ActionChains(self.driver).send_keys(query).perform()
-        time.sleep(0.25)
+        time.sleep(0.2)
 
-        # Enter to search
-        try:
-            search_box.send_keys(Keys.RETURN)
-        except Exception:
-            ActionChains(self.driver).send_keys(Keys.RETURN).perform()
-        time.sleep(0.5)
+        # Trigger search
+        # try:
+        #     logger.info("GIF: submit search via Enter")
+        #     search_box.send_keys(Keys.RETURN)
+        # except Exception as e:
+        #     logger.debug(f"GIF: Enter via element failed ({e}); using ActionChains")
+        #     ActionChains(self.driver).send_keys(Keys.RETURN).perform()
 
-        # Wait for results grid to appear
-        grid_container = self._wait_for_any(['div[role="grid"]'], timeout=timeout)
+        # Prefer selecting via keyboard by focusing the first GIF button, else click it
+        logger.info("GIF: waiting for first GIF result button")
+        first_gif_btn = self._wait_for_any([
+            'div[role="dialog"] button[type="button"][aria-label]',
+            'div[role="dialog"] [role="button"][aria-label]',
+            'button[type="button"][aria-label]'
+        ], timeout=timeout)
 
-        # Navigate to first result with keyboard (fallback to click if needed)
-        used_keyboard = False
-        if grid_container:
-            try:
-                # Ensure the search box is still focused before key navigation
-                self.driver.execute_script("arguments[0].focus();", search_box)
-                time.sleep(0.05)
-                search_box.send_keys(Keys.ARROW_DOWN)
-                time.sleep(0.2)
-                search_box.send_keys(Keys.RETURN)
-                used_keyboard = True
-            except Exception:
-                used_keyboard = False
-        if not used_keyboard:
-            # Fallback: click the first result button
-            try:
-                first_btn = self._find_first_displayed([
-                    'div[role="grid"] [role="gridcell"] button',
-                    'div[role="grid"] button',
-                ])
-                if first_btn:
-                    self._click_element(first_btn)
-            except Exception:
-                pass
-        time.sleep(0.6)
+        logger.info("GIF: sending arrow down key")
+        ActionChains(self.driver).send_keys(Keys.ARROW_DOWN).perform()
+        # search_box.send_keys(Keys.ARROW_DOWN)
+        time.sleep(2.2)
+        logger.info("GIF: sending return key")
+        ActionChains(self.driver).send_keys(Keys.RETURN).perform()
+        # search_box.send_keys(Keys.RETURN)
+        time.sleep(2.2)
+        logger.info("GIF: maybe sent?")
+        
+        # used_keyboard = False
+        # if first_gif_btn:
+        #     try:
+        #         # Focus the first result and press Enter (keeps hands off composer)
+        #         logger.info("GIF: trying keyboard selection (focus + Enter)")
+        #         self.driver.execute_script("arguments[0].focus();", first_gif_btn)
+        #         time.sleep(0.1)
+        #         ActionChains(self.driver).send_keys(Keys.RETURN).perform()
+        #         used_keyboard = True
+        #     except Exception as e:
+        #         logger.debug(f"GIF: keyboard selection failed: {e}")
+        #         used_keyboard = False
 
-        if press_enter_to_send:
-            # Avoid clicking the composer to prevent interception; just send Enter
-            try:
-                ActionChains(self.driver).send_keys(Keys.RETURN).pause(0.15).send_keys(Keys.RETURN).perform()
-            except Exception:
-                pass
-            time.sleep(0.3)
-        return True
+        # if not used_keyboard and first_gif_btn:
+        #     try:
+        #         logger.info("GIF: clicking first GIF result (fallback)")
+        #         self._click_element(first_gif_btn)
+        #     except Exception as e:
+        #         logger.debug(f"GIF: click fallback failed: {e}")
+
+        # time.sleep(0.4)
+
+        # if press_enter_to_send:
+        #     try:
+        #         # Press Enter to send the selected GIF from composer
+        #         logger.info("GIF: sending via Enter from composer")
+        #         ActionChains(self.driver).send_keys(Keys.RETURN).perform()
+        #     except Exception as e:
+        #         logger.debug(f"GIF: composer Enter failed: {e}")
+        #     time.sleep(0.2)
+        # return True
 
         
     def attach_media(self, file_paths: List[str], timeout: float = 12.0) -> bool:

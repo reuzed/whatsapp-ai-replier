@@ -8,6 +8,7 @@ from src.chatters.trivial_chatter import TrivialChatter, DelayedTrivialChatter
 from src.chatters.simple_ai_chatter import SimpleAIChatter
 from src.chatters.chate_statter import ChateStatter
 from src.chatters.react_chatter import ReactChatter
+from src.chatters.image_echo_chatter import ImageEchoChatter
 from src.state_maintenance import StateMaintenance
 from src.actions_handler import ActionsHandler
 
@@ -66,7 +67,7 @@ if __name__ == "__main__":
         for i in range(num_friends):
             friend_names.append(input(f"Name of friend {i+1} to chat to"))
         user_name = os.getenv("USER_NAME", "Ben")
-        chatter_name = input("Name of chatter to use (t, dt, sai, cs, rc)")
+        chatter_name = input("Name of chatter to use (t, dt, sai, cs, rc, ie)")
         if chatter_name == "t":
             chatter = TrivialChatter()
         elif chatter_name == "dt":
@@ -75,6 +76,9 @@ if __name__ == "__main__":
             chatter = SimpleAIChatter()
         elif chatter_name == "cs":
             chatter = ChateStatter(user_name)
+        elif chatter_name == "ie":
+            model = input("Image model (return for default 'dall-e-3'): ") or "dall-e-3"
+            chatter = ImageEchoChatter(model=model)
         else:
             #chatter_name == "rc":
             chatter = ReactChatter(input("Emoji name to react with"))
