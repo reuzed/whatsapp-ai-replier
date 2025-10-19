@@ -232,11 +232,11 @@ class WhatsAppAutomation:
         search_box.clear()
         search_box.send_keys(CONTROL_KEY + "a", Keys.DELETE)
         search_box.send_keys(search_term)
-        time.sleep(1)
+        time.sleep(0.5)
         
         # Quick keyboard selection – press ENTER to open the first/highlighted result
         search_box.send_keys(Keys.RETURN)
-        time.sleep(2)
+        time.sleep(1)
 
         # Verify again
         chat_info = self.which_chat_is_open()

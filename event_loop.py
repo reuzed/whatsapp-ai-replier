@@ -27,7 +27,7 @@ def event_loop(user_name: str, friend_list: str | list[str], chatter: Chatter):
     chat_actions = []
     if single_friend:
         automation.select_chat(friend_list[0])
-        time.sleep(2)
+        time.sleep(1)
     while True:
         for friend in friend_list:
             chat_actions.extend(process_friend(friend, chatter, automation, state_maintenance, single_friend=single_friend))
@@ -39,14 +39,14 @@ def process_friend(friend: str, chatter: Chatter, automation: WhatsAppAutomation
     The logging is done in this function only for message logging, not state, which is done by the chatter."""
     if not single_friend:
         automation.select_chat(friend)
-        time.sleep(2)
+        time.sleep(1)
     messages = automation.get_visible_messages_simple(20)
     new_messages = state_maintenance.get_new_messages(friend, messages, after_last_outgoing=True)
     if len(new_messages) == 0:
         friend_actions = []
     else:
         friend_actions = chatter.on_receive_messages(new_messages, friend)
-        time.sleep(1)
+        time.sleep(0.5)
     state_maintenance.log_seen_messages(messages)
     return friend_actions
 

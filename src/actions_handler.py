@@ -13,7 +13,7 @@ class ActionsHandler:
         to_remove = []
         if friend is not None:
             self.automation.select_chat(friend)
-            time.sleep(2)
+            time.sleep(1)
         split_chat_actions = []
         for action in chat_actions:
             if isinstance(action, ChatAction):
@@ -57,7 +57,7 @@ class ActionsHandler:
         print(f"\n{action.message.content}\n")
         if friend is None:
             self.automation.select_chat(action.message.chat_name)
-            time.sleep(2)
+            time.sleep(1)
         self.automation.send_message(action.message.content)
 
     def _handle_react_action(self, action: ReactAction, friend: str | None) -> None:
@@ -65,7 +65,7 @@ class ActionsHandler:
         print(action)
         if friend is None:
             self.automation.select_chat(action.message_to_react.chat_name)
-            time.sleep(2)
+            time.sleep(1)
         self.automation.react_to_message(emoji_query=action.emoji_name, text_contains=action.message_to_react.content, )
 
     def _handle_image_chat_action(self, action: ImageChatAction, friend: str | None) -> None:
@@ -90,7 +90,7 @@ class ActionsHandler:
             return
         if friend is None:
             self.automation.select_chat(action.chat_name)
-            time.sleep(2)
+            time.sleep(1)
         # Attach and send
         try:
             self.automation.attach_media([str(p) for p in paths])
@@ -101,7 +101,7 @@ class ActionsHandler:
         print(f"[red]Sending GIF for search:[/red] {action.search_term}")
         if friend is None:
             self.automation.select_chat(action.chat_name)
-            time.sleep(2)
+            time.sleep(1)
         try:
             ok = self.automation.send_gif_by_search(query=action.search_term, press_enter_to_send=action.press_enter_to_send)
             if not ok:

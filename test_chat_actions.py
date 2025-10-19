@@ -31,7 +31,7 @@ def main():
 
     # Ensure chat open
     automation.select_chat(friend)
-    time.sleep(2)
+    time.sleep(1)
 
     # Construct action and handle it immediately
     action = ImageChatAction(
