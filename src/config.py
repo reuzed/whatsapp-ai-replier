@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     chrome_profile_path: str = Field(default="", description="Path to Chrome profile directory")
     user_name: str = Field(default="", description="Display name used when auto-signing up")
     # LLM Configuration
-    anthropic_model: str = Field(default="claude-sonnet-4-20250514")
+    anthropic_model: str = Field(default="claude-haiku-4-5-20251001")
     max_tokens: int = Field(default=1000)
     temperature: float = Field(default=0.7)
     # Logging
