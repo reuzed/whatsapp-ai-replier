@@ -42,7 +42,8 @@ def process_friend(friend: str, chatter: Chatter, automation: WhatsAppAutomation
         time.sleep(1)
     messages = automation.get_visible_messages_simple(20)
     new_messages = state_maintenance.get_new_messages(friend, messages)
-    if len(new_messages) == 0:
+    has_incoming = any(not m.is_outgoing for m in new_messages) # remove if wanting to store data about user messages in state or self reply
+    if len(new_messages) == 0 or not has_incoming:
         friend_actions = []
     else:
         friend_actions = asyncio.run(chatter.on_receive_messages(new_messages, friend))
