@@ -880,6 +880,8 @@ class WhatsAppAutomation:
                 try:
                     ActionChains(self.driver).send_keys(Keys.RETURN).perform()
                     time.sleep(0.2)
+                    ActionChains(self.driver).send_keys(Keys.RETURN).perform()
+                    time.sleep(0.2)
                     return True
                 except Exception:
                     pass
