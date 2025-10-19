@@ -74,5 +74,5 @@ Action = ChatAction | ReactAction | ImageChatAction | GifChatAction
 
 class Chatter(ABC):
     @abstractmethod
-    def on_receive_messages(self, messages: List[WhatsAppMessage], chat_name: str) -> List[Action]:
+    async def on_receive_messages(self, messages: List[WhatsAppMessage], chat_name: str) -> List[Action]:
         pass

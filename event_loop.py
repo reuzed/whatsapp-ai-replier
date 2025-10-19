@@ -45,7 +45,7 @@ def process_friend(friend: str, chatter: Chatter, automation: WhatsAppAutomation
     if len(new_messages) == 0:
         friend_actions = []
     else:
-        friend_actions = chatter.on_receive_messages(new_messages, friend)
+        friend_actions = asyncio.run(chatter.on_receive_messages(new_messages, friend))
         time.sleep(0.5)
     state_maintenance.log_seen_messages(messages)
     return friend_actions
