@@ -1,11 +1,20 @@
 Short Term:
 
-- chate statter state and response calls should be concurrent. saving state to file should happen after gather
+- check scraping
+
+Ben:
+
 - change event loop to have separate polling for updates, and onchange should cancel the asyncio
+- typing in actions handler ( where delay is put )
+- speed things up??
+- fixing stuff - aggregate.
+- fix inconsistency in friend and chat names
 
 Long term:
 
 - Fine tuned models to messages - remove gen z from system prompt probably
+- Fine tune on voice note
+- use k8s
 
 Nice to Haves (not needlemoving)
 
