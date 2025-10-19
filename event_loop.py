@@ -41,7 +41,7 @@ def process_friend(friend: str, chatter: Chatter, automation: WhatsAppAutomation
         automation.select_chat(friend)
         time.sleep(1)
     messages = automation.get_visible_messages_simple(20)
-    new_messages = state_maintenance.get_new_messages(friend, messages, after_last_outgoing=True)
+    new_messages = state_maintenance.get_new_messages(friend, messages)
     if len(new_messages) == 0:
         friend_actions = []
     else:
