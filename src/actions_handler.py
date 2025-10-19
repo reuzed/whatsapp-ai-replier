@@ -58,6 +58,8 @@ class ActionsHandler:
         if friend is None:
             self.automation.select_chat(action.message.chat_name)
             time.sleep(1)
+        message_content_length = len(action.message.content.split())
+        time.sleep(message_content_length / 5)
         self.automation.send_message(action.message.content)
 
     def _handle_react_action(self, action: ReactAction, friend: str | None) -> None:
