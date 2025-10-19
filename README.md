@@ -18,3 +18,10 @@ Code is contained in `/src`
 Chatters are conntained in `/chatters` - these handle deciding how to reply to messages.
 
 ## Development
+
+Fine-tuning plan:
+- use a new repo
+- generate dataset using this repo
+- push dataset to runpod and do fine-tuning there
+- push resulting model to HF
+- use API to do HF inference here

@@ -15,6 +15,8 @@ dependencies = [
     "python-dotenv>=1.0.1",
     "pyperclip>=1.11.0",
     "openai>=1.51.0",
+    "pip>=25.2",
+    "ipykernel>=7.0.1",
 ]
 
 [build-system]
