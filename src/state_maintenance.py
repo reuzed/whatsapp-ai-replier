@@ -27,25 +27,16 @@ class StateMaintenance:
             STATE_FILE.write_text("{}")
         with open(STATE_FILE, "r") as f:
             data = json.load(f)
-            if (state_data:=data.get(chat_name)) and (last_message_data:=state_data.get("last_message")):
+            if (state_data:=data.get(chat_name)):
                 state_data = data[chat_name]
-                last_message = WhatsAppMessage(
-                    sender=last_message_data["sender"],
-                    content=last_message_data["content"],
-                    timestamp=datetime.fromisoformat(last_message_data["timestamp"]),
-                    is_outgoing=last_message_data["is_outgoing"],
-                    chat_name=last_message_data["chat_name"],
-                )
-                seen_messages = data
-                return ChatState(text=state_data["text"], last_message=last_message)
-        return ChatState(text="", last_message=None)
+                return ChatState(text=state_data["text"])
+        return ChatState(text="")
 
     async def update_state(self, chat_name: str, chat_history: list[WhatsAppMessage]) -> ChatState:
         """Assimilate new messages into existing state information with LLM call
         Returns the new state. (same as old if skipped response)"""
         # llm call with system prompt
         old_state = self.load_friend_state(chat_name)
-        last_message = old_state.last_message
         old_state_text = old_state.text
         old_state_len = len(old_state_text.split())
         current_date = datetime.now().isoformat()
@@ -55,18 +46,13 @@ class StateMaintenance:
             system_prompt=state_system_prompt,
             allow_skip=False
         )
-        if isinstance(response, SkipResponse):
-            # LLM chose to skip generation (or outputted nothing)
-            new_state = ChatState(text=old_state_text, last_message=chat_history[-1])
-        elif isinstance(response, MessageResponse):
-            new_state_text = response.text
-            new_state = ChatState(text=new_state_text, last_message=chat_history[-1])
-        # should not have other options
+        new_state_text = response.text
+        new_state = ChatState(text=new_state_text)
         return new_state
 
     def reset_state(self, chat_name: str):
         """Overwrite state with a blank version."""
-        self.save_state(ChatState(text="", last_message=None), chat_name)
+        self.save_state(ChatState(text=""), chat_name)
 
     def save_state(self, new_state: ChatState, chat_name: str):
         """Save chat state to the STATE_FILE file, if not existing, create this file at the correct location"""
@@ -75,14 +61,7 @@ class StateMaintenance:
         with open(STATE_FILE, "r") as f:
             state_data = json.load(f)
         state_data[chat_name] = {
-            "text": new_state.text,
-            "last_message": {
-                "sender": new_state.last_message.sender,
-                "content": new_state.last_message.content,
-                "timestamp": new_state.last_message.timestamp.isoformat(),
-                "is_outgoing": new_state.last_message.is_outgoing,
-                "chat_name": new_state.last_message.chat_name,
-            } if new_state.last_message else None
+            "text": new_state.text
         }
         if not STATE_FILE.exists():
             STATE_FILE.write_text("{}")   

@@ -35,7 +35,6 @@ class GeneralWhatsappMessage:
 @dataclass
 class ChatState:
     text: str
-    last_message: Optional[WhatsAppMessage]
     
 @dataclass
 class ChatListEntry:
