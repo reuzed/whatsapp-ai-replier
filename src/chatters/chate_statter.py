@@ -2,8 +2,8 @@
 
 ## Functionality to read, manipulate and save state.
 import json
-from src.schemas import ReactAction, WhatsAppMessage, ChatState, ChatAction, Chatter, Action
-from src.llm_client import LLMManager, LLMResponse, MessageResponse, SkipResponse, ErrorResponse, ReactResponse
+from src.schemas import GifChatAction, ReactAction, WhatsAppMessage, ChatState, ChatAction, Chatter, Action
+from src.llm_client import GifResponse, LLMManager, LLMResponse, MessageResponse, SkipResponse, ErrorResponse, ReactResponse
 from src.prompts import create_state_updater_prompts, create_replier_system_prompt, create_reacter_system_prompt
 import random
 from pathlib import Path
@@ -50,13 +50,13 @@ class ChateStatter(Chatter):
         replier_system_prompt = create_replier_system_prompt(self.user_name, chat_name, state_text, current_date, self.user_style_guide)
 
         # Run both LLM calls concurrently (Promise.all equivalent)
-        react_task = asyncio.create_task(self.llm_manager.generate_react_response(messages, system_prompt=react_system_prompt))
+        react_or_gif_task = asyncio.create_task(self.llm_manager.generate_react_response(messages, system_prompt=react_system_prompt))
         reply_task = asyncio.create_task(self.llm_manager.generate_response(messages, system_prompt=replier_system_prompt))
-        react_response, message_response = await asyncio.gather(react_task, reply_task)
+        react_or_gif_response, message_response = await asyncio.gather(react_or_gif_task, reply_task)
 
         # Transform react tool response to action (if applicable)
-        action = self._transform_llm_response_to_action(react_response, new_chat_history, chat_name)
-        if isinstance(action, ReactAction):
+        action = self._transform_llm_response_to_action(react_or_gif_response, new_chat_history, chat_name)
+        if isinstance(action, (ReactAction, GifChatAction)):
             actions.append(action)
 
         # Transform message response to action (if applicable)
@@ -91,6 +91,9 @@ class ChateStatter(Chatter):
                 return None
             react_timestamp = self._generate_timestamp(fast=True)
             return ReactAction(message_to_react=message, emoji_name=llm_response.emoji_name, timestamp=react_timestamp)
+        elif isinstance(llm_response, GifResponse):
+            react_timestamp = self._generate_timestamp(fast=True)
+            return GifChatAction(chat_name=chat_name, search_term=llm_response.search_term, timestamp=react_timestamp)
         elif isinstance(llm_response, SkipResponse):
             return None
         elif isinstance(llm_response, ErrorResponse):

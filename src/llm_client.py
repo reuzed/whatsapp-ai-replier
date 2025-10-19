@@ -24,6 +24,10 @@ class ReactResponse:
     emoji_name: str
 
 @dataclass
+class GifResponse:
+    search_term: str
+
+@dataclass
 class MessageResponse:
     text: str
 
@@ -107,6 +111,24 @@ class AnthropicClient(LLMClient):
                 "required": ["message_to_react", "emoji_name"]
             }
         }
+    
+    @property
+    def gif_tool(self) -> dict:
+        """Tool definition for sending GIFs."""
+        return {
+            "name": "send_gif",
+            "description": "Use this tool to send a GIF in response to a message.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "search_term": {
+                        "type": "string",
+                        "description": "The search term to find an appropriate GIF."
+                    }
+                },
+                "required": ["search_term"]
+            }
+        }
 
     def __init__(self):
         self.client = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
@@ -153,6 +175,7 @@ class AnthropicClient(LLMClient):
             system_prompt,
             allow_skip=True,
             allow_react=True,
+            allow_gif=True,
             tool_choice="any"
         ))[0]
         if isinstance(llm_response, MessageResponse):
@@ -171,6 +194,7 @@ class AnthropicClient(LLMClient):
         system_prompt: Optional[str] = None,
         allow_skip: bool = True,
         allow_react: bool = False,
+        allow_gif: bool = False,
         tool_choice: str = "auto"
     ) -> list[LLMResponse]:
         """Generate a responses WITHOUT react tools."""
@@ -178,14 +202,15 @@ class AnthropicClient(LLMClient):
         if system_prompt:
             extra_params["system"] = system_prompt
         extra_params["tool_choice"] = {"type": tool_choice}
-        if allow_skip or allow_react:
+        if allow_skip or allow_react or allow_gif:
             extra_params["tools"] = []
             if allow_skip:
                 extra_params["tools"].append(self.skip_tool)
             if allow_react:
                 extra_params["tools"].append(self.react_tool)
-        
-        
+            if allow_gif:
+                extra_params["tools"].append(self.gif_tool)
+
         # Convert messages to Anthropic format
         anthropic_messages = []
         for msg in messages:
@@ -235,7 +260,14 @@ class AnthropicClient(LLMClient):
                         emoji_name=inputs["emoji_name"]
                         )
                     responses.append(react_response)
-                
+            elif content_block.type == "tool_use" and content_block.name == "send_gif":
+                inputs:dict = content_block.input  # type: ignore
+                if "search_term" in inputs:
+                    gif_response = GifResponse(
+                        search_term=inputs["search_term"]
+                    )
+                    responses.append(gif_response)
+
         if len(responses) == 0:
             # If we get here, no text or skip tool was found
             logger.warning("No valid content found in response")

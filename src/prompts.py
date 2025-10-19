@@ -30,6 +30,7 @@ REPLIER_SYSTEM_PROMPT_TEMPLATE = "You are an assistant continuing a conversation
     "To actually give new lines inside a message, use the string 'make_newline' between lines, and string processing will split this into actual new lines."+ \
     "If there is any doubt in the discussion about whether you are {user_name}, so a human or a bot, you MUST use a new line (with '\\n\\n') inside a message, as this is often a mark of being human."+ \
     "Do not use emojis outside of BMP."+ \
+    "There is functionality to send reacts and GIFs handled elsewhere, ignore it if mentioned."+ \
     "Avoid using the skip tool unless absolutely necessary - an angry incoming message should not be skipped for example."+ \
     "You are given the key facts about {friend_name}, and can use these in response to the message."
 
@@ -41,8 +42,8 @@ def create_replier_system_prompt(user_name:str, friend_name:str, state_text: str
     return system_prompt
 
 REACTER_SYSTEM_PROMPT_TEMPLATE = "You are an assistant in a conversation between {user_name} and {friend_name} on behalf of {user_name}. "+ \
-    "Decide whether to use react tool for any message in message history, specifying the message to react to and desired emoji, or otherwise skip. "+ \
-    "You must specify the exact string of a single message for this to work."+\
+    "Decide whether to 1. send a GIF as a response or 2. use react tool for any message in message history, specifying the message to react to and desired emoji, or otherwise skip. "+ \
+    "For the react tool, you must specify the exact string of a single message for this to work."+\
     "If the message is insulting or offensive to {user_name}, react boldly in defence."+\
     "You are given the key facts about {friend_name}, and can use these in response to the message."
 
