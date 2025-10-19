@@ -12,9 +12,18 @@ from src.schemas import ImageChatAction
 
 def main():
     load_dotenv()
-    friend = os.getenv("FRIEND_NAME", "Reuben")
-    prompt = os.getenv("IMAGE_PROMPT", "A photorealistic picture of playful dogs in a park")
-    model = os.getenv("IMAGE_MODEL", "dall-e-3")
+    # Interactive prompts with env-backed defaults
+    default_friend = os.getenv("FRIEND_NAME", "Reuben")
+    default_prompt = os.getenv("IMAGE_PROMPT", "A photorealistic picture of playful dogs in a park")
+    default_model = os.getenv("IMAGE_MODEL", "dall-e-3")
+
+    try:
+        friend = input(f"Friend/chat name [{default_friend}]: ").strip() or default_friend
+        prompt = input(f"Image prompt [{default_prompt}]: ").strip() or default_prompt
+        model = input(f"Image model [{default_model}]: ").strip() or default_model
+    except (EOFError, KeyboardInterrupt):
+        print("Aborted")
+        return
 
     automation = WhatsAppAutomation()
     asyncio.run(automation.start())

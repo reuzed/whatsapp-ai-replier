@@ -63,7 +63,14 @@ class ImageChatAction:
     model: Optional[str] = None
     output_filename: Optional[str] = None
 
-Action = ChatAction | ReactAction | ImageChatAction
+@dataclass
+class GifChatAction:
+    search_term: str
+    chat_name: str
+    timestamp: datetime
+    press_enter_to_send: bool = True
+
+Action = ChatAction | ReactAction | ImageChatAction | GifChatAction
 
 class Chatter(ABC):
     @abstractmethod

@@ -1,5 +1,5 @@
 from datetime import datetime
-from src.schemas import Action, ChatAction, ReactAction, WhatsAppMessage, ImageChatAction
+from src.schemas import Action, ChatAction, ReactAction, WhatsAppMessage, ImageChatAction, GifChatAction
 from src.whatsapp_automation import WhatsAppAutomation
 from src.image_gen import generate_image
 import time
@@ -32,6 +32,9 @@ class ActionsHandler:
                     to_remove.append(action)
                 elif isinstance(action, ImageChatAction):
                     self._handle_image_chat_action(action, friend)
+                    to_remove.append(action)
+                elif isinstance(action, GifChatAction):
+                    self._handle_gif_chat_action(action, friend)
                     to_remove.append(action)
                 else:
                     print(f"[red]Unknown action type:[/red] {action}")
@@ -93,3 +96,15 @@ class ActionsHandler:
             self.automation.attach_media([str(p) for p in paths])
         except Exception as e:
             print(f"[red]Failed to send generated image(s):[/red] {e}")
+
+    def _handle_gif_chat_action(self, action: GifChatAction, friend: str | None) -> None:
+        print(f"[red]Sending GIF for search:[/red] {action.search_term}")
+        if friend is None:
+            self.automation.select_chat(action.chat_name)
+            time.sleep(2)
+        try:
+            ok = self.automation.send_gif_by_search(query=action.search_term, press_enter_to_send=action.press_enter_to_send)
+            if not ok:
+                print(f"[red]Failed to send GIF for search:[/red] {action.search_term}")
+        except Exception as e:
+            print(f"[red]Exception sending GIF:[/red] {e}")
