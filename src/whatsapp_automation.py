@@ -885,7 +885,9 @@ class WhatsAppAutomation:
                     return True
                 except Exception:
                     return False
-                    
+            else:
+                return False
+
         except Exception as e:
             logger.error(f"Failed to react to message: {e}")
             return False
