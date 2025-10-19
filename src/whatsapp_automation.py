@@ -884,79 +884,8 @@ class WhatsAppAutomation:
                     time.sleep(0.2)
                     return True
                 except Exception:
-                    pass
-
-            # Select first result; some UIs render results as span[role="button"][data-emoji]
-            result_selectors = [
-                'div[role="grid"] [role="gridcell"] button',
-                'div[role="grid"] button[role="option"]',
-                'button[aria-label]',
-                'span[role="button"][data-emoji]'
-            ]
-            result = (self._wait_for_any(result_selectors, scope=picker) if picker else None)
-            if not result:
-                logger.error("No emoji result selectable")
-                return False
-
-            # Try robust clicking strategies
-            try:
-                self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", result)
-            except Exception:
-                pass
-            try:
-                ActionChains(self.driver).move_to_element(result).pause(0.05).perform()
-            except Exception:
-                pass
-            clicked = False
-            for _ in range(3):
-                try:
-                    self.driver.execute_script("arguments[0].click();", result)
-                    clicked = True
-                    break
-                except Exception:
-                    try:
-                        result.click()
-                        clicked = True
-                        break
-                    except Exception:
-                        try:
-                            # Try clicking a closest clickable ancestor
-                            ancestor = self.driver.execute_script("return arguments[0].closest && arguments[0].closest('button,[role=button]');", result)
-                            if ancestor:
-                                self.driver.execute_script("arguments[0].click();", ancestor)
-                                clicked = True
-                                break
-                        except Exception:
-                            time.sleep(0.05)
-                            continue
-            # If clicking the base emoji opened a variant (skin tone) chooser, click the first variant
-            if clicked:
-                try:
-                    variant = _wait_for_any([
-                        'div[role="menu"] button',
-                        'div[role="menu"] [role="menuitem"]',
-                        'div[role="dialog"] button[role="button"]',
-                        'div[aria-label*="skin" i] button'
-                    ])
-                    if variant:
-                        try:
-                            self.driver.execute_script("arguments[0].click();", variant)
-                        except Exception:
-                            variant.click()
-                        # Some UIs require an explicit confirm; send Enter to the focused variant
-                        try:
-                            variant.send_keys(Keys.RETURN)
-                        except Exception:
-                            pass
-                        time.sleep(0.2)
-                except Exception:
-                    pass
-            # Do not send global Enter as a fallback; avoid triggering chat search
-            if not clicked:
-                logger.error("Failed to click emoji result")
-                return False
-            time.sleep(0.3)
-            return True
+                    return False
+                    
         except Exception as e:
             logger.error(f"Failed to react to message: {e}")
             return False
