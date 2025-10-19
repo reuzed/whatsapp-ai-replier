@@ -853,27 +853,14 @@ class WhatsAppAutomation:
                 self._click_element(more_btn)
                 time.sleep(0.5)
             time.sleep(0.5)
-            # Emoji picker panel
-            picker_selectors = [
-                'div[data-testid="emoji-picker"]',
-                'div[data-testid="emoji-panel"]',
-                'div[role="dialog"][aria-label*="Emoji" i]'
-            ]
-            picker = self._wait_for_any(picker_selectors)
-            if not picker:
-                logger.debug("Emoji picker container not detected; proceeding to search globally")
 
             # Search field inside picker (explicit WhatsApp variant: aria-label="Search reaction")
             search_selectors = [
                 'input[aria-label="Search reaction"]',
                 'input[aria-label*="Search reaction" i]',
                 'div[contenteditable="true"][aria-label*="Search reaction" i]',
-                'input[aria-label*="Search" i]',
-                'input[placeholder*="Search" i]',
-                'div[contenteditable="true"]'
             ]
-            # Only allow typing inside the emoji picker; never type globally
-            search = self._wait_for_any(search_selectors, scope=picker)
+            search = self._wait_for_any(search_selectors, scope=None)
             if search:
                 try:
                     search.click()
@@ -896,7 +883,6 @@ class WhatsAppAutomation:
                     return True
                 except Exception:
                     pass
-            # If no search field is found within the picker, do not type globally
 
             # Select first result; some UIs render results as span[role="button"][data-emoji]
             result_selectors = [
