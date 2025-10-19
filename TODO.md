@@ -1,8 +1,7 @@
 Short Term:
 
-- Test new Chate statter flow. (currently now sep llm calls - one API call has react tool + skip tool (+ normal text output ignored), the next is the normal replier LLM with only skip tool, text response used directly) (called async)
-- Fix event Loop to handle reacting to same message multiple times
-- Tuning of the skip response rates (either better prompt engineering, inc few shot examples or only if this fails look to fine tuning classification models) - skip rate too high for messages bot, state updater and untested for reacter
+- chate statter state and response calls should be concurrent. saving state to file should happen after gather
+- change event loop to have separate polling for updates, and onchange should cancel the asyncio
 
 Long term:
 

@@ -40,9 +40,9 @@ class StateMaintenance:
                 return ChatState(text=state_data["text"], last_message=last_message)
         return ChatState(text="", last_message=None)
 
-    async def update_state(self, chat_name: str, chat_history: list[WhatsAppMessage]):
+    async def update_state(self, chat_name: str, chat_history: list[WhatsAppMessage]) -> ChatState:
         """Assimilate new messages into existing state information with LLM call
-        Writes to STATE_FILE (user_data/state.json)"""
+        Returns the new state. (same as old if skipped response)"""
         # llm call with system prompt
         old_state = self.load_friend_state(chat_name)
         last_message = old_state.last_message
@@ -57,11 +57,12 @@ class StateMaintenance:
         )
         if isinstance(response, SkipResponse):
             # LLM chose to skip generation (or outputted nothing)
-            self.save_state(ChatState(text=old_state_text, last_message=chat_history[-1]), chat_name)
+            new_state = ChatState(text=old_state_text, last_message=chat_history[-1])
         elif isinstance(response, MessageResponse):
             new_state_text = response.text
-            self.save_state(ChatState(text=new_state_text, last_message=chat_history[-1]), chat_name)
+            new_state = ChatState(text=new_state_text, last_message=chat_history[-1])
         # should not have other options
+        return new_state
 
     def reset_state(self, chat_name: str):
         """Overwrite state with a blank version."""

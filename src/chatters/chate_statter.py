@@ -22,13 +22,16 @@ class ChateStatter(Chatter):
         except FileNotFoundError:
             self.user_style_guide = None
 
-    def on_receive_messages(self, new_chat_history: list[WhatsAppMessage], chat_name: str) -> list[Action]:
+    async def on_receive_messages(self, new_chat_history: list[WhatsAppMessage], chat_name: str) -> list[Action]:
         """Main API. Returns (reply, timestamp to send reply after)"""
         # update state
-        asyncio.run(self.state_maintenance.update_state(chat_name, new_chat_history))
-
+        new_state_task: asyncio.Task[ChatState] = asyncio.create_task(self.state_maintenance.update_state(chat_name, new_chat_history))
         # generate reply
-        replies: list[Action] = asyncio.run(self._generate_actions(new_chat_history, chat_name))
+        replies_task: asyncio.Task[list[Action]] = asyncio.create_task(self._generate_actions(new_chat_history, chat_name))
+
+        new_state, replies = await asyncio.gather(new_state_task, replies_task)
+
+        self.state_maintenance.save_state(new_state, chat_name)
 
         return replies
 
