@@ -22,11 +22,11 @@ def event_loop(user_name: str, friend_list: list[str], chatter: Chatter):
     actions_handler = ActionsHandler(automation)
     chat_actions = []
 
-    while True:
+    if len(friend_list) == 1:
+        automation.select_chat(friend_list[0])
+        time.sleep(1)
 
-        if len(friend_list) == 1:
-            automation.select_chat(friend_list[0])
-            time.sleep(1)
+    while True:
 
         for friend in friend_list:
 
