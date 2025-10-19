@@ -1066,47 +1066,23 @@ class WhatsAppAutomation:
             'button[type="button"][aria-label]'
         ], timeout=timeout)
 
+        time.sleep(2)
         logger.info("GIF: sending arrow down key")
         ActionChains(self.driver).send_keys(Keys.ARROW_DOWN).perform()
         # search_box.send_keys(Keys.ARROW_DOWN)
-        time.sleep(2.2)
+        time.sleep(2)
         logger.info("GIF: sending return key")
         ActionChains(self.driver).send_keys(Keys.RETURN).perform()
         # search_box.send_keys(Keys.RETURN)
-        time.sleep(2.2)
+        time.sleep(1)
         logger.info("GIF: maybe sent?")
-        
-        # used_keyboard = False
-        # if first_gif_btn:
-        #     try:
-        #         # Focus the first result and press Enter (keeps hands off composer)
-        #         logger.info("GIF: trying keyboard selection (focus + Enter)")
-        #         self.driver.execute_script("arguments[0].focus();", first_gif_btn)
-        #         time.sleep(0.1)
-        #         ActionChains(self.driver).send_keys(Keys.RETURN).perform()
-        #         used_keyboard = True
-        #     except Exception as e:
-        #         logger.debug(f"GIF: keyboard selection failed: {e}")
-        #         used_keyboard = False
-
-        # if not used_keyboard and first_gif_btn:
-        #     try:
-        #         logger.info("GIF: clicking first GIF result (fallback)")
-        #         self._click_element(first_gif_btn)
-        #     except Exception as e:
-        #         logger.debug(f"GIF: click fallback failed: {e}")
-
-        # time.sleep(0.4)
-
-        # if press_enter_to_send:
-        #     try:
-        #         # Press Enter to send the selected GIF from composer
-        #         logger.info("GIF: sending via Enter from composer")
-        #         ActionChains(self.driver).send_keys(Keys.RETURN).perform()
-        #     except Exception as e:
-        #         logger.debug(f"GIF: composer Enter failed: {e}")
-        #     time.sleep(0.2)
-        # return True
+        ActionChains(self.driver).send_keys(Keys.RETURN).perform()
+        time.sleep(1)
+        # check if GIF menu still visible, if so send an Escape key press and return False
+        if self._wait_for_any(['div[role="dialog"][aria-label*="GIFs" i]']):
+            ActionChains(self.driver).send_keys(Keys.ESCAPE).perform()
+            return False
+        return True
 
         
     def attach_media(self, file_paths: List[str], timeout: float = 12.0) -> bool:
