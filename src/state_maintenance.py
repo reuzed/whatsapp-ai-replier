@@ -49,12 +49,7 @@ class StateMaintenance:
         old_state_text = old_state.text
         old_state_len = len(old_state_text.split())
         current_date = datetime.now().isoformat()
-        if last_message in chat_history:
-            index = chat_history.index(last_message)
-            new_messages = chat_history[index+1:]
-        else:
-            new_messages = chat_history
-        state_system_prompt, state_user_prompt = create_state_updater_prompts(self.user_name, chat_name, old_state_text, old_state_len,current_date, new_messages)
+        state_system_prompt, state_user_prompt = create_state_updater_prompts(self.user_name, chat_name, old_state_text, old_state_len, current_date, chat_history)
         response = await self.llm_manager.generate_response(
             messages=[{"role": "user", "content": state_user_prompt}],
             system_prompt=state_system_prompt,
