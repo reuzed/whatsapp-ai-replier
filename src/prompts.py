@@ -3,11 +3,14 @@ from src.schemas import WhatsAppMessage
 STATE_UPDATER_SYSTEM_PROMPT_TEMPLATE = """You are an assistant representing {user_name} tasked with keeping track of key facts about a {friend_name}.
 Based on the new messages, update long term state tracking if there has been new important information about the person.
 If facts are date dependent include specific day or time references.
-The output here will become the new state, so include any information with at least slight importance from the current state.
+The output here will become the new state, so include any important information from the current state in this summary.
+The length of the old state is given below, but for guidance, the length, if there is substantial information, should be around 300 words.
+Storing the information in key fact bullet points is a good format.
 """
 
-def create_state_updater_prompts(user_name:str, friend_name:str, prev_state_text: str, current_date: str, new_messages: list[WhatsAppMessage]) -> tuple[str, str]:
+def create_state_updater_prompts(user_name:str, friend_name:str, prev_state_text: str, prev_state_len: int, current_date: str, new_messages: list[WhatsAppMessage]) -> tuple[str, str]:
     system_prompt = f"The current date is {current_date}. " + STATE_UPDATER_SYSTEM_PROMPT_TEMPLATE.format(user_name=user_name, friend_name=friend_name) + "\n"
+    system_prompt += f"<prev_state_length_in_words>{prev_state_len}</prev_state_length_in_words>\n"
     system_prompt += f"<current_state>{prev_state_text}</current_state>\n"
     system_prompt += f"<new_messages>{_map_messages_to_str(new_messages)}</new_messages>"
     user = f"Now return a relatively concise updated state, without any additional commentary. Do not include <current_state> tags or similar."
