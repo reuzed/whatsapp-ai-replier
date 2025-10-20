@@ -1,406 +1,94 @@
 [
     {
-        "llm_message": "Right, fair enough lol \u2013 that does sound rather uncomfortable, not gonna lie",
-        "user_message": "And no, I will not be sitting on any bins full of bricks, thanks very much lol"
-    },
-    {
-        "llm_message": "Yeah, that makes sense. You could probably figure out the most recent one from the menu order, but cycling through them works fine for now, lol",
-        "user_message": "It might be possible to detect which chat has had a message most recently by what appears at the top of the menu, but for now I'm happy with just cycling over chats"
-    },
-    {
-        "llm_message": "Ah, I've missed that bit on your diagram \u2013 the part that says roughly the same thing except for those two crucial lines. My bad, lol. Can you point me towards it again or let me know what those lines are? I should've read it more carefully",
-        "user_message": "You've missed the part on my diagram saying approximately the same except for a crucial two lines:"
-    },
-    {
-        "llm_message": "Yooo, all good mate. Yeah for real, logging is proper essential for this \u2013 you don't want to accidentally flood someone's inbox, that would be a nightmare lol. It's definitely the smart move to have that sorted before we start testing anything\n\nI'm ready whenever you are, just give us a shout when you wanna kick things off and I'll be there",
-        "user_message": "yooo wassup \nyeah fr logging is clutch for debugging this kinda stuff, especially when we're cycling through chats and don't wanna accidentally spam the wrong people lmao\nready to test whenever you are - just lmk when you wanna start messaging"
-    },
-    {
-        "llm_message": "Yeah, that's brilliant \u2013 getting rid of 90 lines of clutter that weren't really doing anything meaningful is a proper win. It's one of those satisfying moments when you realise code was just creating mess rather than adding value, and cleaning it up actually makes everything clearer and easier to work with",
-        "user_message": "It was also nice with adjusting the reaction logic now to be able to cut around 90 lines which probably never matter, and seemed to just be creating mess without value"
-    },
-    {
-        "llm_message": "Ah nice, should be all set then lol",
-        "user_message": "It will auto create it, so you should have one now"
-    },
-    {
-        "llm_message": "I'll remove that",
-        "user_message": "I'll take that out"
-    },
-    {
-        "llm_message": "Restarting usually does sort out random weird stuff, to be honest - worth giving it a go",
-        "user_message": "RESTARTING USUALLY DOES FIX RANDOM WEIRD STUFF TBH, WORTH A SHOT"
-    },
-    {
-        "llm_message": "Yeah, I'm not sure why that's happening either. Could be a formatting thing or maybe something got toggled by accident? Bit odd lol",
-        "user_message": "I still don't know why it's all caps"
-    },
-    {
-        "llm_message": "Have you grabbed the latest version of the code yet?",
-        "user_message": "Have you pulled the most recent code?"
-    },
-    {
-        "llm_message": "I'm not sure what you mean by just \"l\" \u2013 could you clarify what you'd like me to help with?",
-        "user_message": "l"
-    },
-    {
-        "llm_message": "Lmao okay fair, I got a bit carried away there didn't I. Phantom kittens deserve better than my rambling honestly, but glad I at least made it entertaining haha\n\nYeah I'm ready whenever you are, let's do this",
-        "user_message": "lmaooo wait what  \nbro did you just have a whole main character moment about phantom kittens or something?? \nthat was so detailed too like you had me genuinely excited for your non-existent cat babies hahaha\nanyway back to reality - you ready to test this thing now or what?"
-    },
-    {
-        "llm_message": "That's a shame, lol. What's going on?",
-        "user_message": "True :("
-    },
-    {
-        "llm_message": "Ah nice, sounds like you're getting stuck into it then. How's it going so far - running into anything tricky with it?",
-        "user_message": "I'm mid-refactoring the event loop"
-    },
-    {
-        "llm_message": "I reckon it does, but temperamentally speaking",
-        "user_message": "I think it does but temporamentally"
-    },
-    {
-        "llm_message": "Yeah sounds good, now?\n\nThis message is already quite concise and natural, but here's a rephrased version that fits the style guide:\n\n**Alright, shall we do it now then?**\n\nOr if you want to keep it similarly casual:\n\n**Yeah that works, fancy going now?**",
-        "user_message": "Yeah sounds good, now?"
-    },
-    {
-        "llm_message": "I'm good, mate - all relaxed here lol. Was there something you wanted to chat about?",
-        "user_message": "chill out dude"
-    },
-    {
-        "llm_message": "Yeah, that's a bit much isn't it lol. All caps does come across as quite intense and shouty, which probably isn't the vibe you were going for. Fair point calling that out \u2013 it's good to keep things more relaxed and readable",
-        "user_message": "Why was I just talking in all caps??\nNot ideal"
-    },
-    {
-        "llm_message": "Lol, what's that about? Why would you fill my bin with bricks, mate",
-        "user_message": "I'll fill your bin with bricks"
-    },
-    {
-        "llm_message": "I reckon a Chatter should basically be a set of guidelines for how to create and respond to messages, rather than anything more elaborate",
-        "user_message": "I think a Chatter should be mainly just policy for how to generate new messages and replies"
-    },
-    {
-        "llm_message": "Yeah, that's a really good point actually. You'd need to give it proper context about what's being discussed so it can pick the right moment to throw in a gif or whatever, rather than just randomly chucking them in. And if you're dealing with multiple conversation threads, the state tracking side gets messy pretty quickly - you'd need to make sure it knows which thread it's responding to and what's already been said in that specific conversation.\n\nI reckon you'd probably need to pass the message history or at least the relevant context through to whatever's handling the automation, so it can actually understand the vibe of the conversation and respond appropriately. Otherwise you're just guessing at what's relevant, which would be lol. The tricky bit is making sure it doesn't get confused or lose track of where it is in the conversation, especially if things are moving quickly or there are loads of threads going on at once",
-        "user_message": "Honestly I'm not entirely sure how it would know the context to reply properly. Like, if you're integrating typing indicators, gifs and images into the main flow, the automation would need to understand what each message is about and when to use those features appropriately. That's actually quite tricky - you'd probably need to pass through message context or have some kind of state tracking so it knows what conversation thread it's responding to"
-    },
-    {
-        "llm_message": "I think there might be a bit of confusion here \u2013 I haven't actually asked you about context stuff in our conversation so far. This is the first message you've sent me.\n\nCould you clarify what you're referring to? Maybe you're thinking of a different conversation, or there's something I'm missing? Happy to help once I understand what you mean",
-        "user_message": "What were you actually asking about with the context stuff?"
-    },
-    {
-        "llm_message": "Ah nice, sounds good - it's worth taking the time to think things through properly, lol",
-        "user_message": "Ah fair point, you're right - I should think about that more carefully"
-    },
-    {
-        "llm_message": "Yeah, that's right - I'm going through it on various platforms to see how it holds up across the board, really. Want to make sure it's working properly everywhere rather than just assuming it'll be fine, you know",
-        "user_message": "Right, so you're testing the automation across different platforms then?"
-    },
-    {
-        "llm_message": "Haha, that's quite the invitation! Not sure I'm ready for bridge-sitting today, but I appreciate the suggestion lol",
-        "user_message": "Go and sit on a bridge!"
-    },
-    {
-        "llm_message": "Ah mate, that sounds rough! Bricks are deceptively heavy aren't they \u2013 you don't really think about it until you're actually lugging them about. Hope your back feels better soon, that's proper sore work. Maybe take it easy for a bit if you can lol",
-        "user_message": "Hey! Just finished filling up the bin with all those bricks - my back is killing me lol  That was way heavier than I expected!"
-    },
-    {
-        "llm_message": "Ah nice, that's good \u2013 must be easier on the eyes lol. What changed?",
-        "user_message": "I don't need to write everything in upper case now"
-    },
-    {
-        "llm_message": "I'd be happy to help rephrase something, but I'm not quite sure what you'd like me to work with! You've just sent \"A\" and \"B\" \u2013 could you share the actual message you'd like me to rephrase? Once you do, I'll rewrite it following the style guide you've provided",
-        "user_message": "A\nB"
-    },
-    {
-        "llm_message": "Haha, fair enough! So you're after milk, bread, eggs, cheese, bananas, carrots, apples, and toilet paper then - got it. Sounds like a pretty solid shop actually, lol. I'll grab all of that and won't come back without them, no worries. The survival mission is on",
-        "user_message": "OMG we're literally DYING  without these essentials!! \n MILK (the elixir of life!!) \n BREAD (our carb salvation )\n EGGS (the golden treasures!!)\n CHEESE (because we're not animals )\n BANANAS (potassium warriors!! )\n CARROTS (for our VISION quest )\n APPLES (keeping doctors at bay!! )\n TOILET PAPER (the most precious commodity )\nThis is a MISSION OF SURVIVAL!!  Don't come back empty handed or we PERISH!!"
-    },
-    {
-        "llm_message": "I'd be happy to help rephrase messages for you following your style guide! However, I notice you've just sent \"Yes\" \u2013 I'm not sure what you'd like me to rephrase.\n\nCould you share the message you'd like me to reword? I'll make sure to match your style: relaxed but thoughtful, UK English spelling, occasional text speak like 'lol', and keeping things informal yet genuine.",
-        "user_message": "Yes"
-    },
-    {
-        "llm_message": "No worries at all, lol. It's easy to do that sometimes, especially when you're trying to work something out. All good",
-        "user_message": "Fair enough, my bad. I was overthinking it a bit there lol"
-    },
-    {
-        "llm_message": "I don't have any context about a specific project you're referring to. Could you give me a bit more detail about what you mean? Are you talking about something we've discussed before, or is this something new you want to explore?",
-        "user_message": "What's the project we're looking at?"
-    },
-    {
-        "llm_message": "That's a bit dodgy, innit",
-        "user_message": "That's dodgy"
-    },
-    {
-        "llm_message": "Ah nice, glad that's working for you then",
-        "user_message": "Yeah the link works fine, I can see the Live Share session"
-    },
-    {
-        "llm_message": "Ah nice, lol - glad it's coming through on your end then",
-        "user_message": "Yeah I'm getting your messages here too - looks like it's working"
-    },
-    {
-        "llm_message": "Haha yeah it's absolutely mad, I'm both buzzing and slightly terrified lol. Six tiny chaos agents is genuinely a lot, but honestly the cuteness factor makes it worth it. My house is gonna be absolutely rammed with kittens, toys, food bowls, litter trays - the whole lot. It'll be mayhem but like, the good kind of mayhem\n\nAnd yeah, Halloween week is gonna be absolutely bonkers with them arriving right then. Not ideal timing with all the spooky stuff going on, but I'm trying not to think too hard about it haha\n\nTo be honest, I'm not entirely sure I'm ready? Like, I've got the basics sorted - space set up, supplies ready, all that - but I think you never really are ready for six tiny beans, you know? I'm just gonna have to wing it and figure things out as I go. Reckon it'll be fine though\n\nAnd mate, don't worry about the testing at all. Genuinely, kitten chaos takes priority right now, but I'm keen to get to it once things settle down a bit. I'm curious about how the fine-tuning stuff actually works anyway, so it'll be good to dig into it properly when I've got proper headspace. We can sort something out in a couple weeks maybe?",
-        "user_message": "yooo that's so exciting!!  6 kittens omggg your house is gonna be chaos but like the cutest chaos ever\nwait so that's like oct 30th right? gonna be such a busy halloween week for you lol\nare you ready for that many tiny beans running around? \nbtw still down to test whenever you're ready - no rush tho, kitten prep is way more important than debugging my code haha"
-    },
-    {
-        "llm_message": "I appreciate you sharing that, but I notice you've given me your own message as an example rather than something to rephrase. \n\nDid you mean to ask me to rephrase a different message? If you'd like me to rephrase something, just let me know what it is and I'll reword it whilst following the style guide you've provided",
-        "user_message": "Yeah, I don\u2019t know why that happened"
-    },
-    {
-        "llm_message": "Yeah, that makes sense - storing the processed messages in a data file (especially the state one) would definitely make it easier to batch run things. Saves you from having to reprocess everything each time, lol",
-        "user_message": "Yeah, I see that perspective - I'm also thinking to put processed messages into a data file (probably the same state one) because this probably just helps with making it easy to run multiple at once"
-    },
-    {
-        "llm_message": "Fair enough, you're right - you don't owe me anything mate",
-        "user_message": "I don't owe you anything mate"
-    },
-    {
-        "llm_message": "If you've got time right now, it would be really helpful if you could do some testing for me",
-        "user_message": "If you're available at the moment for some testing that would be helpful"
-    },
-    {
-        "llm_message": "I'd rephrase this as:\n\nOn 2025-10-17, Ben 336 had quite a mixed day conversationally. Earlier on (18:31), they came across as a bit dismissive or short with someone, telling them to \"F off maybe\". But by later that evening (21:16), they were greeting people more warmly with \"Heya\", and at 21:30 they gave a fairly neutral response of \"It's good meh\" when asked about something.\n\nAround 22:00, things got more interesting - Ben 336 was chatting about Old School RuneScape and mentioned having one of those days where everything feels a bit much. They noted being quite busy with work and struggling to keep on top of things, though they've been finding some relief by getting back into gaming during their downtime. They've recently picked up a new popular game and seemed genuinely interested in it. They also expressed interest in catching Pok\u00e9mon (the message cuts off here).\n\nOverall, it sounds like Ben 336 was having a bit of a rough day but found some ways to decompress through gaming, which is fair enough really",
-        "user_message": "\"Ben 336\": {\n        \"text\": \"Ben 336 told someone to \\\"F off maybe\\\" on 2025-10-17 at 18:31, showing a dismissive or potentially hostile attitude in conversation. Later that same day at 21:16, Ben 336 greeted someone with \\\"Heya\\\", indicating a more casual and friendly demeanor. At 21:30 on the same day, Ben 336 responded \\\"It's good meh\\\" when asked about something, showing a lukewarm or indifferent attitude. At 22:00 on 2025-10-17, Ben 336 asked about opinions on Old School RuneScape, mentioned having \\\"one of those days,\\\" described being busy with work and trying to keep up with everything, and shared that they've been getting back into gaming in their free time, recently picking up a new popular game. Also at 22:00, Ben 336 expressed interest in catchi\u2026"
-    },
-    {
-        "llm_message": "Ah nice, lol! Yeah I'm ready to give it a go. Glad you sorted that chat name thing - what was causing it in the end?",
-        "user_message": "hey! ready to test this thing? \njust fixed that chat name bug so should be good to go now"
-    },
-    {
-        "llm_message": "Ah nice, that sounds promising! What changes did you make to it? I'm curious whether it's actually noticeably faster or if it's more about the code being cleaner now lol",
-        "user_message": "I've refactored the event loop to make it cracked (hopefully)"
-    },
-    {
-        "llm_message": "lol what, 100 quid?",
-        "user_message": "lol what 100 pounds"
-    },
-    {
-        "llm_message": "Lol alright then",
-        "user_message": "lol ok ben"
-    },
-    {
-        "llm_message": "Nice effort though",
-        "user_message": "Nice try though"
-    },
-    {
-        "llm_message": "What did you even do, lol",
-        "user_message": "lol what did i even do"
-    },
-    {
-        "llm_message": "Yeah, that does sound like a good plan - getting all those features into the main flow would definitely make things much cleaner",
-        "user_message": "Yeah that sounds like a good plan - integrating all those features into the main flow would make it much cleaner"
-    },
-    {
-        "llm_message": "No problem :)",
-        "user_message": "Thanks :)"
-    },
-    {
-        "llm_message": "Yeah, sounds good - I'll be ready in a few minutes then. Good catch on that chat name bug, lol, hopefully it's a quick fix",
-        "user_message": "Ok - in a few minutes would be best, as there's a bug with chat name confusion I need to fix"
-    },
-    {
-        "llm_message": "I'm not sure what you're referring to \u2013 I don't have any context about what happened. Could you fill me in on what's going on?",
-        "user_message": "what did i do this time"
-    },
-    {
-        "llm_message": "Lol alright then",
-        "user_message": "lol alright then"
-    },
-    {
-        "llm_message": "Cheers! Yeah, it's good to be back to normal. WhatsApp automation is pretty interesting actually \u2013 I'm thinking of testing it with some basic stuff first, like maybe setting up automated responses for common questions or seeing if I can get it to handle scheduling messages. Nothing too mad, just enough to see what's possible and what the limitations are, lol. It'd be cool to play around with it for learning purposes, but I definitely wouldn't want to use anything like that without being upfront about it. What made you curious about it?",
-        "user_message": "COOL THAT YOU'RE BACK TO NORMAL THOUGH - WHATSAPP AUTOMATION SOUNDS INTERESTING, WHAT ARE YOU THINKING OF TESTING WITH IT?"
-    },
-    {
-        "llm_message": "Calling in about 10 minutes sounds good if you're around",
-        "user_message": "Calling in maybe 10 minutes would be good if you're free"
-    },
-    {
-        "llm_message": "Ah nice, that's good to hear! Glad you've got that sorted. Let me know if there are any other issues with it",
-        "user_message": "I believe the thumbs up, etc, should work now"
-    },
-    {
-        "llm_message": "Cheers for asking! Just to clarify though, I haven't actually sent you a Live Share link - I think there might be a bit of confusion here. Are you perhaps meaning to message someone else, or did you receive a link from them that you're wanting to talk through? Happy to help if you fill me in on what's going on",
-        "user_message": "Cheers for the Live Share link - what are we working on?"
-    },
-    {
-        "llm_message": "And to get a decent grasp of what it's actually doing (at least to some degree)",
-        "user_message": "And to understand what it's doing (at least on a moderate level)"
-    },
-    {
-        "llm_message": "Yeah, fair enough \u2013 sounds like you're keeping your options open, which makes sense. And you're right, it probably won't be too difficult to sort out whenever you do decide what you're going for, lol",
-        "user_message": "I'm not sure of what we'll try to do yet, but we might do that (and I guess it's not particularly hard to do that)"
-    },
-    {
-        "llm_message": "Yeah I'm here lol",
-        "user_message": "YEAH I'M HERE LOL"
-    },
-    {
-        "llm_message": "I'd definitely remember lending you 100 quid, lol",
-        "user_message": "I would definitely remember borrowing 100 quid from you lol"
-    },
-    {
-        "llm_message": "I think you might have me confused with someone else or a previous conversation - I don't have context about what polling thing you're referring to or what's broken. Could you give me a bit more detail about what's going on? That way I can actually help rather than just guessing lol",
-        "user_message": "WHAT'S BROKEN THEN? THE POLLING THING OR SOMETHING ELSE?"
-    },
-    {
-        "llm_message": "Yeah, it's quite satisfying to pull that out lol. You're right, that kind of boilerplate was definitely scattered all over the place \u2013 clicking handlers, focus management, all that tedious stuff. Getting it centralised should make things a lot cleaner and easier to maintain going forward, which is always nice",
-        "user_message": "Nice one on trying to factor out the repetitive stuff, that clicking and focusing code probably appears everywhere"
-    },
-    {
-        "llm_message": "Ah nice, that makes sense lol. Yeah, having state maintenance bundled in with ChatStatter does seem a bit messy \u2013 separating it out into its own class should make things cleaner and easier to work with. Sounds like a good refactor",
+        "llm_message": "I reckon it makes sense to pull that out into its own class - having state maintenance bundled in with ChateStatter is a bit messy really",
         "user_message": "I'm making a new state maintenance class because it's stupid that that's part of the ChateStatter"
     },
     {
-        "llm_message": "Ah nice, good timing then lol",
-        "user_message": "AH NICE, GOOD TIMING THEN LOL"
+        "llm_message": "Yeah, that makes sense - I'm thinking of putting the processed messages into a data file too (probably the same state one) since that would probably just make it easier to run multiple at once",
+        "user_message": "Yeah, I see that perspective - I'm also thinking to put processed messages into a data file (probably the same state one) because this probably just helps with making it easy to run multiple at once"
     },
     {
-        "llm_message": "Nice one on sorting that out, whatever it was lol",
-        "user_message": "AND NICE ONE ON PULLING WHATEVER THAT WAS"
-    },
-    {
-        "llm_message": "I appreciate you sharing this, but I think there might be a bit of confusion \u2013 this looks like a technical error log from your WhatsApp AI replier project rather than a message you'd like me to rephrase!\n\nIf you're looking for help with this error, it seems like there's an issue with how you're formatting the `tool_choice` parameter when calling the Anthropic API. The error suggests it's expecting a valid dictionary or object, but you're probably passing something that doesn't match that format.\n\nWas there actually a message you wanted me to rephrase, or did you mean to ask about this error?",
-        "user_message": "2025-10-18 15:41:28.142 | ERROR    | src.llm_client:generate_responses:206 - Anthropic API error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'tool_choice: Input should be a valid dictionary or object to extract fields from'}, 'request_id': 'req_011CUEqc5UCFBto2JQUuSrwc'}\nTraceback (most recent call last):\n  File \"/home/matthew-johnson/Documents/Code/WhatsappAIReplier/whatsapp-ai-replier/event_loop.py\", line 81, in <module>\n    event_loop(user_name, friend_names, chatter)\n  File \"/home/matthew-johnson/Documents/Code/WhatsappAIReplier/whatsapp-ai-replier/event_loop.py\", line 32, in event_loop\n    chat_actions.extend(process_friend(friend, chatter, automation, state_maintenance, single_friend=single_friend))\n      \u2026"
-    },
-    {
-        "llm_message": "Ah nice, that's great to hear! Sounds like having him over is a good time despite the extra chaos lol. The afternoon's been alright thanks for asking \u2013 nothing too mad, just keeping busy really. How much longer is he staying for?",
-        "user_message": "Ben's visit is going well thanks! It's good having him around, though the house is definitely busier lol. How's your afternoon out going?"
-    },
-    {
-        "llm_message": "That's a bit vague, lol - what's strange? Happy to hear more about what you mean",
-        "user_message": "Strange"
-    },
-    {
-        "llm_message": "Haha fair enough, you caught me out! Though I reckon I'd argue I wasn't so much trying to trick you as just being a bit cheeky lol. What gave it away?",
-        "user_message": "Haha I knew it! You were trying to trick me lol"
-    },
-    {
-        "llm_message": "I'd need a bit more context to give you a proper answer, mate. Are you asking about whether something involved just polling, or if there were other factors at play as well? Could you fill me in on what you're referring to?",
-        "user_message": "WAS IT JUST THE POLLING OR OTHER STUFF TOO?"
-    },
-    {
-        "llm_message": "That's brilliant, cheers for that",
-        "user_message": "I\u2019m happy to help on that"
-    },
-    {
-        "llm_message": "Yeah that was definitely odd, lol - no clue what caused that either",
-        "user_message": "YEAH THE ALL CAPS THING WAS DEFINITELY WEIRD, NO IDEA WHY THAT HAPPENED"
-    },
-    {
-        "llm_message": "I think there might be a bit of confusion here \u2013 I'm not asking you to try messaging anything specific. I'm just here to help rephrase messages you want to send, following your style guide.\n\nDid you have a particular message you wanted me to rework? If you share what you're trying to say, I can help you phrase it in a way that matches your usual tone and style",
-        "user_message": "WHAT DO YOU WANT ME TO TRY MESSAGING?"
-    },
-    {
-        "llm_message": "Ah right, that makes sense lol",
-        "user_message": "Oh, no, it's because I put it in my system prompt lo"
-    },
-    {
-        "llm_message": "Yeah, that makes sense - trying to sort everything at once is pretty ambitious, but it's tough to dodge those interconnected issues when they're all tangled up together. Sometimes fixing one thing inevitably pulls on a few other threads, lol",
-        "user_message": "Or ever - I've gone for the fix everything in one go strategy, but it seems hard to avoid to some extent"
-    },
-    {
-        "llm_message": "Right, yeah, that makes sense now",
-        "user_message": "Ok, now I believe that's actually you"
-    },
-    {
-        "llm_message": "Haha, fair point mate, I deserve that. I'll get my act together, I promise. Last thing I need is the bin men giving me a look like that's somehow my fault lol. What do you need me to sort?",
-        "user_message": "Mate, if you don't sort yourself out I'm gonna fill your wheelie bin with bricks and you'll have fun explaining that to the bin men"
-    },
-    {
-        "llm_message": "And now I want to test it out and make sure it actually works properly",
+        "llm_message": "Right, so now I want to test it and make sure it's working properly",
         "user_message": "And now want to test and make sure it's cracked"
     },
     {
-        "llm_message": "I appreciate you sharing this, but I'm a bit confused about what you're asking me to do here. This looks like a summary of messages from someone called Alex, but there's no actual message from you for me to rephrase following the style guide.\n\nAre you wanting me to:\n- Rephrase something specific that Alex said?\n- Help you craft a response to Alex?\n- Something else entirely?\n\nIf you let me know what you'd actually like me to work with, I can help properly. Also, that summary cuts off at the end, so if there's more context that's relevant, it might be worth sharing that too",
-        "user_message": "\"Alex\": {\n        \"text\": \"Alex asked about \\\"big bread\\\" on 2025-10-17 at 19:50, though the context or meaning of this question is unclear - could refer to large bakeries, bread companies, or something else entirely. On 2025-10-17 at 20:01, Alex became demanding and threatened to end the friendship unless given immediate answers, showing signs of impatience or frustration. On 2025-10-17 at 20:04, Alex mentioned falling in a bin earlier that day and seemed more relaxed, indicating their mood had shifted from the earlier frustration. On 2025-10-17 at 20:10, Alex requested an interesting true story from 5 years ago involving Matthew, showing interest in personal history and past experiences. On 2025-10-17 at 20:18, Alex asked what facts are known about them, s\u2026"
+        "llm_message": "I reckon it might be possible to work out which chat's had a message most recently from what shows up at the top of the menu, but for now I'm fine with just cycling through the chats",
+        "user_message": "It might be possible to detect which chat has had a message most recently by what appears at the top of the menu, but for now I'm happy with just cycling over chats"
     },
     {
-        "llm_message": "To make it really good (though I'm not entirely sure I'll manage to finish it today)",
-        "user_message": "To make it cracked (but I'm not totally sure that I'll finish it today)"
-    },
-    {
-        "llm_message": "I'm not sure what you mean, to be honest. I don't think I've been hostile? If something I said came across that way, I apologize - that wasn't my intention at all. What happened?",
-        "user_message": "Are you feeling less hostile now?"
-    },
-    {
-        "llm_message": "Yeah, that makes sense - glad we're on the same page with most of it",
-        "user_message": "Yes, I agree on that mostly"
-    },
-    {
-        "llm_message": "No worries, just let me know when you're ready. I'll be about in a few minutes anyway",
-        "user_message": "I'm fixing/improving something else, so in a few minutes after this would be good"
-    },
-    {
-        "llm_message": "omg that's so cute lol, 6 is absolutely mad. Yeah it's a shame about the timing honestly, but yeah hopefully I can pop round straight after the cousin thing and at least get some time with them. And yeah it's the 30th - poor mama cat is gonna be absolutely shattered I reckon, that's a lot of tiny chaos to manage lol\n\nReady whenever you are for the polling thing! Should be interesting to see how it actually works in practice",
-        "user_message": "omgggg 6 kittens!!  that's so many lil beans \naw that sucks tho that you'll miss it :( cousin's bday on the same day? what are the odds lol. maybe you can at least see them right after? \nwhen's the exact date again? oct 30th right? that's gonna be such a handful for mama cat\nanyway ready to test this polling thing or we still waiting a bit?"
-    },
-    {
-        "llm_message": "Haha fair point, I genuinely have no idea what you're on about either lol. If I sent something that looked like keyboard mashing, that's on me - wasn't intentional I promise\n\nBut yeah, let's actually test this properly. What did you want to try out? Happy to have a proper go at it rather than just sending nonsense back and forth, though I won't lie that would be entertaining too lmao",
-        "user_message": "lol what is that supposed to mean \nyou just mashing keys now or is that some secret code i don't know about?\nanyway you wanna actually test this chat thing or we just gonna send random letters back and forth lmao"
-    },
-    {
-        "llm_message": "Lol what, 100 quid? I don't recall borrowing anything off you last week",
-        "user_message": "lol what 100 pounds? I don't remember borrowing anything from you last week"
-    },
-    {
-        "llm_message": "Ah, nah not really \u2013 just having a bit of a think through things at the moment, lol. Is there something specific you wanted to chat about?",
-        "user_message": "Are you testing the automation or something?"
-    },
-    {
-        "llm_message": "Yeah, sounds good to me. What time works best for you?",
-        "user_message": "So shall we actually call then?"
-    },
-    {
-        "llm_message": "Alright, we'll see how it goes",
-        "user_message": "Ok, we'll see :)"
-    },
-    {
-        "llm_message": "Yeah fair point, that's confusing as hell lol. Sorry about that - I wasn't trying to be deliberately chaotic, I genuinely wasn't sure what I was doing there. If I came across as telling you to go away and then still messaging, that's contradictory and I can see why you'd be annoyed\n\nIf there's something specific I'm trying to work through or test, I should just be direct about it rather than sending random stuff. That's on me\n\nWhat's actually going on your end? Are you alright with whatever this is, or should we just reset and be clear about what we're actually trying to do here",
-        "user_message": "bruh why you telling me to go away and then still messaging me lol\nyou good? seems like you're either testing something weird or just being chaotic af rn\nif you actually wanna test the thing just say so, otherwise idk what we're doing here with all these random messages"
-    },
-    {
-        "llm_message": "Here's a rephrased version following your style:\n\ndef process_friend(friend, chatter, automation):\n - check for new messages\n - decide on actions\n - implement actions\n - update state\n - if friend == \"Reu\":\n  - send message 'I'm gonna fill your bin with bricks'\n\nThe main change is making the message sound a bit more natural and conversational, which fits better with your relaxed but thoughtful tone. The phrasing \"I'm gonna\" feels more like something you'd actually say compared to \"I'll fill\", lol",
-        "user_message": "def process_friend(friend, chatter, automation):\n - check for new messages\n - decide on actions\n - implement actions\n - update state\n - if friend == \"Reu\":\n  - send message 'I'll fill your bin with bricks'"
-    },
-    {
-        "llm_message": "Yeah, that's a fair point - if the logging and state aren't set up properly from the start, you could definitely run into some weird glitches later on. It's one of those things that's easy to overlook initially but then causes headaches when you're trying to debug, lol. Might be worth sorting that out early rather than having to unpick it all afterwards",
-        "user_message": "Hmm, there might be glitches when you're missing the logging and state initially?"
-    },
-    {
-        "llm_message": "Maybe look into the differences between Linux and Mac? Could be interesting to explore how they compare, lol",
-        "user_message": "Maybe differences between Linux and Mac?"
-    },
-    {
-        "llm_message": "Haha fair point, I'll spare your bin! Don't fancy being responsible for a waste management crisis, lol",
+        "llm_message": "Haha mate, my bin's already heavy enough without you adding a ton of bricks to it",
         "user_message": "Haha mate you better not! My bin's already heavy enough without you adding a ton of bricks to it"
     },
     {
-        "llm_message": "Cheers, yeah it's good to be back to normal! Not entirely sure what went on there, but glad it's resolved itself lol. Appreciate you letting me know though",
-        "user_message": "GLAD YOU'RE BACK TO REAL YOU THEN, WHATEVER THAT GLITCH WAS SEEMS TO HAVE SORTED ITSELF OUT"
+        "llm_message": "Ah mate, just finished loading all those bricks into the bin - my back's absolutely knackered lol. Didn't realise how heavy that would actually be!",
+        "user_message": "Hey! Just finished filling up the bin with all those bricks - my back is killing me lol  That was way heavier than I expected!"
     },
     {
-        "llm_message": "Yeah that sounds proper annoying, lol. Messages going to the wrong chats is definitely not just you being paranoid - that's a genuine issue. Have you noticed if it's happening with specific chats or seems random? Might be worth checking if there's some app glitch going on, or if it's a platform thing. Let me know if it keeps happening - could be worth reporting it if it's actually broken",
-        "user_message": "YEAH I NOTICED A FEW WEIRD THINGS EARLIER BUT WASN'T SURE IF IT WAS JUST ME - LIKE MESSAGES GOING TO WRONG CHATS AND STUFF"
+        "llm_message": "If you're free right now, it'd be helpful if you could do some testing for me",
+        "user_message": "If you're available at the moment for some testing that would be helpful"
     },
     {
-        "llm_message": "Haha no we absolutely did not",
-        "user_message": "Haha no we absolutely did not"
+        "llm_message": "I'm in the middle of refactoring the event loop",
+        "user_message": "I'm mid-refactoring the event loop"
     },
     {
-        "llm_message": "Yeah, it really is - there's something quite compelling about it. Honestly, I'm still mulling it over a bit, but I reckon the key is to break it down into smaller parts rather than trying to tackle the whole thing at once. That way you can test each bit properly and see what actually works versus what's just theory, lol.\n\nI'm thinking it'd be good to start with understanding what's actually causing the problem in the first place - like, is it a fundamental issue or more of an edge case thing? Once you know that, the approach kind of suggests itself. And then probably iterate from there, see what the data tells you.\n\nWhat's your take on it though? Are you thinking along similar lines or have you got a different angle in mind?",
-        "user_message": "It's a genuinely interesting problem though. How were you thinking of approaching it?"
+        "llm_message": "I'll fill your bin with bricks back",
+        "user_message": "I'll fill your bin with bricks"
     },
     {
-        "llm_message": "Ah nice, yeah that would be better than just hacking it into the event loop (or sticking my function inside that)",
+        "llm_message": "I might manage to make it cracked, though I'm not entirely confident I'll get it done today",
+        "user_message": "To make it cracked (but I'm not totally sure that I'll finish it today)"
+    },
+    {
+        "llm_message": "Just to clarify - are you sharing some code you're working on, or do you need help with something specific about this function? Happy to take a look if you want to discuss it",
+        "user_message": "def process_friend(friend, chatter, automation):"
+    },
+    {
+        "llm_message": "I'm working on fixing or improving something else at the moment, so a bit later would suit me better",
+        "user_message": "I'm fixing/improving something else, so in a few minutes after this would be good"
+    },
+    {
+        "llm_message": "Yeah, or ever - I've gone for the fix everything at once approach, but it seems pretty difficult to avoid to some degree",
+        "user_message": "Or ever - I've gone for the fix everything in one go strategy, but it seems hard to avoid to some extent"
+    },
+    {
+        "llm_message": "Yeah, that seems fair probably",
+        "user_message": "Ok, yes, that is reasonable probably"
+    },
+    {
+        "llm_message": "I've refactored the event loop to hopefully make it cracked",
+        "user_message": "I've refactored the event loop to make it cracked (hopefully)"
+    },
+    {
+        "llm_message": "I could call you in about 10 minutes if you're around",
+        "user_message": "Calling in maybe 10 minutes would be good if you're free"
+    },
+    {
+        "llm_message": "Cheers",
+        "user_message": "Thanks :)"
+    },
+    {
+        "llm_message": "Yeah, in a few minutes works best for me - there's a bug with chat name confusion I need to sort out",
+        "user_message": "Ok - in a few minutes would be best, as there's a bug with chat name confusion I need to fix"
+    },
+    {
+        "llm_message": "I reckon a Chatter should really be primarily about the policy for how to create new messages and responses",
+        "user_message": "I think a Chatter should be mainly just policy for how to generate new messages and replies"
+    },
+    {
+        "llm_message": "Look, if you don't get your act together I'm gonna dump a load of bricks in your wheelie bin and you can have a laugh trying to explain that one to the bin collectors",
+        "user_message": "Mate, if you don't sort yourself out I'm gonna fill your wheelie bin with bricks and you'll have fun explaining that to the bin men"
+    },
+    {
+        "llm_message": "Yeah",
+        "user_message": "Yes"
+    },
+    {
+        "llm_message": "Yeah, that'd be better than just hacking it into the event loop or my function inside there",
         "user_message": "Ah, nice, yes, that would be good for doing there instead of just hacked into the event loop (or my function inside of that)"
     },
     {
-        "llm_message": "Nice effort though, you almost had me doubting myself for a second there",
-        "user_message": "Nice try though, almost had me second-guessing myself for a moment there"
-    },
-    {
-        "llm_message": "Yeah, that sounds fair enough",
-        "user_message": "Ok, yes, that is reasonable probably"
+        "llm_message": "You've overlooked a section on my diagram that says basically the same thing except for those two crucial lines",
+        "user_message": "You've missed the part on my diagram saying approximately the same except for a crucial two lines:"
     }
 ]

@@ -52,7 +52,13 @@ def create_reacter_system_prompt(user_name:str, friend_name:str, state_text: str
     system_prompt = f"The current date is {current_date}. " + REACTER_SYSTEM_PROMPT_TEMPLATE.format(user_name=user_name, friend_name=friend_name) + f"<key_facts>{state_text}</key_facts>"
     return system_prompt
 
-FINE_TUNE_DATA_SYSTEM_PROMPT_TEMPLATE = "Rephrase the message of the user, preserving the meaning."
+FINE_TUNE_DATA_SYSTEM_PROMPT_TEMPLATE = "Rephrase the message of the user, preserving the meaning." + \
+    "This new message should be possible for the same user to send, as you ARE the user" + \
+    "E.g. if the message is in first person, the new message must also be in first person, not second person, and vice versa." + \
+    "You MUST return EXACTLY ONLY the rephrased message, and must not ask for clarification or any other text." + \
+    "E.g. if the message is just a single word, you could potentially just give that back as the rephrased message if appropriate." + \
+    "The rephrased message should be of a comparable length to the original message." + \
+    "You must not use the newlines (using \\n or \\n\\n), even if the style guide suggests you can - this is for a different context."
 
 def create_fine_tune_data_system_prompt(user_style_guide: str | None = None) -> str:
     if user_style_guide is None:

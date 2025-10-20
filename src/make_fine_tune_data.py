@@ -27,7 +27,7 @@ class FineTuningDataManager():
         for message in message_data:
             if message["is_outgoing"]:
                 user_message_set.add(message["content"])
-        user_messages = list(user_message_set)
+        user_messages = [m.split("\n")[0] for m in list(user_message_set)]
         llm_message_tasks = []
         for user_message in user_messages:
             llm_message_task = asyncio.create_task(self.generate_llm_user_message_pair(user_message))
