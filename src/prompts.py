@@ -51,3 +51,13 @@ REACTER_SYSTEM_PROMPT_TEMPLATE = "You are an assistant in a conversation between
 def create_reacter_system_prompt(user_name:str, friend_name:str, state_text: str, current_date: str) -> str:
     system_prompt = f"The current date is {current_date}. " + REACTER_SYSTEM_PROMPT_TEMPLATE.format(user_name=user_name, friend_name=friend_name) + f"<key_facts>{state_text}</key_facts>"
     return system_prompt
+
+FINE_TUNE_DATA_SYSTEM_PROMPT_TEMPLATE = "Rephrase the message of the user, preserving the meaning."
+
+def create_fine_tune_data_system_prompt(user_style_guide: str | None = None) -> str:
+    if user_style_guide is None:
+        return FINE_TUNE_DATA_SYSTEM_PROMPT_TEMPLATE
+    else:
+        system_prompt = FINE_TUNE_DATA_SYSTEM_PROMPT_TEMPLATE + "Follow the given style guide for the user.\n"
+        system_prompt += f"<user_style_guide>{user_style_guide}</user_style_guide>"
+        return system_prompt

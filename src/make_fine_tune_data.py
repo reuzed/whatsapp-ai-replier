@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 from src.llm_client import LLMManager
+from src.prompts import create_fine_tune_data_system_prompt
 import asyncio
 
 FINE_TUNE_DATA_DIR = Path(__file__).parent.parent
@@ -8,6 +9,12 @@ FINE_TUNE_DATA_DIR = Path(__file__).parent.parent
 class FineTuningDataManager():
     def __init__(self):
         self.llm_manager = LLMManager()
+        self.user_style_guide_path = Path(__file__).parent.parent / "user_data/user_style_guide.txt"
+        if self.user_style_guide_path.exists():
+            with open(self.user_style_guide_path, "r") as f:
+                self.user_style_guide = f.read()
+        else:
+            self.user_style_guide = None
 
     async def create_fine_tune_data(self, conv_file: str):
         """Create somewhat syntheticfine-tune data file from a conversation file.
@@ -33,7 +40,7 @@ class FineTuningDataManager():
 
     async def generate_llm_user_message_pair(self, user_message: str) -> dict: # adjust this from being a dummy function
         messages = [{"role": "user", "content": user_message}]
-        system_prompt = "" # TODO: create this system prompt using the user's style guide, etc
+        system_prompt = create_fine_tune_data_system_prompt(self.user_style_guide)
         llm_response = await self.llm_manager.generate_response(messages, system_prompt=system_prompt, allow_skip=False)
         return {"llm_message": llm_response.text, "user_message": user_message}
 
