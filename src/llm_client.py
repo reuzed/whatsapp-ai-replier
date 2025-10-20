@@ -197,7 +197,7 @@ class AnthropicClient(LLMClient):
         allow_gif: bool = False,
         tool_choice: str = "auto"
     ) -> list[LLMResponse]:
-        """Generate a responses WITHOUT react tools."""
+        """Generate responses with choice of tools."""
         extra_params = {}
         if system_prompt:
             extra_params["system"] = system_prompt
