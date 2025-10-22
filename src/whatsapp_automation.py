@@ -221,8 +221,8 @@ class WhatsAppAutomation:
         message_box.click()
         time.sleep(0.1)
         return message_box
-            
-    def select_chat(self, search_term: str) -> Optional[ChatInfo]:
+
+    def select_chat(self, search_term: str) -> ChatInfo:
         '''Select a chat by contact name.'''
         search_box = self.focus_chat_list_search()
         if not search_box:
@@ -244,7 +244,7 @@ class WhatsAppAutomation:
             logger.info(f"Successfully opened chat {chat_info.chat_name} via search for: {search_term}")
             return chat_info
         
-        return None
+        raise Exception(f"Failed to open chat for search term: {search_term}")
     
     def which_chat_is_open(self) -> Optional[ChatInfo]:
         """Get the name of the currently open chat."""
@@ -266,10 +266,12 @@ class WhatsAppAutomation:
         
         if 'Type to group ' in aria_label:
             is_group = True
-            chat_name = aria_label.split('Type to group ')[1]
+            # chat_name = aria_label.split('Type to group ')[1]
         else:
             is_group = False
-            chat_name = aria_label.split('Type to ')[1]
+            # chat_name = aria_label.split('Type to ')[1]
+        # BUG: given aria_label.split inconsistently picks +44 vs actual contact name, try below selecting first element on LHS
+        chat_name = self.driver.find_element(By.CSS_SELECTOR, "span[title]").text
         
         try:
             title_elem = self.driver.find_element(By.CSS_SELECTOR, 'header span[title]')

@@ -23,7 +23,7 @@ def event_loop(user_name: str, friend_list: list[str], chatter: Chatter):
     chat_actions = []
 
     if len(friend_list) == 1:
-        automation.select_chat(friend_list[0])
+        chat_info = automation.select_chat(friend_list[0])
         time.sleep(1)
 
     while True:
@@ -31,10 +31,10 @@ def event_loop(user_name: str, friend_list: list[str], chatter: Chatter):
         for friend in friend_list:
 
             if len(friend_list) > 1:
-                automation.select_chat(friend)
+                chat_info = automation.select_chat(friend)
                 time.sleep(1)
 
-            chat_actions.extend(asyncio.run(process_friend(friend, chatter, automation, state_maintenance)))
+            chat_actions.extend(asyncio.run(process_friend(chat_info.chat_name, chatter, automation, state_maintenance)))
 
         chat_actions = actions_handler.handle_actions(chat_actions)
 
