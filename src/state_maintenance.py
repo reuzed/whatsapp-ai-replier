@@ -87,7 +87,7 @@ class StateMaintenance:
         with open(MESSAGE_LOG_FILE, "w") as f:
             json.dump(message_data, f, indent=4)
     
-    def get_seen_messages(self, chat_name: str, limit: int = 20) -> list[WhatsAppMessage]:
+    def get_seen_messages(self, chat_name: str, limit: int = 30) -> list[WhatsAppMessage]:
         if not MESSAGE_LOG_FILE.exists():
             MESSAGE_LOG_FILE.write_text("{}")
             return []

@@ -17,6 +17,7 @@ dependencies = [
     "openai>=1.51.0",
     "pip>=25.2",
     "ipykernel>=7.0.1",
+    "huggingface-hub>=0.35.3",
 ]
 
 [build-system]
