@@ -1,5 +1,6 @@
 # Conversations
 # conversations/*
+*.json
 
 # state
 src/state.json
