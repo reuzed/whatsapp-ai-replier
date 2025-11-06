@@ -8,7 +8,7 @@ class ActionsHandler:
     def __init__(self, automation: WhatsAppAutomation):
         self.automation = automation
 
-    def handle_actions(self, chat_actions: list[Action], friend: str | None = None) -> list[Action]:
+    def     handle_actions(self, chat_actions: list[Action], friend: str | None = None) -> list[Action]:
         now = datetime.now()
         to_remove = []
         if friend is not None:
@@ -58,8 +58,8 @@ class ActionsHandler:
         if friend is None:
             self.automation.select_chat(action.message.chat_name)
             time.sleep(1)
-        message_content_length = len(action.message.content.split())
-        time.sleep(message_content_length / 5)
+        # message_content_length = len(action.message.content.split())
+        # time.sleep(message_content_length / 5)
         self.automation.send_message(action.message.content)
 
     def _handle_react_action(self, action: ReactAction, friend: str | None) -> None:
