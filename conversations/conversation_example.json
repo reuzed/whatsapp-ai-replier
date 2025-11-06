@@ -1,0 +1,35 @@
+{
+    "chat_name": "723",
+    "exported_at": "2025-10-20T15:27:50.147417",
+    "message_count": 4,
+    "messages": [
+      {
+        "sender": "723",
+        "content": "How are you",
+        "timestamp": "2025-10-15T16:12:00",
+        "is_outgoing": false,
+        "chat_name": "723"
+      },
+      {
+        "sender": "Matthew Johnson",
+        "content": "Haha mate you better not! My bin's already heavy enough without you adding a ton of bricks to it",
+        "timestamp": "2025-10-15T18:20:00",
+        "is_outgoing": true,
+        "chat_name": "723"
+      },
+      {
+        "sender": "Matthew Johnson",
+        "content": "Calling in maybe 10 minutes would be good if you're free",
+        "timestamp": "2025-10-16T15:22:00",
+        "is_outgoing": true,
+        "chat_name": "723"
+      },
+      {
+        "sender": "Matthew Johnson",
+        "content": "I'm fixing/improving something else, so in a few minutes after this would be good",
+        "timestamp": "2025-10-16T15:36:00",
+        "is_outgoing": true,
+        "chat_name": "723"
+      }
+    ]
+  }
