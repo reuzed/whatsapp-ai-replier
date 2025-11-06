@@ -11,7 +11,7 @@ import asyncio
 from datetime import datetime, timedelta
 from src.state_maintenance import StateMaintenance
 
-class ChateStatter(Chatter):
+class Frautomator(Chatter):
     def __init__(self, user_name:str):
         self.user_name = user_name # the person running the automation's name
         self.state_maintenance = StateMaintenance(self.user_name) # read json file with key chat_name
