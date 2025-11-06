@@ -6,7 +6,7 @@ from src.whatsapp_automation import WhatsAppAutomation
 # Import chatters
 from src.chatters.trivial_chatter import TrivialChatter, DelayedTrivialChatter
 from src.chatters.simple_ai_chatter import SimpleAIChatter
-from src.chatters.chate_statter import ChateStatter
+from src.chatters.frautomator import Frautomator
 from src.chatters.react_chatter import ReactChatter
 from src.chatters.image_echo_chatter import ImageEchoChatter
 from src.state_maintenance import StateMaintenance
@@ -79,7 +79,7 @@ if __name__ == "__main__":
         load_dotenv()
         friend_name = [os.getenv("FRIEND_NAME", "Reuben")]
         user_name = os.getenv("USER_NAME", "Ben")
-        chatter = ChateStatter(user_name)
+        chatter = Frautomator(user_name)
         event_loop(user_name, friend_name, chatter)
     else:
         num_friends = int(input("Number of friends to chat to"))
@@ -95,7 +95,7 @@ if __name__ == "__main__":
         elif chatter_name == "sai":
             chatter = SimpleAIChatter()
         elif chatter_name == "cs":
-            chatter = ChateStatter(user_name)
+            chatter = Frautomator(user_name)
         elif chatter_name == "ie":
             model = input("Image model (return for default 'dall-e-3'): ") or "dall-e-3"
             chatter = ImageEchoChatter(model=model)

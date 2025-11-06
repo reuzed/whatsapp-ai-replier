@@ -106,7 +106,7 @@ class Frautomator(Chatter):
 
 
 if __name__ == "__main__":
-    chat = ChateStatter("Bob")
+    chat = Frautomator("Bob")
     new_msg = WhatsAppMessage(
         sender="Bob",
         content="Hey, how are you? It's my mum's birthday in 2 days :o",
